@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include vsd_fleet_ms *.css
+recursive-include vsd_fleet_ms *.csv
+recursive-include vsd_fleet_ms *.html
+recursive-include vsd_fleet_ms *.ico
+recursive-include vsd_fleet_ms *.js
+recursive-include vsd_fleet_ms *.json
+recursive-include vsd_fleet_ms *.md
+recursive-include vsd_fleet_ms *.png
+recursive-include vsd_fleet_ms *.py
+recursive-include vsd_fleet_ms *.svg
+recursive-include vsd_fleet_ms *.txt
+recursive-exclude vsd_fleet_ms *.pyc
