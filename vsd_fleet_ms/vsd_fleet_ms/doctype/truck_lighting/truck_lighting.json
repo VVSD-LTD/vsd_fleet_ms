@@ -1,0 +1,44 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-05-04 11:42:43.432394",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "lighting_check",
+  "light_mark",
+  "lighting_remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "lighting_check",
+   "fieldtype": "Data",
+   "label": "Lighting"
+  },
+  {
+   "default": "0",
+   "fieldname": "light_mark",
+   "fieldtype": "Check",
+   "label": "Mark"
+  },
+  {
+   "fieldname": "lighting_remarks",
+   "fieldtype": "Data",
+   "label": "Remark"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-05-04 11:49:45.014659",
+ "modified_by": "Administrator",
+ "module": "VSD Fleet MS",
+ "name": "Truck Lighting",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

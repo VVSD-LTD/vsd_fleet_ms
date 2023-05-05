@@ -1,0 +1,37 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-05-04 12:13:24.443261",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "power_train",
+  "mark"
+ ],
+ "fields": [
+  {
+   "fieldname": "power_train",
+   "fieldtype": "Data",
+   "label": "Power Train"
+  },
+  {
+   "default": "0",
+   "fieldname": "mark",
+   "fieldtype": "Check",
+   "label": "Mark"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-05-04 12:18:35.777472",
+ "modified_by": "Administrator",
+ "module": "VSD Fleet MS",
+ "name": "Truck Power Train",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

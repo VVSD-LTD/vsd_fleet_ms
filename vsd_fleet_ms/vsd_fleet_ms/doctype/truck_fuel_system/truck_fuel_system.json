@@ -1,0 +1,37 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-05-04 12:07:59.640840",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "fuel_system",
+  "mark"
+ ],
+ "fields": [
+  {
+   "fieldname": "fuel_system",
+   "fieldtype": "Data",
+   "label": "Fuel System"
+  },
+  {
+   "default": "0",
+   "fieldname": "mark",
+   "fieldtype": "Check",
+   "label": "Mark"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-05-04 12:18:48.501036",
+ "modified_by": "Administrator",
+ "module": "VSD Fleet MS",
+ "name": "Truck Fuel System",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

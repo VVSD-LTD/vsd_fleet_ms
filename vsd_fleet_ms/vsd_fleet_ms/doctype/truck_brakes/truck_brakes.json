@@ -1,0 +1,43 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-05-04 11:58:40.909683",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "brake_system",
+  "mark",
+  "brake_remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "brake_system",
+   "fieldtype": "Data",
+   "label": "Brake System"
+  },
+  {
+   "default": "0",
+   "fieldname": "mark",
+   "fieldtype": "Check",
+   "label": "Mark"
+  },
+  {
+   "fieldname": "brake_remarks",
+   "fieldtype": "Data",
+   "label": "Remarks"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-05-04 12:00:14.852609",
+ "modified_by": "Administrator",
+ "module": "VSD Fleet MS",
+ "name": "Truck Brakes",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

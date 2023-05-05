@@ -1,0 +1,30 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-05-04 12:00:47.135290",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "vehicle_truck_part"
+ ],
+ "fields": [
+  {
+   "fieldname": "vehicle_truck_part",
+   "fieldtype": "Data",
+   "label": "Vehicle Truck Part"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-05-04 12:00:56.175566",
+ "modified_by": "Administrator",
+ "module": "VSD Fleet MS",
+ "name": "Truck Brake Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

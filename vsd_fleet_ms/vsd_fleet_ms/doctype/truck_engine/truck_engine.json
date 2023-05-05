@@ -1,0 +1,43 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-05-04 12:03:52.333451",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "engine_system",
+  "mark",
+  "engine_remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "engine_system",
+   "fieldtype": "Data",
+   "label": "Engine"
+  },
+  {
+   "default": "0",
+   "fieldname": "mark",
+   "fieldtype": "Check",
+   "label": "Mark"
+  },
+  {
+   "fieldname": "engine_remarks",
+   "fieldtype": "Data",
+   "label": "Remark"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-05-04 12:04:43.886699",
+ "modified_by": "Administrator",
+ "module": "VSD Fleet MS",
+ "name": "Truck Engine",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,247 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-05-04 11:37:46.213089",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "truck_inspection_section",
+  "truck",
+  "expected_trip",
+  "column_break_210d8",
+  "inspection_date",
+  "trip_reference_section",
+  "trip",
+  "truck_lighting_checklist_section",
+  "truck_lighting",
+  "truck_engine_checklist_section",
+  "truck_engine",
+  "brake_system_checklist_section",
+  "truck_brakes",
+  "truck_fuel_system_section",
+  "truck_fuel_system",
+  "truck_power_train_section",
+  "truck_power_train",
+  "electronics_checkings_section",
+  "truck_electronics",
+  "electrical_checkings_section",
+  "truck_electrical_checklist",
+  "truck_steering_checklist_section",
+  "truck_steering_checklist",
+  "truck_tire_checklist_section",
+  "truck_tire_checklist",
+  "truck_tires_checklist_section",
+  "truck_tires_checklist",
+  "truck_air_system_check_section",
+  "truck_air_system",
+  "truck_suspension_checklist_section",
+  "truck_suspension_checklist",
+  "truck_status_section",
+  "upload_respective_truck_image",
+  "trailer_inspection_section",
+  "trailer"
+ ],
+ "fields": [
+  {
+   "fieldname": "truck_inspection_section",
+   "fieldtype": "Section Break",
+   "label": "Truck Inspection"
+  },
+  {
+   "fieldname": "truck",
+   "fieldtype": "Link",
+   "label": "Truck",
+   "options": "Truck"
+  },
+  {
+   "fieldname": "expected_trip",
+   "fieldtype": "Data",
+   "label": "Expected Trip"
+  },
+  {
+   "fieldname": "column_break_210d8",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "inspection_date",
+   "fieldtype": "Date",
+   "label": "Inspection Date"
+  },
+  {
+   "fieldname": "trailer_inspection_section",
+   "fieldtype": "Tab Break",
+   "label": "Trailer Inspection"
+  },
+  {
+   "fieldname": "trailer",
+   "fieldtype": "Data",
+   "label": "Trailer"
+  },
+  {
+   "fieldname": "trip_reference_section",
+   "fieldtype": "Section Break",
+   "label": "Trip Reference"
+  },
+  {
+   "fieldname": "trip",
+   "fieldtype": "Data",
+   "label": "Trip"
+  },
+  {
+   "fieldname": "truck_lighting_checklist_section",
+   "fieldtype": "Section Break",
+   "label": "Truck Lighting Checklist"
+  },
+  {
+   "fieldname": "truck_lighting",
+   "fieldtype": "Table",
+   "options": "Truck Lighting"
+  },
+  {
+   "fieldname": "truck_engine_checklist_section",
+   "fieldtype": "Section Break",
+   "label": "Truck Engine Checklist"
+  },
+  {
+   "fieldname": "truck_engine",
+   "fieldtype": "Table",
+   "options": "Truck Engine"
+  },
+  {
+   "fieldname": "brake_system_checklist_section",
+   "fieldtype": "Section Break",
+   "label": "Brake System Checklist"
+  },
+  {
+   "fieldname": "truck_brakes",
+   "fieldtype": "Table",
+   "options": "Truck Brakes"
+  },
+  {
+   "fieldname": "truck_fuel_system_section",
+   "fieldtype": "Section Break",
+   "label": "Truck Fuel System"
+  },
+  {
+   "fieldname": "truck_fuel_system",
+   "fieldtype": "Table",
+   "options": "Truck Fuel System"
+  },
+  {
+   "fieldname": "truck_power_train_section",
+   "fieldtype": "Section Break",
+   "label": "Truck Power Train"
+  },
+  {
+   "fieldname": "truck_power_train",
+   "fieldtype": "Table",
+   "options": "Truck Power Train"
+  },
+  {
+   "fieldname": "electronics_checkings_section",
+   "fieldtype": "Section Break",
+   "label": "Electronics Checkings"
+  },
+  {
+   "fieldname": "truck_electronics",
+   "fieldtype": "Table",
+   "options": "Truck Electronics"
+  },
+  {
+   "fieldname": "electrical_checkings_section",
+   "fieldtype": "Section Break",
+   "label": "Electrical Checkings"
+  },
+  {
+   "fieldname": "truck_electrical_checklist",
+   "fieldtype": "Table",
+   "options": "Truck Electrical Checklist"
+  },
+  {
+   "fieldname": "truck_steering_checklist_section",
+   "fieldtype": "Section Break",
+   "label": "Truck Steering Checklist"
+  },
+  {
+   "fieldname": "truck_steering_checklist",
+   "fieldtype": "Table",
+   "options": "Truck Steering Checklist"
+  },
+  {
+   "fieldname": "truck_tire_checklist_section",
+   "fieldtype": "Section Break",
+   "label": "Truck Tire Checklist"
+  },
+  {
+   "fieldname": "truck_tire_checklist",
+   "fieldtype": "Table",
+   "options": "Truck Tire Checklist"
+  },
+  {
+   "fieldname": "truck_tires_checklist_section",
+   "fieldtype": "Section Break",
+   "label": "Truck Tires Checklist"
+  },
+  {
+   "fieldname": "truck_tires_checklist",
+   "fieldtype": "Table",
+   "options": "Truck Tires Checklist"
+  },
+  {
+   "fieldname": "truck_air_system_check_section",
+   "fieldtype": "Section Break",
+   "label": "Truck Air System Check"
+  },
+  {
+   "fieldname": "truck_air_system",
+   "fieldtype": "Table",
+   "options": "Truck Air System"
+  },
+  {
+   "fieldname": "truck_suspension_checklist_section",
+   "fieldtype": "Section Break",
+   "label": "Truck Suspension Checklist"
+  },
+  {
+   "fieldname": "truck_suspension_checklist",
+   "fieldtype": "Table",
+   "options": "Truck Suspension Checklist"
+  },
+  {
+   "fieldname": "truck_status_section",
+   "fieldtype": "Section Break",
+   "label": "Truck Status"
+  },
+  {
+   "fieldname": "upload_respective_truck_image",
+   "fieldtype": "Attach",
+   "label": "Upload Respective Truck Image"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-05-04 16:22:44.797061",
+ "modified_by": "Administrator",
+ "module": "VSD Fleet MS",
+ "name": "Truck and Trailer Inspection",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

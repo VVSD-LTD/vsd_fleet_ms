@@ -1,0 +1,105 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-05-04 17:33:31.405988",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "dimension_name",
+  "source_doctype",
+  "source_type",
+  "source_field_name",
+  "child_field_name",
+  "value",
+  "column_break_kppcf",
+  "section_break_tvq1o",
+  "target_doctype",
+  "target_type",
+  "target_field_name",
+  "target_child_field_name"
+ ],
+ "fields": [
+  {
+   "fieldname": "dimension_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Dimension Name",
+   "options": "Accounting Dimension",
+   "reqd": 1
+  },
+  {
+   "fieldname": "source_doctype",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Source DocType",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "fieldname": "source_type",
+   "fieldtype": "Select",
+   "label": "Source Type",
+   "options": "Field\nValue\nChild"
+  },
+  {
+   "fieldname": "source_field_name",
+   "fieldtype": "Data",
+   "label": "Source Field Name"
+  },
+  {
+   "fieldname": "child_field_name",
+   "fieldtype": "Data",
+   "label": "Child Field Name"
+  },
+  {
+   "fieldname": "value",
+   "fieldtype": "Data",
+   "label": "Value"
+  },
+  {
+   "fieldname": "column_break_kppcf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_tvq1o",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "target_doctype",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Target DocType",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "fieldname": "target_type",
+   "fieldtype": "Select",
+   "label": "Target Type",
+   "options": "Main\nChild"
+  },
+  {
+   "fieldname": "target_field_name",
+   "fieldtype": "Data",
+   "label": "Target Field Name"
+  },
+  {
+   "fieldname": "target_child_field_name",
+   "fieldtype": "Data",
+   "label": "Target Child Field Name"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-05-04 17:39:42.367940",
+ "modified_by": "Administrator",
+ "module": "VSD Fleet MS",
+ "name": "Transport Accounting Dimension",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

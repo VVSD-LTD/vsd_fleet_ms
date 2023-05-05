@@ -1,0 +1,59 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:cargo_name",
+ "creation": "2023-05-04 13:26:30.093516",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "cargo_name",
+  "section_local_import_required_permits",
+  "local_import"
+ ],
+ "fields": [
+  {
+   "fieldname": "cargo_name",
+   "fieldtype": "Data",
+   "label": "Name",
+   "unique": 1
+  },
+  {
+   "fieldname": "section_local_import_required_permits",
+   "fieldtype": "Section Break",
+   "label": "Required Permits"
+  },
+  {
+   "fieldname": "local_import",
+   "fieldtype": "Table",
+   "label": "Required Permits",
+   "options": "Cargo Type Details"
+  }
+ ],
+ "links": [],
+ "modified": "2023-05-04 14:09:19.785471",
+ "modified_by": "Administrator",
+ "module": "VSD Fleet MS",
+ "name": "Cargo Types",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Clearing Agent",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

@@ -1,0 +1,30 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-05-04 12:24:17.530884",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "electronic_part"
+ ],
+ "fields": [
+  {
+   "fieldname": "electronic_part",
+   "fieldtype": "Data",
+   "label": "Electronics"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-05-04 14:10:42.587488",
+ "modified_by": "Administrator",
+ "module": "VSD Fleet MS",
+ "name": "Truck Electronics Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

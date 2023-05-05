@@ -1,0 +1,196 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-05-04 10:40:28.075276",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "vehicle_information_section",
+  "licence_plate",
+  "model",
+  "make",
+  "column_break_xpjhi",
+  "manufacturing_year",
+  "acquisition_date",
+  "located_yard",
+  "section_break_pkgwx",
+  "fuel_type",
+  "fuel_uom",
+  "odometer_value",
+  "column_break_i30j4",
+  "chassis_number",
+  "engine_number",
+  "acquisition_odometer_reading",
+  "vehicle_insurance__details_section",
+  "insurance_company",
+  "policy_number",
+  "column_break_ibvff",
+  "start_date",
+  "end_date",
+  "section_break_g7tvd",
+  "vehicle_documents"
+ ],
+ "fields": [
+  {
+   "fieldname": "vehicle_information_section",
+   "fieldtype": "Section Break",
+   "label": "Vehicle Information"
+  },
+  {
+   "fieldname": "licence_plate",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Licence Plate",
+   "reqd": 1
+  },
+  {
+   "fieldname": "model",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Model",
+   "reqd": 1
+  },
+  {
+   "fieldname": "make",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Make",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_xpjhi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "manufacturing_year",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Manufacturing Year",
+   "reqd": 1
+  },
+  {
+   "fieldname": "acquisition_date",
+   "fieldtype": "Data",
+   "label": "Acquisition Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "located_yard",
+   "fieldtype": "Data",
+   "label": "Acquisition Location"
+  },
+  {
+   "fieldname": "section_break_pkgwx",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "fuel_type",
+   "fieldtype": "Select",
+   "label": "Fuel Type",
+   "options": "Petrol\nDiesel",
+   "reqd": 1
+  },
+  {
+   "fieldname": "fuel_uom",
+   "fieldtype": "Link",
+   "label": "Fuel UOM",
+   "options": "Fuel UOM",
+   "reqd": 1
+  },
+  {
+   "fieldname": "odometer_value",
+   "fieldtype": "Data",
+   "label": "Odometer Value (last Value)"
+  },
+  {
+   "fieldname": "column_break_i30j4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "chassis_number",
+   "fieldtype": "Data",
+   "label": "Chassis Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "engine_number",
+   "fieldtype": "Data",
+   "label": "Engine Number"
+  },
+  {
+   "fieldname": "acquisition_odometer_reading",
+   "fieldtype": "Data",
+   "label": "Acquisition Odometer Reading"
+  },
+  {
+   "fieldname": "vehicle_insurance__details_section",
+   "fieldtype": "Section Break",
+   "label": "Vehicle Insurance  Details"
+  },
+  {
+   "fieldname": "insurance_company",
+   "fieldtype": "Data",
+   "label": "Insurance Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "policy_number",
+   "fieldtype": "Data",
+   "label": "Policy Number"
+  },
+  {
+   "fieldname": "column_break_ibvff",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_g7tvd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "vehicle_documents",
+   "fieldtype": "Table",
+   "label": "Vehicle Documents",
+   "options": "Vehicle Attached Documents"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-05-05 12:37:04.344889",
+ "modified_by": "Administrator",
+ "module": "VSD Fleet MS",
+ "name": "Truck",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1
+}

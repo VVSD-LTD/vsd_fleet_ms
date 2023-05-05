@@ -1,0 +1,98 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-05-04 17:35:51.063362",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "vehicle_fuel_parent_warehouse",
+  "sales_item_group",
+  "fuel_item_group",
+  "fuel_item",
+  "column_break_rcaxa",
+  "expense_account_group",
+  "cash_or_bank_account_group",
+  "accounting_dimension_section",
+  "accounting_dimension"
+ ],
+ "fields": [
+  {
+   "fieldname": "vehicle_fuel_parent_warehouse",
+   "fieldtype": "Link",
+   "label": "Vehicle Fuel Parent Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "sales_item_group",
+   "fieldtype": "Link",
+   "label": "Sales Item Group",
+   "options": "Item Group"
+  },
+  {
+   "fieldname": "fuel_item_group",
+   "fieldtype": "Link",
+   "label": "Fuel Item Group",
+   "options": "Item Group"
+  },
+  {
+   "fieldname": "fuel_item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Fuel Item",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_rcaxa",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "expense_account_group",
+   "fieldtype": "Table MultiSelect",
+   "label": "Expense Account Group",
+   "options": "Transport Expenses Account Group"
+  },
+  {
+   "fieldname": "cash_or_bank_account_group",
+   "fieldtype": "Table MultiSelect",
+   "label": "Cash or Bank Account Group",
+   "options": "Transport Cash Account Group"
+  },
+  {
+   "fieldname": "accounting_dimension_section",
+   "fieldtype": "Section Break",
+   "label": "Accounting Dimension"
+  },
+  {
+   "fieldname": "accounting_dimension",
+   "fieldtype": "Table",
+   "options": "Transport Accounting Dimension"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2023-05-04 17:39:00.096553",
+ "modified_by": "Administrator",
+ "module": "VSD Fleet MS",
+ "name": "Transport Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

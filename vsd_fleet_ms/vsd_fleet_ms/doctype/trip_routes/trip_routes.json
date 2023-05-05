@@ -1,0 +1,120 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:route_name",
+ "creation": "2023-05-05 10:38:16.465924",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "route_name",
+  "section_break_cm0yq",
+  "route_steps_section",
+  "trip_steps",
+  "section_break_48gug",
+  "total_distance",
+  "column_break_bfyas",
+  "total_fuel_consumption_qty",
+  "fixed_expenses_section",
+  "fixed_expenses",
+  "total_tzs",
+  "total_usd"
+ ],
+ "fields": [
+  {
+   "fieldname": "route_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Route Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "section_break_cm0yq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "route_steps_section",
+   "fieldtype": "Section Break",
+   "label": "Route Steps"
+  },
+  {
+   "fieldname": "trip_steps",
+   "fieldtype": "Table",
+   "options": "Trip Steps",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_48gug",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_distance",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Total Distance (km)",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_bfyas",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_fuel_consumption_qty",
+   "fieldtype": "Float",
+   "label": "Total Fuel Consumption Qty (Ltr)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "fixed_expenses_section",
+   "fieldtype": "Section Break",
+   "label": "Fixed Expenses"
+  },
+  {
+   "fieldname": "fixed_expenses",
+   "fieldtype": "Table",
+   "options": "Fixed Expenses Table"
+  },
+  {
+   "fieldname": "total_tzs",
+   "fieldtype": "Float",
+   "label": "Total TZS",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_usd",
+   "fieldtype": "Float",
+   "label": "Total USD",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-05-05 11:17:06.642881",
+ "modified_by": "Administrator",
+ "module": "VSD Fleet MS",
+ "name": "Trip Routes",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1
+}

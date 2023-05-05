@@ -1,0 +1,66 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-05-05 10:14:42.757903",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "location",
+  "distance",
+  "fuel_consumption_qty",
+  "location_type",
+  "is_local_border",
+  "is_international_border"
+ ],
+ "fields": [
+  {
+   "fieldname": "location",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Location",
+   "options": "Trip Locations",
+   "reqd": 1
+  },
+  {
+   "fieldname": "distance",
+   "fieldtype": "Float",
+   "label": "Distance"
+  },
+  {
+   "fieldname": "fuel_consumption_qty",
+   "fieldtype": "Float",
+   "label": "Fuel Consumption Qty"
+  },
+  {
+   "fieldname": "location_type",
+   "fieldtype": "Link",
+   "label": "Location Type",
+   "options": "Trip Locations Type"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_local_border",
+   "fieldtype": "Check",
+   "label": "Is Local Border"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_international_border",
+   "fieldtype": "Check",
+   "label": "Is International Border"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-05-05 11:17:21.968779",
+ "modified_by": "Administrator",
+ "module": "VSD Fleet MS",
+ "name": "Trip Steps",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

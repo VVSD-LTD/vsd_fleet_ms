@@ -1,0 +1,135 @@
+{
+ "actions": [],
+ "autoname": "format:TRAILER-{plate_number}",
+ "creation": "2023-05-04 11:10:09.208129",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "trailer_informations_section",
+  "plate_number",
+  "chassis_number",
+  "tyre_specification",
+  "column_break_e1nwo",
+  "manufacturing_year",
+  "trailer_make",
+  "trailer_type",
+  "section_break_wboyl",
+  "number_of_axels",
+  "column_break_sikd1",
+  "suspension_type",
+  "documents_section",
+  "trailer_documents"
+ ],
+ "fields": [
+  {
+   "fieldname": "plate_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Plate Number",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "number_of_axels",
+   "fieldtype": "Int",
+   "label": "Number of Axels",
+   "reqd": 1
+  },
+  {
+   "fieldname": "trailer_make",
+   "fieldtype": "Data",
+   "label": "Trailer Make"
+  },
+  {
+   "fieldname": "trailer_type",
+   "fieldtype": "Select",
+   "label": "Trailer Type",
+   "options": "Flat Bed\nSkeleton\nBox Body\nFuel Tanker\nDrop-side",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tyre_specification",
+   "fieldtype": "Select",
+   "label": "Tyre Specification",
+   "options": "Super Single\nDouble Tyres",
+   "reqd": 1
+  },
+  {
+   "fieldname": "chassis_number",
+   "fieldtype": "Data",
+   "label": "Chassis Number",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "manufacturing_year",
+   "fieldtype": "Int",
+   "label": "Manufacturing Year",
+   "reqd": 1
+  },
+  {
+   "fieldname": "suspension_type",
+   "fieldtype": "Select",
+   "label": "Suspension Type",
+   "options": "Air Suspension\nLeaf Spring",
+   "reqd": 1
+  },
+  {
+   "fieldname": "trailer_documents",
+   "fieldtype": "Table",
+   "label": "Trailer Documents",
+   "options": "Vehicle Attached Documents"
+  },
+  {
+   "fieldname": "trailer_informations_section",
+   "fieldtype": "Section Break",
+   "label": "Trailer Informations"
+  },
+  {
+   "fieldname": "column_break_e1nwo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_wboyl",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_sikd1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "documents_section",
+   "fieldtype": "Section Break",
+   "label": "Documents"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-05-05 13:20:03.656370",
+ "modified_by": "Administrator",
+ "module": "VSD Fleet MS",
+ "name": "Trailers",
+ "name_case": "UPPER CASE",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

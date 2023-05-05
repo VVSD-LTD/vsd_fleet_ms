@@ -1,0 +1,88 @@
+{
+ "actions": [],
+ "autoname": "field:location_type",
+ "creation": "2023-05-04 12:47:58.488072",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "location_type",
+  "section_break_b6uu7",
+  "arrival_date",
+  "departure_date",
+  "column_break_j4gjc",
+  "loading_date",
+  "offloading_date"
+ ],
+ "fields": [
+  {
+   "fieldname": "location_type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Location Type",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "section_break_b6uu7",
+   "fieldtype": "Section Break",
+   "label": "Information to Capture"
+  },
+  {
+   "default": "0",
+   "fieldname": "arrival_date",
+   "fieldtype": "Check",
+   "label": "Arrival Date"
+  },
+  {
+   "default": "0",
+   "fieldname": "departure_date",
+   "fieldtype": "Check",
+   "label": "Departure Date"
+  },
+  {
+   "fieldname": "column_break_j4gjc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "loading_date",
+   "fieldtype": "Check",
+   "label": "Loading Date"
+  },
+  {
+   "default": "0",
+   "fieldname": "offloading_date",
+   "fieldtype": "Check",
+   "label": "Offloading Date"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-05-04 14:09:52.693361",
+ "modified_by": "Administrator",
+ "module": "VSD Fleet MS",
+ "name": "Trip Locations Type",
+ "name_case": "UPPER CASE",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

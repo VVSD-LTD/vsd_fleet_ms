@@ -1,0 +1,55 @@
+{
+ "actions": [],
+ "autoname": "autoincrement",
+ "creation": "2023-05-04 13:20:12.859616",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "permit_name",
+  "mandatory",
+  "column_break_p3gqc",
+  "permit_type"
+ ],
+ "fields": [
+  {
+   "fieldname": "permit_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Permit Name"
+  },
+  {
+   "default": "0",
+   "fieldname": "mandatory",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Mandatory"
+  },
+  {
+   "fieldname": "column_break_p3gqc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "permit_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Permit Type",
+   "options": "Local Import\nTransit Import\nLocal Export\nTransit Export\nBorder Exit\nBorder Entry"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-05-04 14:09:25.166840",
+ "modified_by": "Administrator",
+ "module": "VSD Fleet MS",
+ "name": "Cargo Type Details",
+ "naming_rule": "Autoincrement",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
