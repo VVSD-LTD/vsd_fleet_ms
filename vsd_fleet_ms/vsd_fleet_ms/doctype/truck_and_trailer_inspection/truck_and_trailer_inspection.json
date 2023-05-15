@@ -44,9 +44,7 @@
   "truck_suspension_checklist_section",
   "truck_suspension_checklist",
   "truck_status_section",
-  "upload_respective_truck_image",
-  "trailer_inspection_section",
-  "trailer"
+  "upload_respective_truck_image"
  ],
  "fields": [
   {
@@ -67,16 +65,6 @@
    "fieldname": "inspection_date",
    "fieldtype": "Date",
    "label": "Inspection Date"
-  },
-  {
-   "fieldname": "trailer_inspection_section",
-   "fieldtype": "Tab Break",
-   "label": "Trailer Inspection"
-  },
-  {
-   "fieldname": "trailer",
-   "fieldtype": "Data",
-   "label": "Trailer"
   },
   {
    "fieldname": "trip_reference_section",
@@ -232,14 +220,16 @@
    "label": "Truck Plate No"
   },
   {
+   "fetch_from": "trip.trailer",
    "fieldname": "trailer_no",
    "fieldtype": "Data",
    "label": "Trailer No"
   },
   {
    "fieldname": "truck_type",
-   "fieldtype": "Data",
-   "label": "Truck Type"
+   "fieldtype": "Link",
+   "label": "Truck Type",
+   "options": "Truck Type"
   },
   {
    "fieldname": "mileage",
@@ -249,7 +239,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-15 11:34:55.732951",
+ "modified": "2023-05-15 12:47:53.865216",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Truck and Trailer Inspection",

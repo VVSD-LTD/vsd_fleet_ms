@@ -13,16 +13,19 @@
   "sub_contractor",
   "truck",
   "truck_plate_number",
-  "trailer",
-  "trailer_plate_number",
+  "invoice_number",
   "column_break_dlf8y",
   "truck_driver",
   "driver_name",
   "passport_number",
   "driving_licence_no",
   "phone_number",
-  "invoice_number",
   "assigned_trailers_section",
+  "trailer",
+  "trailer_plate_number",
+  "column_break_z99xs",
+  "trailer2",
+  "second_trailer_plate_no",
   "section_break_0gdb7",
   "customer",
   "section_break_pkcwn",
@@ -438,8 +441,7 @@
   },
   {
    "fieldname": "assigned_trailers_section",
-   "fieldtype": "Section Break",
-   "label": "Assigned Trailers"
+   "fieldtype": "Section Break"
   },
   {
    "fieldname": "references_section",
@@ -577,13 +579,29 @@
    "fieldname": "trailer_plate_number",
    "fieldtype": "Data",
    "label": "Trailer Plate Number"
+  },
+  {
+   "fieldname": "column_break_z99xs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "trailer2",
+   "fieldtype": "Link",
+   "label": "Trailer2",
+   "options": "Trailers"
+  },
+  {
+   "fetch_from": "trailer.plate_number",
+   "fieldname": "second_trailer_plate_no",
+   "fieldtype": "Data",
+   "label": "Second Trailer Plate No"
   }
  ],
  "in_create": 1,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-05-15 11:44:15.445234",
+ "modified": "2023-05-15 11:51:00.027484",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Vehicle Trips",

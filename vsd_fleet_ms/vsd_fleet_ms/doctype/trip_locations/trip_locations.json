@@ -23,7 +23,7 @@
   },
   {
    "fieldname": "location_latitude_longitude",
-   "fieldtype": "Data",
+   "fieldtype": "Geolocation",
    "label": "Location (Latitude, Longitude)"
   },
   {
@@ -58,7 +58,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-04 17:37:32.815912",
+ "modified": "2023-05-15 13:40:55.672760",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Trip Locations",
