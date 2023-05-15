@@ -12,6 +12,7 @@
   {
    "fieldname": "account_group",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Account Group",
    "options": "Account"
   }
@@ -19,7 +20,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-05-04 17:26:02.065354",
+ "modified": "2023-05-10 17:39:12.609964",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Transport Cash Account Group",

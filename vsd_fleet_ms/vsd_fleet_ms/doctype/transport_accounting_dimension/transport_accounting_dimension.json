@@ -37,25 +37,36 @@
    "reqd": 1
   },
   {
+   "depends_on": "eval:doc.source_type == \"Field\" || doc.source_type == \"Child\"",
    "fieldname": "source_type",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Source Type",
    "options": "Field\nValue\nChild"
   },
   {
+   "depends_on": "eval:doc.source_type == \"Field\" || doc.source_type == \"Child\"",
+   "description": "Field Name from Transportation Assignment Field Type",
    "fieldname": "source_field_name",
    "fieldtype": "Data",
-   "label": "Source Field Name"
+   "in_list_view": 1,
+   "label": "Source Field Name",
+   "mandatory_depends_on": "eval:doc.source_type == \"Field\" || doc.source_type == \"Child\""
   },
   {
+   "depends_on": "eval:doc.source_type == \"Child\"",
    "fieldname": "child_field_name",
    "fieldtype": "Data",
-   "label": "Child Field Name"
+   "label": "Child Field Name",
+   "mandatory_depends_on": "eval:doc.source_type == \"Child\""
   },
   {
+   "depends_on": "eval:doc.source_type == \"Value\"",
    "fieldname": "value",
    "fieldtype": "Data",
-   "label": "Value"
+   "in_list_view": 1,
+   "label": "Value",
+   "mandatory_depends_on": "eval:doc.source_type == \"Value\""
   },
   {
    "fieldname": "column_break_kppcf",
@@ -80,9 +91,11 @@
    "options": "Main\nChild"
   },
   {
+   "depends_on": "eval:doc.traget_type != \"\"",
    "fieldname": "target_field_name",
    "fieldtype": "Data",
-   "label": "Target Field Name"
+   "label": "Target Field Name",
+   "mandatory_depends_on": "eval:doc.traget_type == \"Main\" || doc.source_type == \"Child\""
   },
   {
    "fieldname": "target_child_field_name",
@@ -93,7 +106,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-05-04 17:39:42.367940",
+ "modified": "2023-05-10 16:48:16.919700",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Transport Accounting Dimension",

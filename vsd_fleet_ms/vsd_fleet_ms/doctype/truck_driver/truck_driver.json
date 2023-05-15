@@ -13,18 +13,13 @@
   "driver_personal_information_section",
   "full_name",
   "status",
-  "column_break_2",
-  "cell_number",
-  "address",
   "image",
-  "license_details",
-  "license_number",
-  "column_break_8",
-  "issuing_date",
-  "column_break_10",
-  "expiry_date",
-  "driving_license_categories_section",
-  "driving_license_categories"
+  "address",
+  "column_break_2",
+  "employee",
+  "cell_number",
+  "drivers_document_section",
+  "drivers_document"
  ],
  "fields": [
   {
@@ -55,51 +50,8 @@
   },
   {
    "fieldname": "address",
-   "fieldtype": "Data",
+   "fieldtype": "Small Text",
    "label": "Address"
-  },
-  {
-   "fieldname": "license_details",
-   "fieldtype": "Section Break",
-   "label": "License Details"
-  },
-  {
-   "fieldname": "license_number",
-   "fieldtype": "Data",
-   "label": "License Number",
-   "reqd": 1,
-   "unique": 1
-  },
-  {
-   "fieldname": "column_break_8",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "issuing_date",
-   "fieldtype": "Date",
-   "label": "Issuing Date",
-   "reqd": 1
-  },
-  {
-   "fieldname": "column_break_10",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "expiry_date",
-   "fieldtype": "Date",
-   "label": "Expiry Date",
-   "reqd": 1
-  },
-  {
-   "fieldname": "driving_license_categories_section",
-   "fieldtype": "Section Break",
-   "label": "Driving License Categories"
-  },
-  {
-   "fieldname": "driving_license_categories",
-   "fieldtype": "Table",
-   "label": "Driving License Categories",
-   "options": "Driving License Categories"
   },
   {
    "fieldname": "driver_personal_information_section",
@@ -109,13 +61,30 @@
   {
    "fieldname": "image",
    "fieldtype": "Attach Image",
+   "hidden": 1,
    "label": "Image"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "drivers_document_section",
+   "fieldtype": "Section Break",
+   "label": "Driver's Document"
+  },
+  {
+   "fieldname": "drivers_document",
+   "fieldtype": "Table",
+   "options": "Drivers Documents"
   }
  ],
  "icon": "fa fa-user",
  "image_field": "image",
  "links": [],
- "modified": "2023-05-05 15:52:09.095805",
+ "modified": "2023-05-15 10:59:32.546344",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Truck Driver",

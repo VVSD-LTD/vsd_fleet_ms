@@ -1,0 +1,212 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "REQF.###",
+ "creation": "2023-05-05 18:51:50.543611",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "customer",
+  "truck",
+  "column_break_hneba",
+  "truck_driver",
+  "driver_name",
+  "truck_plate_number",
+  "section_break_b0uin",
+  "main_route",
+  "main_approved_fuel",
+  "column_break_5b52f",
+  "return_route",
+  "return_approved_fuel",
+  "requested_fuel_section",
+  "requested_fuel",
+  "approve_buttons",
+  "approvedrejected_requests_section",
+  "approved_requests",
+  "references_section",
+  "reference_doctype",
+  "reference_docname",
+  "column_break_nwqkg",
+  "status",
+  "transaction_date"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "truck",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Truck",
+   "options": "Truck",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_hneba",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "truck_driver",
+   "fieldtype": "Link",
+   "label": "Truck Driver",
+   "options": "Truck Driver",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "truck_driver.full_name",
+   "fieldname": "driver_name",
+   "fieldtype": "Data",
+   "label": "Driver Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "truck_plate_number",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Truck Plate Number",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_b0uin",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "main_route",
+   "fieldtype": "Link",
+   "label": "Main Route",
+   "options": "Trip Routes",
+   "read_only": 1
+  },
+  {
+   "fieldname": "main_approved_fuel",
+   "fieldtype": "Data",
+   "label": "Main Route Approved Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_5b52f",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "return_route",
+   "fieldtype": "Link",
+   "label": "Return Route",
+   "options": "Trip Routes",
+   "read_only": 1
+  },
+  {
+   "fieldname": "return_approved_fuel",
+   "fieldtype": "Data",
+   "label": "Return Route Approved Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "requested_fuel_section",
+   "fieldtype": "Section Break",
+   "label": "Requested Fuel"
+  },
+  {
+   "fieldname": "requested_fuel",
+   "fieldtype": "Table",
+   "label": "Requested Fuel",
+   "options": "Fuel Requests Table"
+  },
+  {
+   "fieldname": "approve_buttons",
+   "fieldtype": "HTML",
+   "label": "Approve Buttons"
+  },
+  {
+   "fieldname": "approvedrejected_requests_section",
+   "fieldtype": "Section Break",
+   "label": "Approved/Rejected Requests"
+  },
+  {
+   "fieldname": "approved_requests",
+   "fieldtype": "Table",
+   "label": "Approved/Rejected Requests",
+   "options": "Fuel Requests Table",
+   "read_only": 1
+  },
+  {
+   "fieldname": "references_section",
+   "fieldtype": "Section Break",
+   "label": "References"
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Link",
+   "label": "Reference Module",
+   "options": "DocType",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reference_docname",
+   "fieldtype": "Dynamic Link",
+   "in_list_view": 1,
+   "label": "Requested From",
+   "options": "reference_doctype",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_nwqkg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Waiting Approval\nPartially Processed\nFully Processed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "transaction_date",
+   "fieldtype": "Date",
+   "label": "Transaction Date"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-05-08 16:00:40.440570",
+ "modified_by": "Administrator",
+ "module": "VSD Fleet MS",
+ "name": "Fuel Requests",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

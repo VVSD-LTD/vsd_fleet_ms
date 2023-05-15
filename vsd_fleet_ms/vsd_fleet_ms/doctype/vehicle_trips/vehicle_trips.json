@@ -1,0 +1,622 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "TRIPS.###",
+ "creation": "2023-05-08 11:56:35.107640",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "transporter_type",
+  "sub_contractor",
+  "truck",
+  "truck_plate_number",
+  "trailer",
+  "trailer_plate_number",
+  "column_break_dlf8y",
+  "truck_driver",
+  "driver_name",
+  "passport_number",
+  "driving_licence_no",
+  "phone_number",
+  "invoice_number",
+  "assigned_trailers_section",
+  "section_break_0gdb7",
+  "customer",
+  "section_break_pkcwn",
+  "start_date",
+  "main_customer",
+  "size",
+  "cargo_type",
+  "trip_permits",
+  "main_goods_description",
+  "main_cargo_section_section",
+  "main_cargo",
+  "shipper_and_consignee_section",
+  "main_shipper",
+  "main_shipper_address",
+  "column_break_pwqbz",
+  "main_consignee",
+  "main_consignee_address",
+  "section_break_zjkaf",
+  "main_cargo_location_country",
+  "main_cargo_location_city",
+  "main_cargo_loading_point",
+  "column_break_ezmv1",
+  "main_cargo_destination_country",
+  "main_cargo_destination_city",
+  "main_offloading_point",
+  "section_break_ptca1",
+  "main_route",
+  "total_distance",
+  "column_break_rhyoi",
+  "main_eta",
+  "total_fuel_consumption_qty",
+  "section_break_u87yf",
+  "main_route_steps",
+  "location_update",
+  "main_trip_fuel_request_section",
+  "main_approved_fuel",
+  "main_fuel_request",
+  "section_main_requested_funds",
+  "main_requested_funds",
+  "cargo_permits_section",
+  "trip_attachments_section",
+  "trip_attachments",
+  "section_break_mtsnr",
+  "fuel_stock_out",
+  "reduce_stock",
+  "stock_out_entry",
+  "references_section",
+  "reference_doctype",
+  "reference_docname",
+  "main_trip_file_number",
+  "main_import",
+  "main_export",
+  "column_break_qb1kj",
+  "transportation_order",
+  "trip_status_section",
+  "company",
+  "column_break_fqfod",
+  "trip_completed",
+  "main_trip_status",
+  "status",
+  "hidden_status",
+  "main_address_display",
+  "main_consignee_display",
+  "main_shipper_display",
+  "amended_from",
+  "main_file_number",
+  "main_cargo_category"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "transporter_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Transporter",
+   "options": "In House\nSub-Contractor",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sub_contractor",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Sub-Contractor",
+   "options": "Supplier",
+   "read_only": 1
+  },
+  {
+   "fieldname": "truck",
+   "fieldtype": "Link",
+   "label": "Truck",
+   "options": "Truck",
+   "read_only": 1
+  },
+  {
+   "fieldname": "truck_plate_number",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Truck Plate Number",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_dlf8y",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "truck_driver",
+   "fieldtype": "Link",
+   "label": "Truck Driver",
+   "options": "Truck Driver",
+   "read_only": 1
+  },
+  {
+   "fieldname": "driver_name",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_standard_filter": 1,
+   "label": "Driver Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "passport_number",
+   "fieldtype": "Data",
+   "label": "Passport Number",
+   "read_only": 1
+  },
+  {
+   "fieldname": "driving_licence_no",
+   "fieldtype": "Data",
+   "label": "Driving Licence No"
+  },
+  {
+   "fieldname": "phone_number",
+   "fieldtype": "Data",
+   "label": "Phone Number"
+  },
+  {
+   "fieldname": "invoice_number",
+   "fieldtype": "Link",
+   "label": "Invoice Number",
+   "options": "Sales Invoice"
+  },
+  {
+   "fieldname": "section_break_0gdb7",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_pkcwn",
+   "fieldtype": "Section Break",
+   "label": "Main Trip Details"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date"
+  },
+  {
+   "fieldname": "main_customer",
+   "fieldtype": "Link",
+   "in_global_search": 1,
+   "in_standard_filter": 1,
+   "label": "Main Customer",
+   "options": "Customer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "size",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Size",
+   "options": "Loose\n40 FT\n20 FT"
+  },
+  {
+   "fieldname": "cargo_type",
+   "fieldtype": "Link",
+   "label": "Cargo Type",
+   "options": "Cargo Types",
+   "read_only": 1
+  },
+  {
+   "fieldname": "trip_permits",
+   "fieldtype": "Table",
+   "label": "Trip Permits",
+   "options": "Cargo Type Details"
+  },
+  {
+   "fieldname": "main_goods_description",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Cargo Description"
+  },
+  {
+   "fieldname": "main_cargo_section_section",
+   "fieldtype": "Section Break",
+   "label": "Main Cargo Section"
+  },
+  {
+   "fieldname": "main_cargo",
+   "fieldtype": "Table",
+   "label": "Main Cargo",
+   "options": "Cargo Detail"
+  },
+  {
+   "fieldname": "shipper_and_consignee_section",
+   "fieldtype": "Section Break",
+   "label": "Shipper and Consignee"
+  },
+  {
+   "fieldname": "main_shipper",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Shipper",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "main_shipper_address",
+   "fieldtype": "HTML",
+   "label": "Main Shipper Address"
+  },
+  {
+   "fieldname": "column_break_pwqbz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "main_consignee",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Consignee",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "main_consignee_address",
+   "fieldtype": "HTML",
+   "label": "Main Consignee Address"
+  },
+  {
+   "fieldname": "section_break_zjkaf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "main_cargo_location_country",
+   "fieldtype": "Link",
+   "label": "Main Cargo Location (Country)",
+   "options": "Country"
+  },
+  {
+   "fieldname": "main_cargo_location_city",
+   "fieldtype": "Data",
+   "label": "Main Cargo Location (City)"
+  },
+  {
+   "fieldname": "main_cargo_loading_point",
+   "fieldtype": "Data",
+   "label": "Main Cargo Loading Point"
+  },
+  {
+   "fieldname": "column_break_ezmv1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "main_cargo_destination_country",
+   "fieldtype": "Link",
+   "label": "Main Cargo Destination (Country)",
+   "options": "Country"
+  },
+  {
+   "fieldname": "main_cargo_destination_city",
+   "fieldtype": "Data",
+   "label": "Main Cargo Destination (City)"
+  },
+  {
+   "fieldname": "main_offloading_point",
+   "fieldtype": "Data",
+   "label": "Main Cargo Offloading Point"
+  },
+  {
+   "fieldname": "section_break_ptca1",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "main_route",
+   "fieldtype": "Link",
+   "label": "Main Route",
+   "options": "Trip Routes"
+  },
+  {
+   "fetch_from": "main_route.total_distance",
+   "fieldname": "total_distance",
+   "fieldtype": "Float",
+   "label": "Total Distance",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_rhyoi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "main_eta",
+   "fieldtype": "Datetime",
+   "label": "ETA at Destination"
+  },
+  {
+   "fetch_from": "main_route.total_fuel_consumption_qty",
+   "fieldname": "total_fuel_consumption_qty",
+   "fieldtype": "Data",
+   "label": "Total Fuel Consumption Qty ",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_u87yf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "main_route_steps",
+   "fieldtype": "Table",
+   "label": "Main Route Steps",
+   "options": "Route Steps"
+  },
+  {
+   "fieldname": "location_update",
+   "fieldtype": "Table",
+   "label": "Location Update",
+   "options": "Truck Trip Location Update"
+  },
+  {
+   "fieldname": "main_trip_fuel_request_section",
+   "fieldtype": "Section Break",
+   "label": "Main Trip Fuel Request"
+  },
+  {
+   "fieldname": "main_approved_fuel",
+   "fieldtype": "Read Only",
+   "label": "Main Trip Pre-Approved Amount"
+  },
+  {
+   "fieldname": "main_fuel_request",
+   "fieldtype": "Table",
+   "label": "Main Trip Fuel Request",
+   "options": "Fuel Requests Table"
+  },
+  {
+   "depends_on": "eval:doc.transporter_type == 'In House'",
+   "fieldname": "section_main_requested_funds",
+   "fieldtype": "Section Break",
+   "label": "Main Trip Requested Funds"
+  },
+  {
+   "fieldname": "main_requested_funds",
+   "fieldtype": "Table",
+   "label": "Requested Funds for Main Trip",
+   "options": "Requested Fund Details"
+  },
+  {
+   "fieldname": "cargo_permits_section",
+   "fieldtype": "Section Break",
+   "label": "Cargo Permits"
+  },
+  {
+   "fieldname": "trip_attachments_section",
+   "fieldtype": "Section Break",
+   "label": "Trip Attachments"
+  },
+  {
+   "fieldname": "trip_attachments",
+   "fieldtype": "Table",
+   "label": "Trip Attachments",
+   "options": "Trip Attachment"
+  },
+  {
+   "fieldname": "section_break_mtsnr",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "main_route.total_fuel_consumption_qty",
+   "fieldname": "fuel_stock_out",
+   "fieldtype": "Float",
+   "label": "Fuel Stock Out"
+  },
+  {
+   "depends_on": "eval:(doc.fuel_stock_out) > 0 && (!doc.stock_out_entry || doc.stock_out_entry == \"\")",
+   "fieldname": "reduce_stock",
+   "fieldtype": "Button",
+   "label": "Reduce Stock"
+  },
+  {
+   "fieldname": "stock_out_entry",
+   "fieldtype": "Link",
+   "label": "Stock Out Entry",
+   "options": "Stock Entry"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Vehicle Trips",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "assigned_trailers_section",
+   "fieldtype": "Section Break",
+   "label": "Assigned Trailers"
+  },
+  {
+   "fieldname": "references_section",
+   "fieldtype": "Section Break",
+   "label": "References"
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Link",
+   "label": "Reference Doctype",
+   "options": "DocType",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reference_docname",
+   "fieldtype": "Dynamic Link",
+   "label": "Reference Document",
+   "options": "reference_doctype"
+  },
+  {
+   "fieldname": "main_trip_file_number",
+   "fieldtype": "Data",
+   "label": "Main Trip File Number",
+   "read_only": 1
+  },
+  {
+   "fieldname": "main_import",
+   "fieldtype": "Link",
+   "label": "Main Import Reference",
+   "options": "Import",
+   "read_only": 1
+  },
+  {
+   "fieldname": "main_export",
+   "fieldtype": "Link",
+   "label": "Main Export Reference",
+   "options": "Export",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_qb1kj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "transportation_order",
+   "fieldtype": "Link",
+   "label": "Transportation Order",
+   "options": "Transportation Order",
+   "read_only": 1
+  },
+  {
+   "fieldname": "trip_status_section",
+   "fieldtype": "Section Break",
+   "label": "Trip Status"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "column_break_fqfod",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "trip_completed",
+   "fieldtype": "Check",
+   "label": "Trip Completed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "main_trip_status",
+   "fieldtype": "Data",
+   "label": "Main Trip Status",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.profile == 'System Manager'",
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Status"
+  },
+  {
+   "depends_on": "eval:doc.profile == 'System Manager'",
+   "fieldname": "hidden_status",
+   "fieldtype": "Int",
+   "label": "Hidden Status",
+   "print_hide": 1
+  },
+  {
+   "fieldname": "main_address_display",
+   "fieldtype": "Code",
+   "hidden": 1,
+   "label": "Main Address Display",
+   "print_hide": 1
+  },
+  {
+   "fieldname": "main_consignee_display",
+   "fieldtype": "Code",
+   "hidden": 1,
+   "label": "Main Consignee Display",
+   "print_hide": 1
+  },
+  {
+   "fieldname": "main_shipper_display",
+   "fieldtype": "Code",
+   "hidden": 1,
+   "label": "Main Shipper Display",
+   "print_hide": 1
+  },
+  {
+   "fieldname": "main_file_number",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Main Trip File Number"
+  },
+  {
+   "fieldname": "main_cargo_category",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Cargo Type",
+   "options": "Cargo Types"
+  },
+  {
+   "fieldname": "trailer",
+   "fieldtype": "Link",
+   "label": "Trailer",
+   "options": "Trailers"
+  },
+  {
+   "fetch_from": "trailer.plate_number",
+   "fieldname": "trailer_plate_number",
+   "fieldtype": "Data",
+   "label": "Trailer Plate Number"
+  }
+ ],
+ "in_create": 1,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-05-15 11:44:15.445234",
+ "modified_by": "Administrator",
+ "module": "VSD Fleet MS",
+ "name": "Vehicle Trips",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Clearing Agent",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

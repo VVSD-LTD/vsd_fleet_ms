@@ -1,16 +1,20 @@
 {
  "actions": [],
- "autoname": "format:TRAILER-{plate_number}",
+ "autoname": "field:plate_number",
  "creation": "2023-05-04 11:10:09.208129",
  "default_view": "List",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "overview_tab",
+  "disabled",
   "trailer_informations_section",
   "plate_number",
   "chassis_number",
   "tyre_specification",
+  "image",
+  "status",
   "column_break_e1nwo",
   "manufacturing_year",
   "trailer_make",
@@ -19,6 +23,7 @@
   "number_of_axels",
   "column_break_sikd1",
   "suspension_type",
+  "tab_break_0ioi6",
   "documents_section",
   "trailer_documents"
  ],
@@ -103,16 +108,48 @@
    "fieldname": "documents_section",
    "fieldtype": "Section Break",
    "label": "Documents"
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "hidden": 1,
+   "label": "Image"
+  },
+  {
+   "default": "Available",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Available\nUnder Maintenance\nIn Trip",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.creation",
+   "fieldname": "disabled",
+   "fieldtype": "Check",
+   "label": "Disabled?"
+  },
+  {
+   "fieldname": "tab_break_0ioi6",
+   "fieldtype": "Tab Break",
+   "label": "Documents"
+  },
+  {
+   "fieldname": "overview_tab",
+   "fieldtype": "Tab Break",
+   "label": "Overview"
   }
  ],
+ "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-05 13:20:03.656370",
+ "modified": "2023-05-13 13:12:03.161342",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Trailers",
  "name_case": "UPPER CASE",
- "naming_rule": "Expression",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {
@@ -130,6 +167,19 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": [],
+ "states": [
+  {
+   "color": "Blue",
+   "title": "Available"
+  },
+  {
+   "color": "Green",
+   "title": "On Trip"
+  },
+  {
+   "color": "Red",
+   "title": "Under Maintenance"
+  }
+ ],
  "track_changes": 1
 }

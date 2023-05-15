@@ -16,7 +16,7 @@
   "accounts_details_section",
   "expense_account",
   "column_break_usis6",
-  "cash__bank_account"
+  "cash_bank_account"
  ],
  "fields": [
   {
@@ -46,13 +46,8 @@
    "fieldname": "expense_account",
    "fieldtype": "Link",
    "label": "Expense Account",
-   "options": "Account"
-  },
-  {
-   "fieldname": "cash__bank_account",
-   "fieldtype": "Link",
-   "label": "Cash / Bank Account",
-   "options": "Account"
+   "options": "Account",
+   "reqd": 1
   },
   {
    "fieldname": "expense_details_section",
@@ -71,11 +66,18 @@
   {
    "fieldname": "column_break_usis6",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cash_bank_account",
+   "fieldtype": "Link",
+   "label": "Cash / Bank Account",
+   "options": "Account",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-04 16:49:14.338713",
+ "modified": "2023-05-12 16:11:29.417170",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Fixed Expenses",

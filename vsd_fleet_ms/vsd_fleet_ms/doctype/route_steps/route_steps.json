@@ -1,0 +1,140 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-05-08 14:56:12.129946",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "location",
+  "distance",
+  "column_break_k5acx",
+  "location_type",
+  "fuel_consumption_qty",
+  "dates_section",
+  "arrival_date",
+  "departure_date",
+  "column_break_ftqo5",
+  "loading_date",
+  "offloading_date",
+  "border_details_section",
+  "documents_from_driver",
+  "doc_submitted_to_agent",
+  "column_break_tq0nz",
+  "doc_received_by",
+  "crossing_time",
+  "extra_information_section",
+  "comment"
+ ],
+ "fields": [
+  {
+   "fieldname": "location",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Location",
+   "options": "Trip Locations"
+  },
+  {
+   "fieldname": "distance",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Distance"
+  },
+  {
+   "fieldname": "column_break_k5acx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "location_type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Type"
+  },
+  {
+   "fieldname": "fuel_consumption_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Fuel Consumption Qty"
+  },
+  {
+   "fieldname": "dates_section",
+   "fieldtype": "Section Break",
+   "label": "Dates"
+  },
+  {
+   "fieldname": "arrival_date",
+   "fieldtype": "Date",
+   "label": "Arrival Date"
+  },
+  {
+   "fieldname": "departure_date",
+   "fieldtype": "Date",
+   "label": "Departure Date"
+  },
+  {
+   "fieldname": "column_break_ftqo5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "loading_date",
+   "fieldtype": "Date",
+   "label": "Loading Date"
+  },
+  {
+   "fieldname": "offloading_date",
+   "fieldtype": "Date",
+   "label": "Offloading Date"
+  },
+  {
+   "fieldname": "border_details_section",
+   "fieldtype": "Section Break",
+   "label": "Border Details"
+  },
+  {
+   "fieldname": "documents_from_driver",
+   "fieldtype": "Datetime",
+   "label": "Documents received from driver"
+  },
+  {
+   "fieldname": "doc_submitted_to_agent",
+   "fieldtype": "Date",
+   "label": "Documents submitted to agent"
+  },
+  {
+   "fieldname": "column_break_tq0nz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "doc_received_by",
+   "fieldtype": "Data",
+   "label": "Documents received by"
+  },
+  {
+   "fieldname": "crossing_time",
+   "fieldtype": "Datetime",
+   "label": "Crossing date and time"
+  },
+  {
+   "fieldname": "extra_information_section",
+   "fieldtype": "Section Break",
+   "label": "Extra Information"
+  },
+  {
+   "fieldname": "comment",
+   "fieldtype": "Data",
+   "label": "Additional Comment"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-05-12 15:16:52.523407",
+ "modified_by": "Administrator",
+ "module": "VSD Fleet MS",
+ "name": "Route Steps",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

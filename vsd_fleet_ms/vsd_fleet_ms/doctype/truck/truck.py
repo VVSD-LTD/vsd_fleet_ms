@@ -5,4 +5,6 @@
 from frappe.model.document import Document
 
 class Truck(Document):
-	pass
+	def before_save(self):
+		if not self.truck_number:
+			self.truck_number = self.license_plate

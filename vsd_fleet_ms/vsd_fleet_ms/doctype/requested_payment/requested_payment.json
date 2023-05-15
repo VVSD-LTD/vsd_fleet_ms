@@ -1,0 +1,250 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "REQP.###",
+ "creation": "2023-05-05 18:13:10.974000",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "request_date",
+  "section_break_8sacw",
+  "company",
+  "customer",
+  "truck_no",
+  "column_break_ipkh8",
+  "truck_driver",
+  "driver_name",
+  "trip_route",
+  "section_break_x5sbl",
+  "requested_funds",
+  "approve_buttons",
+  "html2",
+  "html1",
+  "request_total_amount",
+  "section_break_x20fq",
+  "total_approved_amount",
+  "payment_details_section",
+  "payment_reference",
+  "total_paid_amount",
+  "accounts_approval_section",
+  "accounts_approval",
+  "total_amount",
+  "account_approval_buttons",
+  "references_section",
+  "reference_doctype",
+  "reference_docname",
+  "column_break_nxoug",
+  "approval_status",
+  "payment_status",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "request_date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "section_break_8sacw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "truck_no",
+   "fieldtype": "Link",
+   "label": "Truck No",
+   "options": "Truck"
+  },
+  {
+   "fieldname": "column_break_ipkh8",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "truck_driver",
+   "fieldtype": "Link",
+   "label": "Truck Driver",
+   "options": "Truck Driver"
+  },
+  {
+   "fetch_from": "truck_driver.full_name",
+   "fieldname": "driver_name",
+   "fieldtype": "Data",
+   "label": "Driver Name"
+  },
+  {
+   "fieldname": "trip_route",
+   "fieldtype": "Link",
+   "label": "Trip Route",
+   "options": "Trip Routes"
+  },
+  {
+   "fieldname": "section_break_x5sbl",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "requested_funds",
+   "fieldtype": "Table",
+   "label": "Requested Funds",
+   "options": "Requested Fund Details"
+  },
+  {
+   "fieldname": "approve_buttons",
+   "fieldtype": "HTML",
+   "label": "Approve Buttons"
+  },
+  {
+   "fieldname": "html2",
+   "fieldtype": "HTML",
+   "label": "Recommendation Buttons",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "html1",
+   "fieldtype": "HTML",
+   "label": "Approval Buttons"
+  },
+  {
+   "fieldname": "request_total_amount",
+   "fieldtype": "HTML",
+   "label": "Total Requested Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_x20fq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_approved_amount",
+   "fieldtype": "HTML",
+   "label": "Total Approved Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "payment_details_section",
+   "fieldtype": "Section Break",
+   "label": "Payment Details"
+  },
+  {
+   "fieldname": "payment_reference",
+   "fieldtype": "Table",
+   "label": "Payment Reference",
+   "options": "Reference Payments Table"
+  },
+  {
+   "fieldname": "total_paid_amount",
+   "fieldtype": "HTML",
+   "label": "Total Paid Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "accounts_approval_section",
+   "fieldtype": "Section Break",
+   "label": "Accounts Approval"
+  },
+  {
+   "fieldname": "accounts_approval",
+   "fieldtype": "Table",
+   "options": "Requested Fund Accounts Table"
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "HTML",
+   "label": "Total Amount"
+  },
+  {
+   "fieldname": "account_approval_buttons",
+   "fieldtype": "HTML",
+   "permlevel": 4
+  },
+  {
+   "fieldname": "references_section",
+   "fieldtype": "Section Break",
+   "label": "References"
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Requested From Module",
+   "options": "DocType",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reference_docname",
+   "fieldtype": "Dynamic Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Requested From",
+   "options": "reference_doctype",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_nxoug",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "approval_status",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Approval Status",
+   "read_only": 1
+  },
+  {
+   "fieldname": "payment_status",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Payment Status",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Requested Payment",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-05-08 16:00:50.702692",
+ "modified_by": "Administrator",
+ "module": "VSD Fleet MS",
+ "name": "Requested Payment",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

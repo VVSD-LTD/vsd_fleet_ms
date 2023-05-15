@@ -1,0 +1,53 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-05-09 17:29:45.110385",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "trip_id",
+  "trip_driver",
+  "trip_start_date",
+  "trip_end_date"
+ ],
+ "fields": [
+  {
+   "fieldname": "trip_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Trip ID",
+   "options": "Vehicle Trips",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "trip_id.driver_name",
+   "fieldname": "trip_driver",
+   "fieldtype": "Data",
+   "label": "Trip Driver",
+   "read_only": 1
+  },
+  {
+   "fieldname": "trip_start_date",
+   "fieldtype": "Date",
+   "label": "Trip Start Date"
+  },
+  {
+   "fieldname": "trip_end_date",
+   "fieldtype": "Date",
+   "label": "Trip End Date"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-05-12 16:55:16.010925",
+ "modified_by": "Administrator",
+ "module": "VSD Fleet MS",
+ "name": "Vehicle Trips Table",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

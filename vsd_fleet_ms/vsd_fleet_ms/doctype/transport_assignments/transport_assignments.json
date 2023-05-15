@@ -1,0 +1,403 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "ASSIGNS.###",
+ "creation": "2023-05-05 12:30:58.364206",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "create_vehicle_trip_record",
+  "section_break_r3ilk",
+  "cargo",
+  "amount",
+  "expected_loading_date",
+  "column_break_ml58o",
+  "container_number",
+  "units",
+  "transport_details_section",
+  "transporter_type",
+  "sub_contractor",
+  "assigned_vehicle",
+  "vehicle_plate_number",
+  "assigned_trailer",
+  "trailer_plate_number",
+  "column_break_cs1fi",
+  "assigned_driver",
+  "driver_name",
+  "passport_number",
+  "driver_licence",
+  "driver_contact",
+  "route_details_section",
+  "route",
+  "vehicle_status",
+  "truck_trip",
+  "column_break_o2adv",
+  "status",
+  "created_trip",
+  "extra_info_section",
+  "section_break_vctu4",
+  "item",
+  "customer",
+  "column_break_74xfo",
+  "currency",
+  "rate",
+  "section_break_vxve4",
+  "loading_date",
+  "lodge_permit",
+  "dispatch_date",
+  "cargo_type",
+  "vehicle_attachment_section",
+  "attach_1",
+  "attach_2",
+  "attach_3",
+  "attach_4",
+  "column_break_if7c4",
+  "description_1",
+  "description_2",
+  "description_3",
+  "description_4",
+  "section_break_uiltk",
+  "file_number",
+  "import_reference",
+  "column_break_zxybv",
+  "export_reference",
+  "invoice"
+ ],
+ "fields": [
+  {
+   "bold": 1,
+   "fieldname": "create_vehicle_trip_record",
+   "fieldtype": "Button",
+   "label": "Create Vehicle Trip Record"
+  },
+  {
+   "fieldname": "section_break_r3ilk",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "cargo",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Container",
+   "options": "Cargo Detail"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "Quantity"
+  },
+  {
+   "fieldname": "expected_loading_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Expected Loading Date"
+  },
+  {
+   "fieldname": "column_break_ml58o",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "container_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Container Number"
+  },
+  {
+   "fieldname": "units",
+   "fieldtype": "Link",
+   "label": "Units",
+   "options": "Unit of Measure"
+  },
+  {
+   "fieldname": "transport_details_section",
+   "fieldtype": "Section Break",
+   "label": "TRANSPORT DETAILS"
+  },
+  {
+   "fieldname": "transporter_type",
+   "fieldtype": "Select",
+   "label": "Transporter",
+   "options": "\nIn House\nSub-Contractor"
+  },
+  {
+   "depends_on": "eval:doc.transporter_type == 'Sub-Contractor'",
+   "fieldname": "sub_contractor",
+   "fieldtype": "Link",
+   "in_global_search": 1,
+   "in_standard_filter": 1,
+   "label": "Sub-Contractor",
+   "mandatory_depends_on": "eval:doc.transporter_type == 'Sub-Contractor'",
+   "options": "Supplier"
+  },
+  {
+   "depends_on": "eval:doc.transporter_type == 'In House'",
+   "fieldname": "assigned_vehicle",
+   "fieldtype": "Link",
+   "label": "Assigned Vehicle",
+   "mandatory_depends_on": "eval:doc.transporter_type == 'In House'",
+   "options": "Truck"
+  },
+  {
+   "fetch_from": "assigned_vehicle.license_plate",
+   "fieldname": "vehicle_plate_number",
+   "fieldtype": "Data",
+   "label": "Vehicle Plate Number"
+  },
+  {
+   "depends_on": "eval:doc.transporter_type == 'In House'",
+   "fieldname": "assigned_trailer",
+   "fieldtype": "Link",
+   "label": "Assigned Trailer",
+   "mandatory_depends_on": "eval:doc.transporter_type == 'In House'",
+   "options": "Trailers"
+  },
+  {
+   "fieldname": "trailer_plate_number",
+   "fieldtype": "Data",
+   "label": "Trailer Plate Number"
+  },
+  {
+   "fieldname": "column_break_cs1fi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.transporter_type == 'In House'",
+   "fieldname": "assigned_driver",
+   "fieldtype": "Link",
+   "label": "Assigned Driver",
+   "options": "Truck Driver"
+  },
+  {
+   "fetch_from": "assigned_driver.full_name",
+   "fieldname": "driver_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Driver Name",
+   "mandatory_depends_on": "eval:doc.transporter_type == 'Sub-Contractor'",
+   "read_only_depends_on": "eval:doc.transporter_type == 'In House'"
+  },
+  {
+   "fieldname": "passport_number",
+   "fieldtype": "Data",
+   "label": "Driver Passport"
+  },
+  {
+   "fetch_from": "assigned_driver.license_number",
+   "fieldname": "driver_licence",
+   "fieldtype": "Data",
+   "label": "Driver Licence"
+  },
+  {
+   "fetch_from": "assigned_driver.cell_number",
+   "fieldname": "driver_contact",
+   "fieldtype": "Data",
+   "label": "Driver Phone Number"
+  },
+  {
+   "fieldname": "route_details_section",
+   "fieldtype": "Section Break",
+   "label": "Route Details"
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Link",
+   "label": "Trip route",
+   "options": "Trip Routes",
+   "reqd": 1
+  },
+  {
+   "fieldname": "vehicle_status",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Vehicle Status",
+   "read_only": 1
+  },
+  {
+   "fieldname": "truck_trip",
+   "fieldtype": "Data",
+   "label": "Previous Trip",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_o2adv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Not Processed",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Not Processed\nProcessed"
+  },
+  {
+   "fieldname": "created_trip",
+   "fieldtype": "Data",
+   "label": "Created Trip",
+   "read_only": 1
+  },
+  {
+   "fieldname": "extra_info_section",
+   "fieldtype": "Section Break",
+   "label": "Extra Info"
+  },
+  {
+   "fieldname": "section_break_vctu4",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "item",
+   "fieldtype": "Link",
+   "label": "Service Item",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "column_break_74xfo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Currency",
+   "options": "Currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "rate",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Rate",
+   "options": "currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_vxve4",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "loading_date",
+   "fieldtype": "Date",
+   "label": "Loading Date"
+  },
+  {
+   "fieldname": "lodge_permit",
+   "fieldtype": "Date",
+   "label": "Lodge Permit Date"
+  },
+  {
+   "fieldname": "dispatch_date",
+   "fieldtype": "Date",
+   "label": "Dispatch Date"
+  },
+  {
+   "fetch_from": "cargo.cargo_type",
+   "fieldname": "cargo_type",
+   "fieldtype": "Data",
+   "label": "Cargo Type"
+  },
+  {
+   "fieldname": "vehicle_attachment_section",
+   "fieldtype": "Section Break",
+   "label": "Vehicle Attachment"
+  },
+  {
+   "fieldname": "attach_1",
+   "fieldtype": "Attach",
+   "label": "Attachment 1"
+  },
+  {
+   "fieldname": "attach_2",
+   "fieldtype": "Attach",
+   "label": "Attachment 2"
+  },
+  {
+   "fieldname": "attach_3",
+   "fieldtype": "Attach",
+   "label": "Attachment 3"
+  },
+  {
+   "fieldname": "attach_4",
+   "fieldtype": "Attach",
+   "label": "Attachment 4"
+  },
+  {
+   "fieldname": "column_break_if7c4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "description_1",
+   "fieldtype": "Data",
+   "label": "Description 1"
+  },
+  {
+   "fieldname": "description_2",
+   "fieldtype": "Data",
+   "label": "Description 2"
+  },
+  {
+   "fieldname": "description_3",
+   "fieldtype": "Data",
+   "label": "Description 3"
+  },
+  {
+   "fieldname": "description_4",
+   "fieldtype": "Data",
+   "label": "Description 4"
+  },
+  {
+   "fieldname": "section_break_uiltk",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "file_number",
+   "fieldtype": "Link",
+   "label": "File Number",
+   "options": "Files"
+  },
+  {
+   "fieldname": "import_reference",
+   "fieldtype": "Link",
+   "label": "Import Reference",
+   "options": "Import"
+  },
+  {
+   "fieldname": "column_break_zxybv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "export_reference",
+   "fieldtype": "Link",
+   "label": "Export Reference",
+   "options": "Export"
+  },
+  {
+   "fieldname": "invoice",
+   "fieldtype": "Link",
+   "label": "Invoice",
+   "options": "Sales Invoice"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-05-13 12:23:10.987314",
+ "modified_by": "Administrator",
+ "module": "VSD Fleet MS",
+ "name": "Transport Assignments",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

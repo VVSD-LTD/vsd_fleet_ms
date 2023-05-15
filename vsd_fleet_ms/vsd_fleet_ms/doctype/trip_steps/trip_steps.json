@@ -25,16 +25,19 @@
   {
    "fieldname": "distance",
    "fieldtype": "Float",
+   "in_list_view": 1,
    "label": "Distance"
   },
   {
    "fieldname": "fuel_consumption_qty",
    "fieldtype": "Float",
+   "in_list_view": 1,
    "label": "Fuel Consumption Qty"
   },
   {
    "fieldname": "location_type",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Location Type",
    "options": "Trip Locations Type"
   },
@@ -42,19 +45,21 @@
    "default": "0",
    "fieldname": "is_local_border",
    "fieldtype": "Check",
+   "in_list_view": 1,
    "label": "Is Local Border"
   },
   {
    "default": "0",
    "fieldname": "is_international_border",
    "fieldtype": "Check",
+   "in_list_view": 1,
    "label": "Is International Border"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-05-05 11:17:21.968779",
+ "modified": "2023-05-08 18:24:02.134087",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Trip Steps",

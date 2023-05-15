@@ -10,7 +10,7 @@
  "field_order": [
   "cargo_name",
   "section_local_import_required_permits",
-  "local_import"
+  "permits"
  ],
  "fields": [
   {
@@ -25,14 +25,14 @@
    "label": "Required Permits"
   },
   {
-   "fieldname": "local_import",
+   "fieldname": "permits",
    "fieldtype": "Table",
-   "label": "Required Permits",
+   "label": "Permits",
    "options": "Cargo Type Details"
   }
  ],
  "links": [],
- "modified": "2023-05-04 14:09:19.785471",
+ "modified": "2023-05-12 17:14:40.613859",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Cargo Types",

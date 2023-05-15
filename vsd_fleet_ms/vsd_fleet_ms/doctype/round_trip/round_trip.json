@@ -1,0 +1,119 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "RTE-.###",
+ "creation": "2023-05-09 17:37:31.895170",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "truck_on_trip",
+  "expenses_section",
+  "trip_fixed_expenses",
+  "section_break_y24cs",
+  "trip_variable_expenses",
+  "section_break_wudei",
+  "total_fixed_expense",
+  "column_break_aulrp",
+  "total_variable_expense",
+  "column_break_zm65t",
+  "total_expense",
+  "trip_details_section",
+  "trip_details"
+ ],
+ "fields": [
+  {
+   "fieldname": "truck_on_trip",
+   "fieldtype": "Link",
+   "label": "Truck on Trip",
+   "options": "Truck"
+  },
+  {
+   "fieldname": "expenses_section",
+   "fieldtype": "Section Break",
+   "label": "Expenses"
+  },
+  {
+   "fieldname": "trip_fixed_expenses",
+   "fieldtype": "Table",
+   "label": "Trip Fixed Expenses",
+   "options": "Fixed Expenses Table"
+  },
+  {
+   "fieldname": "section_break_y24cs",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "trip_variable_expenses",
+   "fieldtype": "Table",
+   "label": "Trip Variable Expenses",
+   "options": "Trip Variable Expenses"
+  },
+  {
+   "fieldname": "section_break_wudei",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_fixed_expense",
+   "fieldtype": "Data",
+   "label": "Total fixed Expense"
+  },
+  {
+   "fieldname": "column_break_aulrp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_variable_expense",
+   "fieldtype": "Data",
+   "label": "Total Variable Expense"
+  },
+  {
+   "fieldname": "column_break_zm65t",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_expense",
+   "fieldtype": "Data",
+   "label": "Total Expense"
+  },
+  {
+   "fieldname": "trip_details_section",
+   "fieldtype": "Section Break",
+   "label": "Trip Details"
+  },
+  {
+   "fieldname": "trip_details",
+   "fieldtype": "Table",
+   "options": "Vehicle Trips Table"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-05-10 08:53:25.272622",
+ "modified_by": "Administrator",
+ "module": "VSD Fleet MS",
+ "name": "Round Trip",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

@@ -1,0 +1,99 @@
+{
+ "actions": [],
+ "creation": "2023-05-05 18:26:25.612622",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "accounting_system",
+  "amount",
+  "currency",
+  "date_of_payment",
+  "reference_no",
+  "paid_to",
+  "payment_method",
+  "payment_account",
+  "status"
+ ],
+ "fields": [
+  {
+   "default": "Pastel",
+   "fieldname": "accounting_system",
+   "fieldtype": "Data",
+   "label": "Accounting System",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Amount",
+   "reqd": 1
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Currency",
+   "options": "Currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "date_of_payment",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date of Payment",
+   "reqd": 1
+  },
+  {
+   "fieldname": "reference_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Reference Number"
+  },
+  {
+   "fieldname": "paid_to",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Paid To",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "payment_method",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Payment Method",
+   "options": "\nCash\nCheque\nBank Transfer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "payment_account",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Payment Account",
+   "options": "\nCRDB\nBank M\nStanbic Bank\nEco Bank\nPetty Cash Fund\nM-Pesa\nInter Africa\nYash International (Fuel Account)\nMount Meru (Fuel Account)\nPetcom (Fuel Account)\nVital Oil (Fuel Account)",
+   "reqd": 1
+  },
+  {
+   "default": "new",
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Status"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2023-05-08 16:01:17.236974",
+ "modified_by": "Administrator",
+ "module": "VSD Fleet MS",
+ "name": "Reference Payments Table",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

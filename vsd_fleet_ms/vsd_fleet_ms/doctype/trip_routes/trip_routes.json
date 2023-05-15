@@ -54,8 +54,7 @@
    "fieldtype": "Int",
    "in_list_view": 1,
    "label": "Total Distance (km)",
-   "read_only": 1,
-   "reqd": 1
+   "read_only": 1
   },
   {
    "fieldname": "column_break_bfyas",
@@ -92,7 +91,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-05 11:17:06.642881",
+ "modified": "2023-05-08 18:08:17.988026",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Trip Routes",

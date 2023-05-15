@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "TTI-.####",
  "creation": "2023-05-04 11:37:46.213089",
  "default_view": "List",
  "doctype": "DocType",
@@ -8,12 +9,16 @@
  "engine": "InnoDB",
  "field_order": [
   "truck_inspection_section",
-  "truck",
-  "expected_trip",
+  "trip",
+  "truck_driver",
+  "truck_plate_number",
+  "trailer_no",
   "column_break_210d8",
   "inspection_date",
+  "expected_trip",
+  "mileage",
   "trip_reference_section",
-  "trip",
+  "truck_type",
   "truck_lighting_checklist_section",
   "truck_lighting",
   "truck_engine_checklist_section",
@@ -50,12 +55,6 @@
    "label": "Truck Inspection"
   },
   {
-   "fieldname": "truck",
-   "fieldtype": "Link",
-   "label": "Truck",
-   "options": "Truck"
-  },
-  {
    "fieldname": "expected_trip",
    "fieldtype": "Data",
    "label": "Expected Trip"
@@ -82,12 +81,13 @@
   {
    "fieldname": "trip_reference_section",
    "fieldtype": "Section Break",
-   "label": "Trip Reference"
+   "label": "Routine Checklist"
   },
   {
    "fieldname": "trip",
-   "fieldtype": "Data",
-   "label": "Trip"
+   "fieldtype": "Link",
+   "label": "Trip Reference",
+   "options": "Vehicle Trips"
   },
   {
    "fieldname": "truck_lighting_checklist_section",
@@ -218,14 +218,42 @@
    "fieldname": "upload_respective_truck_image",
    "fieldtype": "Attach",
    "label": "Upload Respective Truck Image"
+  },
+  {
+   "fetch_from": "trip.truck_driver",
+   "fieldname": "truck_driver",
+   "fieldtype": "Data",
+   "label": "Truck Driver"
+  },
+  {
+   "fetch_from": "trip.truck",
+   "fieldname": "truck_plate_number",
+   "fieldtype": "Data",
+   "label": "Truck Plate No"
+  },
+  {
+   "fieldname": "trailer_no",
+   "fieldtype": "Data",
+   "label": "Trailer No"
+  },
+  {
+   "fieldname": "truck_type",
+   "fieldtype": "Data",
+   "label": "Truck Type"
+  },
+  {
+   "fieldname": "mileage",
+   "fieldtype": "Data",
+   "label": "Mileage"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-04 16:22:44.797061",
+ "modified": "2023-05-15 11:34:55.732951",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Truck and Trailer Inspection",
+ "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [
   {

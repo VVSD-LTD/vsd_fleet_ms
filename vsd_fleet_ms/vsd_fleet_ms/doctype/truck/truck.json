@@ -1,50 +1,46 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "field:truck_number",
  "creation": "2023-05-04 10:40:28.075276",
  "default_view": "List",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "vehicle_information_section",
-  "licence_plate",
-  "model",
+  "overview_tab",
+  "disabled",
+  "section_break_471de",
+  "license_plate",
   "make",
-  "column_break_xpjhi",
-  "manufacturing_year",
+  "image",
   "acquisition_date",
+  "status",
+  "column_break_xpjhi",
+  "truck_number",
+  "manufacturing_year",
+  "model",
   "located_yard",
+  "acquisition_odometer_reading",
+  "trans_ms_current_trip",
   "section_break_pkgwx",
   "fuel_type",
-  "fuel_uom",
+  "engine_number",
   "odometer_value",
   "column_break_i30j4",
+  "fuel_uom",
   "chassis_number",
-  "engine_number",
-  "acquisition_odometer_reading",
-  "vehicle_insurance__details_section",
-  "insurance_company",
-  "policy_number",
-  "column_break_ibvff",
-  "start_date",
-  "end_date",
-  "section_break_g7tvd",
+  "transport_section",
+  "trans_ms_driver",
+  "trans_ms__driver_name",
+  "trans_ms_default_trailer",
+  "column_break_gxeno",
+  "trans_ms_maintain_stock",
+  "trans_ms_fuel_warehouse",
+  "documents_section",
   "vehicle_documents"
  ],
  "fields": [
-  {
-   "fieldname": "vehicle_information_section",
-   "fieldtype": "Section Break",
-   "label": "Vehicle Information"
-  },
-  {
-   "fieldname": "licence_plate",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Licence Plate",
-   "reqd": 1
-  },
   {
    "fieldname": "model",
    "fieldtype": "Data",
@@ -72,18 +68,20 @@
   },
   {
    "fieldname": "acquisition_date",
-   "fieldtype": "Data",
-   "label": "Acquisition Date",
+   "fieldtype": "Int",
+   "label": "Acquisition Year",
    "reqd": 1
   },
   {
    "fieldname": "located_yard",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Acquisition Location"
   },
   {
    "fieldname": "section_break_pkgwx",
-   "fieldtype": "Section Break"
+   "fieldtype": "Tab Break",
+   "label": "Details"
   },
   {
    "fieldname": "fuel_type",
@@ -102,7 +100,7 @@
   {
    "fieldname": "odometer_value",
    "fieldtype": "Data",
-   "label": "Odometer Value (last Value)"
+   "label": "Last Odometer Reading"
   },
   {
    "fieldname": "column_break_i30j4",
@@ -125,54 +123,116 @@
    "label": "Acquisition Odometer Reading"
   },
   {
-   "fieldname": "vehicle_insurance__details_section",
-   "fieldtype": "Section Break",
-   "label": "Vehicle Insurance  Details"
-  },
-  {
-   "fieldname": "insurance_company",
-   "fieldtype": "Data",
-   "label": "Insurance Company",
-   "reqd": 1
-  },
-  {
-   "fieldname": "policy_number",
-   "fieldtype": "Data",
-   "label": "Policy Number"
-  },
-  {
-   "fieldname": "column_break_ibvff",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "start_date",
-   "fieldtype": "Date",
-   "label": "Start Date",
-   "reqd": 1
-  },
-  {
-   "fieldname": "end_date",
-   "fieldtype": "Date",
-   "label": "End Date",
-   "reqd": 1
-  },
-  {
-   "fieldname": "section_break_g7tvd",
-   "fieldtype": "Section Break"
-  },
-  {
    "fieldname": "vehicle_documents",
    "fieldtype": "Table",
    "label": "Vehicle Documents",
    "options": "Vehicle Attached Documents"
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "hidden": 1,
+   "label": "Image"
+  },
+  {
+   "default": "Available",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Available\nUnder Maintenance\nIn Trip"
+  },
+  {
+   "fieldname": "license_plate",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "License Plate",
+   "reqd": 1
+  },
+  {
+   "fieldname": "transport_section",
+   "fieldtype": "Tab Break",
+   "label": "Transportation Default"
+  },
+  {
+   "fieldname": "trans_ms_driver",
+   "fieldtype": "Link",
+   "label": "Truck Driver",
+   "options": "Truck Driver"
+  },
+  {
+   "fetch_from": "trans_ms_driver.full_name",
+   "fieldname": "trans_ms__driver_name",
+   "fieldtype": "Data",
+   "label": "Driver's Name",
+   "read_only": 1,
+   "translatable": 1
+  },
+  {
+   "fieldname": "trans_ms_current_trip",
+   "fieldtype": "Data",
+   "label": "Current Trip"
+  },
+  {
+   "fieldname": "documents_section",
+   "fieldtype": "Tab Break",
+   "label": "Documents"
+  },
+  {
+   "fieldname": "trans_ms_default_trailer",
+   "fieldtype": "Link",
+   "label": "Default Trailer",
+   "options": "Trailers"
+  },
+  {
+   "default": "0",
+   "fieldname": "trans_ms_maintain_stock",
+   "fieldtype": "Check",
+   "label": "Maintain Stock"
+  },
+  {
+   "depends_on": "eval:doc.trans_ms_maintain_stock==1",
+   "fieldname": "trans_ms_fuel_warehouse",
+   "fieldtype": "Link",
+   "label": "Fuel Warehouse",
+   "mandatory_depends_on": "eval:doc.trans_ms_maintain_stock == 1",
+   "options": "Warehouse"
+  },
+  {
+   "bold": 1,
+   "default": "0",
+   "depends_on": "eval:doc.creation",
+   "fieldname": "disabled",
+   "fieldtype": "Check",
+   "label": "Disabled?"
+  },
+  {
+   "fieldname": "column_break_gxeno",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "overview_tab",
+   "fieldtype": "Tab Break",
+   "label": "Overview"
+  },
+  {
+   "fieldname": "section_break_471de",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "truck_number",
+   "fieldtype": "Data",
+   "label": "Truck Number",
+   "unique": 1
   }
  ],
+ "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-05 12:37:04.344889",
+ "modified": "2023-05-13 13:10:04.472126",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Truck",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {
@@ -188,9 +248,23 @@
    "write": 1
   }
  ],
+ "search_fields": "truck_number,license_plate",
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": [],
+ "states": [
+  {
+   "color": "Blue",
+   "title": "Available"
+  },
+  {
+   "color": "Red",
+   "title": "Under Maintenance"
+  },
+  {
+   "color": "Green",
+   "title": "On Trip"
+  }
+ ],
  "track_changes": 1,
  "track_seen": 1
 }
