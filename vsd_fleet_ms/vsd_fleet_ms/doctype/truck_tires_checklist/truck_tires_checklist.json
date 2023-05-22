@@ -13,18 +13,20 @@
   {
    "fieldname": "criteria",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Tires"
   },
   {
    "fieldname": "mark",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Mark"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-05-04 14:10:13.311888",
+ "modified": "2023-05-16 11:30:16.224871",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Truck Tires Checklist",

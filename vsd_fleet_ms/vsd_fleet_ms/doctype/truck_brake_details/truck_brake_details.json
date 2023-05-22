@@ -12,13 +12,14 @@
   {
    "fieldname": "vehicle_truck_part",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Vehicle Truck Part"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-05-04 12:00:56.175566",
+ "modified": "2023-05-16 11:30:38.724630",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Truck Brake Details",

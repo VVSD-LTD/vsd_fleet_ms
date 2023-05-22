@@ -17,6 +17,7 @@
   "address",
   "column_break_2",
   "employee",
+  "in_trip",
   "cell_number",
   "drivers_document_section",
   "drivers_document"
@@ -78,13 +79,20 @@
   {
    "fieldname": "drivers_document",
    "fieldtype": "Table",
-   "options": "Drivers Documents"
+   "options": "Document Attachments"
+  },
+  {
+   "default": "0",
+   "fieldname": "in_trip",
+   "fieldtype": "Check",
+   "label": "In Trip?",
+   "read_only": 1
   }
  ],
  "icon": "fa fa-user",
  "image_field": "image",
  "links": [],
- "modified": "2023-05-15 10:59:32.546344",
+ "modified": "2023-05-18 14:42:41.741327",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Truck Driver",
@@ -126,7 +134,6 @@
    "write": 1
   }
  ],
- "quick_entry": 1,
  "search_fields": "full_name",
  "show_name_in_global_search": 1,
  "sort_field": "modified",

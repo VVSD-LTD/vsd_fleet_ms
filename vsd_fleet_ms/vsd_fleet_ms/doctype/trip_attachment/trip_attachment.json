@@ -12,13 +12,14 @@
   {
    "fieldname": "file_attachment",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "File Attachment"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-05-08 16:00:10.177835",
+ "modified": "2023-05-16 11:53:42.021866",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Trip Attachment",

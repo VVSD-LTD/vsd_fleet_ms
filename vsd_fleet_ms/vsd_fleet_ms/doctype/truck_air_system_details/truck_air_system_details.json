@@ -12,13 +12,14 @@
   {
    "fieldname": "parts",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Parts"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-05-04 14:09:34.405294",
+ "modified": "2023-05-16 11:27:31.380966",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Truck Air System Details",

@@ -12,13 +12,14 @@
   {
    "fieldname": "tire_part",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Tire Part"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-05-04 14:09:56.992838",
+ "modified": "2023-05-16 11:35:26.813755",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Truck Tire Details",

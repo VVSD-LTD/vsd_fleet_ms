@@ -5,13 +5,27 @@ import frappe
 from frappe.model.document import Document
 
 class FixedExpenses(Document):
-	def onload(self):
-		self.set_onload(
-			"expense_accounts",
-			frappe.db.get_single_value("Transport Settings","expense_account_group"),
+	pass
+	
+
+@frappe.whitelist()	
+def expense_account():
+    return (
+        frappe.get_all(
+            "Transport Expenses Account Group",
+            fields=["account_group"],
+            filters={"parent": "Transport Settings"},
+            pluck="account_group"
+        )
+    )
+
+@frappe.whitelist()			
+def cash_account():
+	return (
+		frappe.db.get_all(
+			"Transport Cash Account Group",
+			fields=["account_group"],
+			filters={"parent": "Transport Settings"},
+			pluck="account_group"
 			)
-		
-		self.set_onload(
-			"cash_bank_accounts",
-			frappe.db.get_single_value("Transport Settings","cash_or_bank_account_group"),
 			)

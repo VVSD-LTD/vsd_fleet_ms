@@ -12,13 +12,14 @@
   {
    "fieldname": "electrical_part",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Electrical"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-05-04 14:10:33.290309",
+ "modified": "2023-05-16 11:31:42.845620",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Truck Electrical Details",

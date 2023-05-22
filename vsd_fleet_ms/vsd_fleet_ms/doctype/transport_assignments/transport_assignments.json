@@ -184,7 +184,6 @@
    "label": "Driver Passport"
   },
   {
-   "fetch_from": "assigned_driver.license_number",
    "fieldname": "driver_licence",
    "fieldtype": "Data",
    "label": "Driver Licence"
@@ -389,7 +388,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-05-13 12:23:10.987314",
+ "modified": "2023-05-19 11:46:26.171647",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Transport Assignments",

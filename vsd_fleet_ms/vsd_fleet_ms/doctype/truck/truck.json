@@ -126,7 +126,7 @@
    "fieldname": "vehicle_documents",
    "fieldtype": "Table",
    "label": "Vehicle Documents",
-   "options": "Vehicle Attached Documents"
+   "options": "Document Attachments"
   },
   {
    "fieldname": "image",
@@ -139,7 +139,7 @@
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "Available\nUnder Maintenance\nIn Trip"
+   "options": "Available\nUnder Maintenance\nIn Trip\nDisabled"
   },
   {
    "fieldname": "license_plate",
@@ -160,6 +160,7 @@
    "options": "Truck Driver"
   },
   {
+   "depends_on": "eval:doc.trans_ms_driver_name",
    "fetch_from": "trans_ms_driver.full_name",
    "fieldname": "trans_ms__driver_name",
    "fieldtype": "Data",
@@ -228,7 +229,7 @@
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-13 13:10:04.472126",
+ "modified": "2023-05-18 14:32:50.538886",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Truck",
@@ -262,7 +263,11 @@
   },
   {
    "color": "Green",
-   "title": "On Trip"
+   "title": "In Trip"
+  },
+  {
+   "color": "Red",
+   "title": "Disabled"
   }
  ],
  "track_changes": 1,

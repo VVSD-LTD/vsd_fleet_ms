@@ -9,11 +9,19 @@
  "field_order": [
   "locations_details_section",
   "description",
-  "location_latitude_longitude",
+  "latitude",
+  "longitude",
   "column_break_irsts",
   "country",
   "is_local_border",
-  "is_international_border"
+  "is_international_border",
+  "lft",
+  "rgt",
+  "parent_location",
+  "area",
+  "section_break_zcf0z",
+  "location_latitude_longitude",
+  "old_parent"
  ],
  "fields": [
   {
@@ -54,11 +62,63 @@
    "label": "Country",
    "options": "Country",
    "reqd": 1
+  },
+  {
+   "fieldname": "latitude",
+   "fieldtype": "Float",
+   "label": "Latitude",
+   "precision": "3"
+  },
+  {
+   "fieldname": "longitude",
+   "fieldtype": "Float",
+   "label": "Longitude",
+   "precision": "3"
+  },
+  {
+   "fieldname": "lft",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "lft"
+  },
+  {
+   "fieldname": "rgt",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "rgt"
+  },
+  {
+   "fieldname": "parent_location",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Parent Location",
+   "print_hide": 1,
+   "report_hide": 1
+  },
+  {
+   "fieldname": "area",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "Area",
+   "precision": "3",
+   "print_hide": 1,
+   "report_hide": 1
+  },
+  {
+   "fieldname": "section_break_zcf0z",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "old_parent",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "print_hide": 1,
+   "report_hide": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-15 13:40:55.672760",
+ "modified": "2023-05-17 10:59:41.637610",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Trip Locations",

@@ -85,7 +85,7 @@
    "fieldname": "trailer_documents",
    "fieldtype": "Table",
    "label": "Trailer Documents",
-   "options": "Vehicle Attached Documents"
+   "options": "Document Attachments"
   },
   {
    "fieldname": "trailer_informations_section",
@@ -144,7 +144,7 @@
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-13 13:12:03.161342",
+ "modified": "2023-05-18 14:32:50.004756",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Trailers",

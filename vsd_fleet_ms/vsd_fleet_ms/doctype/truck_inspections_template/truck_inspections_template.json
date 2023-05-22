@@ -1,0 +1,190 @@
+{
+ "actions": [],
+ "autoname": "field:vehicle_type",
+ "creation": "2023-05-15 12:17:21.815199",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "vehicle_type",
+  "lighting_checklist",
+  "lighting_checklist_details",
+  "brake_system_checklist",
+  "brake_system_checklist_details",
+  "engine_checklist",
+  "engine_checklist_details",
+  "fuel_system_checklist",
+  "fuel_system_checklist_details",
+  "power_train_checklist",
+  "power_train_details",
+  "electronics_checklist",
+  "electronics_details",
+  "electrical_checklist",
+  "electrical_details",
+  "steering_checklist",
+  "steering_details",
+  "section_break_18",
+  "tires_details",
+  "suspension_checklist",
+  "suspension_details",
+  "section_break_22",
+  "air_system_details",
+  "tire_status_and_pressure_section",
+  "tire_checklist_details"
+ ],
+ "fields": [
+  {
+   "fieldname": "vehicle_type",
+   "fieldtype": "Link",
+   "label": "Truck Type",
+   "options": "Truck Type",
+   "unique": 1
+  },
+  {
+   "fieldname": "lighting_checklist",
+   "fieldtype": "Section Break",
+   "label": "Lighting Checklist"
+  },
+  {
+   "fieldname": "lighting_checklist_details",
+   "fieldtype": "Table",
+   "options": "Truck Lighting"
+  },
+  {
+   "fieldname": "brake_system_checklist",
+   "fieldtype": "Section Break",
+   "label": "Brake System Checklist"
+  },
+  {
+   "fieldname": "brake_system_checklist_details",
+   "fieldtype": "Table",
+   "options": "Truck Brakes"
+  },
+  {
+   "fieldname": "engine_checklist",
+   "fieldtype": "Section Break",
+   "label": "Engine Checklist"
+  },
+  {
+   "fieldname": "engine_checklist_details",
+   "fieldtype": "Table",
+   "options": "Truck Engine"
+  },
+  {
+   "fieldname": "fuel_system_checklist",
+   "fieldtype": "Section Break",
+   "label": "Fuel System Checklist"
+  },
+  {
+   "fieldname": "fuel_system_checklist_details",
+   "fieldtype": "Table",
+   "options": "Truck Fuel System"
+  },
+  {
+   "fieldname": "power_train_checklist",
+   "fieldtype": "Section Break",
+   "label": "Power Train Checklist"
+  },
+  {
+   "fieldname": "power_train_details",
+   "fieldtype": "Table",
+   "options": "Truck Power Train"
+  },
+  {
+   "fieldname": "electronics_checklist",
+   "fieldtype": "Section Break",
+   "label": "Electronics Checklist"
+  },
+  {
+   "fieldname": "electronics_details",
+   "fieldtype": "Table",
+   "options": "Truck Electronics"
+  },
+  {
+   "fieldname": "electrical_checklist",
+   "fieldtype": "Section Break",
+   "label": "Electrical Checklist"
+  },
+  {
+   "fieldname": "electrical_details",
+   "fieldtype": "Table",
+   "options": "Truck Electrical Checklist"
+  },
+  {
+   "fieldname": "steering_checklist",
+   "fieldtype": "Section Break",
+   "label": "Steering Checklist"
+  },
+  {
+   "fieldname": "steering_details",
+   "fieldtype": "Table",
+   "options": "Truck Steering Checklist"
+  },
+  {
+   "fieldname": "section_break_18",
+   "fieldtype": "Section Break",
+   "label": "Tires Checklist"
+  },
+  {
+   "fieldname": "tires_details",
+   "fieldtype": "Table",
+   "options": "Truck Tires Checklist"
+  },
+  {
+   "fieldname": "suspension_checklist",
+   "fieldtype": "Section Break",
+   "label": "Suspension Checklist"
+  },
+  {
+   "fieldname": "suspension_details",
+   "fieldtype": "Table",
+   "options": "Truck Suspension Checklist"
+  },
+  {
+   "fieldname": "section_break_22",
+   "fieldtype": "Section Break",
+   "label": "Air System/Others Checklist"
+  },
+  {
+   "fieldname": "air_system_details",
+   "fieldtype": "Table",
+   "options": "Truck Air System"
+  },
+  {
+   "fieldname": "tire_status_and_pressure_section",
+   "fieldtype": "Section Break",
+   "label": "Tire Status and Pressure"
+  },
+  {
+   "fieldname": "tire_checklist_details",
+   "fieldtype": "Table",
+   "options": "Truck Tire Checklist"
+  }
+ ],
+ "links": [],
+ "modified": "2023-05-16 11:11:05.553762",
+ "modified_by": "Administrator",
+ "module": "VSD Fleet MS",
+ "name": "Truck Inspections Template",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

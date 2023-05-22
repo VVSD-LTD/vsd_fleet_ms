@@ -12,13 +12,14 @@
   {
    "fieldname": "fuel_part",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Vehicle Part"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-05-04 12:18:42.251570",
+ "modified": "2023-05-16 11:35:43.480458",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Truck Fuel System Details",

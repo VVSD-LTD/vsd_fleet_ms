@@ -13,19 +13,23 @@
   {
    "fieldname": "power_train",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Power Train"
   },
   {
    "default": "0",
    "fieldname": "mark",
    "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Mark"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-05-04 12:18:35.777472",
+ "modified": "2023-05-16 12:07:47.240034",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Truck Power Train",

@@ -5,6 +5,16 @@ frappe.ui.form.on('Truck', {
 	// refresh: function(frm) {
 
 	// }
+	setup: function(frm){
+		frm.set_query('trans_ms_driver', function () {
+			return{
+				filters: {
+					"status": "Active"
+				}
+			}
+			
+		})
+	},
 	onload: function (frm) {
 		// Select the element with data-fieldname="disabled"
 		const element = document.querySelector('[data-fieldname="disabled"]');

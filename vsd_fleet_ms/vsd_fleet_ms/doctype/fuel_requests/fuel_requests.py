@@ -10,16 +10,15 @@ from frappe.model.document import Document
 from frappe import _, msgprint
 from frappe.model.mapper import get_mapped_doc
 from frappe.utils import nowdate
-from trans_ms.utlis.dimension import set_dimension
 
 class FuelRequests(Document):
-	def onload(self):
+    def onload(self):
         trip = frappe.get_doc(self.reference_doctype, self.reference_docname)
         # Load approved fuel for main trip
         if trip.main_route and trip.vehicle:
             consumption = frappe.db.get_value(
                 "Truck", trip.vehicle, "trans_ms_fuel_consumption"
-            )
+                )
             route = frappe.db.get_value("Trip Routes", trip.main_route, "total_distance")
             approved_fuel = consumption * route
             self.set("main_route", trip.main_route)
@@ -239,70 +238,6 @@ def reject_request(**args):
     doc.db_set("approved_date", timestamp)
     # set_status(args.request_docname)
     return "Request Updated"
-
-
-# @frappe.whitelist()
-# def make_purchase_order(source_name, target_doc=None):
-
-# 	doc = get_mapped_doc("Fuel Request", source_name,	{
-# 		"Fuel Request": {
-# 			"doctype": "Purchase Order",
-# 			"field_map": {
-
-# 			},
-# 			"validation": {
-# 				"docstatus": ["=", 0],
-# 			}
-# 		},
-# 		"Fuel Request Table": {
-# 			"doctype": "Purchase Order Item",
-# 			"field_map": {
-#                 "name": "fuel_request_table",
-# 				"parent":"fuel_request",
-#                 "item_code":"item_code",
-# 				#"total_cost":"amount",
-# 				"quantity": "qty",
-# 				#"cost_per_litre": "rate",
-# 				source_name:"fuel_request"
-# 			},
-
-# 		},
-# 	}, target_doc)
-
-# return doc
-
-
-# @frappe.whitelist()
-# def create_purchase_order(request_doc, item):
-#     # frappe.throw(request_doc)
-#     item = frappe._dict(json.loads(item))
-#     request_doc = frappe._dict(json.loads(request_doc))
-#     set_warehouse = frappe.get_value(
-#         "Truck", request_doc.vehicle_plate_number, "trans_ms_fuel_warehouse"
-#     )
-#     if not set_warehouse:
-#         frappe.throw(_("Fuel Stock Warehouse not set in Vehicle"))
-#     if item.purchase_order:
-#         frappe.throw(_("Purchase Order is already exists"))
-#     doc = frappe.new_doc("Purchase Order")
-#     doc.company = request_doc.company
-#     doc.department = item.supplier
-#     doc.supplier = item.supplier
-#     doc.schedule_date = nowdate()
-#     doc.docstatus = 1
-#     doc.set_warehouse = set_warehouse
-#     new_item = doc.append("items", {})
-#     new_item.item_code = item.item_code
-#     new_item.qty = item.quantity
-#     new_item.rate = item.cost_per_litre
-#     new_item.source_name = "fuel_request"
-#     set_dimension(request_doc, doc)
-#     set_dimension(request_doc, doc, tr_child=new_item)
-#     doc.insert(ignore_permissions=True)
-#     frappe.msgprint(_("Purchase Order {0} is created").format(doc.name))
-#     frappe.set_value(item.doctype, item.name, "purchase_order", doc.name)
-#     return doc.name
-
 
 @frappe.whitelist()
 def make_stock_entry(source_name, target_doc=None):
