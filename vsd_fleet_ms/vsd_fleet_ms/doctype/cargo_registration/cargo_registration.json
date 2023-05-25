@@ -1,0 +1,117 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2023-05-25 10:51:49.442328",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "customer",
+  "date",
+  "column_break_ta7ta",
+  "transport_type",
+  "naming_series",
+  "company",
+  "section_break_fuqjo",
+  "cargo_details",
+  "section_break_er7n8",
+  "create_invoice",
+  "column_break_wl4cu",
+  "send_to_manifest"
+ ],
+ "fields": [
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "column_break_ta7ta",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "transport_type",
+   "fieldtype": "Select",
+   "label": "Transport Type",
+   "options": "Cross Border\nInternal"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Series",
+   "options": "TORD-.YYYY.-."
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "section_break_fuqjo",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "cargo_details",
+   "fieldtype": "Table",
+   "label": "Cargo Details",
+   "options": "Cargo Detail"
+  },
+  {
+   "fieldname": "create_invoice",
+   "fieldtype": "Button",
+   "label": "Create Invoice",
+   "width": "100"
+  },
+  {
+   "fieldname": "column_break_wl4cu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "send_to_manifest",
+   "fieldtype": "Button",
+   "label": "Send to Manifest",
+   "width": "100%"
+  },
+  {
+   "fieldname": "section_break_er7n8",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-05-25 13:17:31.820517",
+ "modified_by": "Administrator",
+ "module": "VSD Fleet MS",
+ "name": "Cargo Registration",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

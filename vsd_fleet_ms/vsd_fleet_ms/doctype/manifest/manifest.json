@@ -1,0 +1,155 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:MNFS-{truck}-{####}",
+ "creation": "2023-05-24 17:26:13.060461",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "manifest",
+  "section_break_8hd1v",
+  "transport_order",
+  "route",
+  "truck",
+  "column_break_byfrl",
+  "vehicle_trip",
+  "driver",
+  "section_break_odxqz",
+  "trailer_1",
+  "column_break_eezzb",
+  "trailer_2",
+  "column_break_q1jap",
+  "trailer_3",
+  "section_break_lchwp",
+  "manifest_cargo_details",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "manifest",
+   "fieldtype": "Heading",
+   "label": "Manifest"
+  },
+  {
+   "fieldname": "section_break_8hd1v",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "transport_order",
+   "fieldtype": "Link",
+   "label": "Transport Order",
+   "options": "Cargo Registration"
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Link",
+   "label": "Route",
+   "options": "Trip Routes"
+  },
+  {
+   "fieldname": "truck",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Truck",
+   "options": "Truck",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_byfrl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "vehicle_trip",
+   "fieldtype": "Data",
+   "label": "Vehicle Trip"
+  },
+  {
+   "fieldname": "driver",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Driver",
+   "options": "Truck Driver",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_odxqz",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "trailer_1",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Trailer 1",
+   "options": "Trailers",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_eezzb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "trailer_2",
+   "fieldtype": "Link",
+   "label": "Trailer 2",
+   "options": "Trailers"
+  },
+  {
+   "fieldname": "column_break_q1jap",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "trailer_3",
+   "fieldtype": "Link",
+   "label": "Trailer 3",
+   "options": "Trailers"
+  },
+  {
+   "fieldname": "section_break_lchwp",
+   "fieldtype": "Section Break",
+   "label": "The Cargos"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Manifest",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "manifest_cargo_details",
+   "fieldtype": "Table",
+   "options": "Manifest Cargo Details"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-05-25 12:51:40.081258",
+ "modified_by": "Administrator",
+ "module": "VSD Fleet MS",
+ "name": "Manifest",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

@@ -9,13 +9,12 @@
  "engine": "InnoDB",
  "field_order": [
   "order_details_section",
-  "date",
   "customer",
-  "expected_loading_date",
+  "date",
   "column_break_1fmws",
+  "transport_type",
   "naming_series",
   "company",
-  "transport_type",
   "amended_from",
   "cargo_location_country",
   "cargo_location_city",
@@ -39,8 +38,6 @@
   "unit",
   "cargo",
   "html1",
-  "vehicle_assignment_section",
-  "assign_transport",
   "total_assigned",
   "create_invoice",
   "references_section",
@@ -70,18 +67,14 @@
    "options": "Customer"
   },
   {
-   "fieldname": "expected_loading_date",
-   "fieldtype": "Date",
-   "hidden": 1,
-   "label": "Expected Loading Date"
-  },
-  {
    "fieldname": "column_break_1fmws",
    "fieldtype": "Column Break"
   },
   {
+   "default": "TORD-.YYYY.-.",
    "fieldname": "naming_series",
    "fieldtype": "Select",
+   "hidden": 1,
    "in_list_view": 1,
    "label": "Series",
    "options": "TORD-.YYYY.-.",
@@ -230,17 +223,6 @@
    "fieldtype": "HTML"
   },
   {
-   "fieldname": "vehicle_assignment_section",
-   "fieldtype": "Section Break",
-   "label": "Vehicle Assignment"
-  },
-  {
-   "fieldname": "assign_transport",
-   "fieldtype": "Table",
-   "label": "Assign Vehicle",
-   "options": "Transport Assignments"
-  },
-  {
    "fieldname": "total_assigned",
    "fieldtype": "Data",
    "hidden": 1,
@@ -310,7 +292,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-12 17:06:49.253318",
+ "modified": "2023-05-24 14:36:59.892977",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Transportation Order",

@@ -80,64 +80,6 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Transactions",
-   "link_count": 5,
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Transportation Order",
-   "link_count": 0,
-   "link_to": "Transportation Order",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Vehicle Trips",
-   "link_count": 0,
-   "link_to": "Vehicle Trips",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Fuel Requests",
-   "link_count": 0,
-   "link_to": "Fuel Requests",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Requested Payment",
-   "link_count": 0,
-   "link_to": "Requested Payment",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Round Trip Details",
-   "link_count": 0,
-   "link_to": "Round Trip",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
    "label": "Trips",
    "link_count": 5,
    "onboard": 0,
@@ -192,10 +134,68 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Transactions",
+   "link_count": 5,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Cargo Registration",
+   "link_count": 0,
+   "link_to": "Cargo Registration",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Vehicle Trips",
+   "link_count": 0,
+   "link_to": "Vehicle Trips",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Fuel Requests",
+   "link_count": 0,
+   "link_to": "Fuel Requests",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Requested Payment",
+   "link_count": 0,
+   "link_to": "Requested Payment",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Round Trip Details",
+   "link_count": 0,
+   "link_to": "Round Trip",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2023-05-15 11:02:20.910279",
- "modified_by": "arnold@vvsdtz.com",
+ "modified": "2023-05-25 11:11:16.507546",
+ "modified_by": "joel@vvsdtz.com",
  "module": "VSD Fleet MS",
  "name": "VSD Fleet",
  "number_cards": [],

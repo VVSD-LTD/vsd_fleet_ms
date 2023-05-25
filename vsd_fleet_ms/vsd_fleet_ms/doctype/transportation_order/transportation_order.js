@@ -2,31 +2,6 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Transportation Order', {
-	setup: function(frm){
-		frm.set_query("assigned_vehicle","assign_transport", function() {
-			return {
-				filters: {
-					disabled: 0,
-					status: "Available"
-				}
-			};
-		});
-		frm.set_query("assigned_trailer","assign_transport", function() {
-			return {
-				filters: {
-					disabled: 0,
-					status: "Available"
-				}
-			};
-		});
-		frm.set_query("assigned_driver","assign_transport", function() {
-			return {
-				filters: {
-					status: "Active"
-				}
-			};
-		});
-	},
 	onload: function (frm) {
 		frm.get_field("assign_transport").grid.cannot_add_rows = true;
 		$("*[data-fieldname='assign_transport']").find(".grid-remove-rows").hide();
@@ -57,6 +32,17 @@ frappe.ui.form.on('Transportation Order', {
 	},
 
 	refresh: function (frm, cdt, cdn) {
+		const container = document.querySelector('[data-fieldname="create_invoice"]');
+
+		if (container) {
+		// Find the button element within the container
+		const button = container.querySelector('button');
+
+		// Override the entire class of the button with the new class
+		if (button) {
+			button.className = 'btn btn-xs btn-default bold btn-primary';
+		}
+		}
 		frm.get_field("assign_transport").grid.cannot_add_rows = true;
 		$("*[data-fieldname='assign_transport']").find(".grid-remove-rows").hide();
 		$("*[data-fieldname='assign_transport']").find(".grid-remove-all-rows").hide();

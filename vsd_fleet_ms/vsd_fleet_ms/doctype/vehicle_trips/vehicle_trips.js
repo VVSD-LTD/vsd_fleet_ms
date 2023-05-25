@@ -17,7 +17,13 @@ frappe.ui.form.on('Vehicle Trips', {
     onload: function (frm) {
         //frm.events.open_close_buttons(frm);
 
-
+        // if (frm.doc.main_route && frm.doc.main_route_steps.length == 0){
+        //     console.log("here")
+        //     frm.events.load_route_details(frm);
+        //     frappe.after_ajax(function () {
+        //         frm.save_or_update();
+        //     });
+        // }
         if (first_reload == false) {
             return;
         }
@@ -468,6 +474,7 @@ frappe.ui.form.on('Vehicle Trips', {
 
 
     refresh: function (frm) {
+        
         frappe.db.get_single_value('Transport Settings', 'fuel_item_group')
             .then(fuel_item_group => {
                 frm.set_query('item_code', 'main_fuel_request', () => {
@@ -911,9 +918,9 @@ frappe.ui.form.on('Vehicle Trips', {
             //Update vehicle status if is not subcontractor vehicle
             if (['Sub-Contractor', 'In House'].indexOf(frm.doc.transporter_type) == -1) {
                 frappe.call({
-                    method: 'vsd_fleet_ms.vsd_fleet_ms.doctype.vehicle.vehicle.change_status',
+                    method: 'vsd_fleet_ms.vsd_fleet_ms.doctype.truck.truck.change_status',
                     args: {
-                        'vehicle': cur_frm.doc.vehicle,
+                        'truck': cur_frm.doc.vehicle,
                         'status': vehicle_status,
                         'hiden_status': vehicle_hidden_status
                     },

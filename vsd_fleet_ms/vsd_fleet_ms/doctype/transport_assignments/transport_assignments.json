@@ -21,12 +21,13 @@
   "assigned_vehicle",
   "vehicle_plate_number",
   "assigned_trailer",
+  "assigned_traier1",
+  "assigned_traier2",
   "trailer_plate_number",
   "column_break_cs1fi",
   "assigned_driver",
   "driver_name",
   "passport_number",
-  "driver_licence",
   "driver_contact",
   "route_details_section",
   "route",
@@ -149,13 +150,14 @@
    "depends_on": "eval:doc.transporter_type == 'In House'",
    "fieldname": "assigned_trailer",
    "fieldtype": "Link",
-   "label": "Assigned Trailer",
+   "label": "Assigned Trailer 1",
    "mandatory_depends_on": "eval:doc.transporter_type == 'In House'",
    "options": "Trailers"
   },
   {
    "fieldname": "trailer_plate_number",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Trailer Plate Number"
   },
   {
@@ -182,11 +184,6 @@
    "fieldname": "passport_number",
    "fieldtype": "Data",
    "label": "Driver Passport"
-  },
-  {
-   "fieldname": "driver_licence",
-   "fieldtype": "Data",
-   "label": "Driver Licence"
   },
   {
    "fetch_from": "assigned_driver.cell_number",
@@ -383,12 +380,24 @@
    "fieldtype": "Link",
    "label": "Invoice",
    "options": "Sales Invoice"
+  },
+  {
+   "fieldname": "assigned_traier1",
+   "fieldtype": "Link",
+   "label": "Assigned Trailer 2",
+   "options": "Trailers"
+  },
+  {
+   "fieldname": "assigned_traier2",
+   "fieldtype": "Link",
+   "label": "Assigned Trailer 3",
+   "options": "Trailers"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-05-19 11:46:26.171647",
+ "modified": "2023-05-22 12:50:53.155968",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Transport Assignments",
