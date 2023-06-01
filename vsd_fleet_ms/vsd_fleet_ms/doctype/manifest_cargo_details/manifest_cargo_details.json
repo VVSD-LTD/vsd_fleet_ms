@@ -1,0 +1,185 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-05-25 12:29:50.313700",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "customer_name",
+  "cargo_id",
+  "cargo_route",
+  "column_break_aruf5",
+  "cargo_type",
+  "cargo_allocation",
+  "specific_cargo_allocated",
+  "section_break_ordr3",
+  "seal_number",
+  "number_of_package",
+  "bl_number",
+  "column_break_6vchs",
+  "container_number",
+  "container_size",
+  "weight",
+  "section_break_buahv",
+  "cargo_location_country",
+  "cargo_loading_city",
+  "expected_loading_date",
+  "column_break_0byuc",
+  "cargo_destination_country",
+  "cargo_destination_city",
+  "expected_offloading_date"
+ ],
+ "fields": [
+  {
+   "fieldname": "customer_name",
+   "fieldtype": "Link",
+   "label": "Customer Name",
+   "options": "Customer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cargo_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Cargo ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cargo_route",
+   "fieldtype": "Data",
+   "label": "Cargo Route",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_aruf5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "cargo_id.cargo_status",
+   "fieldname": "cargo_type",
+   "fieldtype": "Data",
+   "label": "Cargo Type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cargo_allocation",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Cargo Allocation",
+   "options": "Truck\nTrailers"
+  },
+  {
+   "fieldname": "section_break_ordr3",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "cargo_id.no_of_packages",
+   "fieldname": "number_of_package",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Number of Package",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_6vchs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "cargo_id.net_weight",
+   "fieldname": "weight",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Weight (Kg)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_buahv",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "expected_loading_date",
+   "fieldtype": "Date",
+   "label": "Expected Loading Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_0byuc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "expected_offloading_date",
+   "fieldtype": "Date",
+   "label": "Expected Offloading Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cargo_location_country",
+   "fieldtype": "Data",
+   "label": "Cargo Location Country",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cargo_loading_city",
+   "fieldtype": "Data",
+   "label": "Cargo Loading City",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cargo_destination_country",
+   "fieldtype": "Data",
+   "label": "Cargo Destination Country",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cargo_destination_city",
+   "fieldtype": "Data",
+   "label": "Cargo Destination City",
+   "read_only": 1
+  },
+  {
+   "fieldname": "seal_number",
+   "fieldtype": "Data",
+   "label": "Seal Number",
+   "read_only": 1
+  },
+  {
+   "fieldname": "container_size",
+   "fieldtype": "Data",
+   "label": "Size",
+   "read_only": 1
+  },
+  {
+   "fieldname": "container_number",
+   "fieldtype": "Data",
+   "label": "Container Number",
+   "read_only": 1
+  },
+  {
+   "fieldname": "bl_number",
+   "fieldtype": "Data",
+   "label": "Bl Number",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.cargo_allocation == \"Truck\" || doc.cargo_allocation == \"Trailers\"",
+   "fieldname": "specific_cargo_allocated",
+   "fieldtype": "Dynamic Link",
+   "label": "Specific Cargo Allocated",
+   "options": "cargo_allocation",
+   "read_only_depends_on": "eval:doc.cargo_allocation == \"Truck\""
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-05-31 17:52:30.820102",
+ "modified_by": "Administrator",
+ "module": "VSD Fleet MS",
+ "name": "Manifest Cargo Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

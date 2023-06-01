@@ -1,7 +1,8 @@
 {
+ "_comments": "[{\"comment\": \"<div class=\\\"ql-editor read-mode\\\"><p>sasa logs zinakupa shida gani</p></div>\", \"by\": \"joel@vvsdtz.com\", \"name\": \"d534f9f2ba\"}, {\"comment\": \"<div class=\\\"ql-editor read-mode\\\"><p>acha ujinga kaka G</p></div>\", \"by\": \"arnold@vvsdtz.com\", \"name\": \"6e7e56f921\"}]",
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:MNFS-{truck}-{####}",
+ "autoname": "format:MNFS-{####}",
  "creation": "2023-05-24 17:26:13.060461",
  "default_view": "List",
  "doctype": "DocType",
@@ -10,20 +11,27 @@
  "field_order": [
   "manifest",
   "section_break_8hd1v",
-  "transport_order",
-  "route",
   "truck",
-  "column_break_byfrl",
+  "assigned_driver",
   "vehicle_trip",
-  "driver",
+  "posting_date",
   "section_break_odxqz",
+  "truck_license_plate_no",
+  "driver_name",
+  "route",
+  "section_break_dh9ow",
   "trailer_1",
-  "column_break_eezzb",
+  "trailer1_type",
+  "column_break_4lrgp",
   "trailer_2",
-  "column_break_q1jap",
+  "trailer2_type",
+  "column_break_zgurb",
   "trailer_3",
+  "trailer3_type",
   "section_break_lchwp",
   "manifest_cargo_details",
+  "section_break_smyta",
+  "manifest_total_weight",
   "amended_from"
  ],
  "fields": [
@@ -37,73 +45,23 @@
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "transport_order",
-   "fieldtype": "Link",
-   "label": "Transport Order",
-   "options": "Cargo Registration"
-  },
-  {
    "fieldname": "route",
    "fieldtype": "Link",
-   "label": "Route",
-   "options": "Trip Routes"
-  },
-  {
-   "fieldname": "truck",
-   "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Truck",
-   "options": "Truck",
+   "label": "Trip Route",
+   "options": "Trip Routes",
    "reqd": 1
-  },
-  {
-   "fieldname": "column_break_byfrl",
-   "fieldtype": "Column Break"
   },
   {
    "fieldname": "vehicle_trip",
-   "fieldtype": "Data",
-   "label": "Vehicle Trip"
-  },
-  {
-   "fieldname": "driver",
    "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Driver",
-   "options": "Truck Driver",
-   "reqd": 1
+   "label": "Vehicle Trip",
+   "options": "Vehicle Trips",
+   "read_only": 1
   },
   {
    "fieldname": "section_break_odxqz",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "trailer_1",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Trailer 1",
-   "options": "Trailers",
-   "reqd": 1
-  },
-  {
-   "fieldname": "column_break_eezzb",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "trailer_2",
-   "fieldtype": "Link",
-   "label": "Trailer 2",
-   "options": "Trailers"
-  },
-  {
-   "fieldname": "column_break_q1jap",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "trailer_3",
-   "fieldtype": "Link",
-   "label": "Trailer 3",
-   "options": "Trailers"
   },
   {
    "fieldname": "section_break_lchwp",
@@ -123,12 +81,113 @@
    "fieldname": "manifest_cargo_details",
    "fieldtype": "Table",
    "options": "Manifest Cargo Details"
+  },
+  {
+   "fieldname": "section_break_smyta",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "manifest_total_weight",
+   "fieldtype": "Int",
+   "label": "Manifest Total Weight",
+   "read_only": 1
+  },
+  {
+   "fieldname": "truck",
+   "fieldtype": "Link",
+   "label": "Truck Number",
+   "mandatory_depends_on": "eval:doc.route",
+   "options": "Truck"
+  },
+  {
+   "fieldname": "section_break_dh9ow",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "truck.trans_ms_default_trailer",
+   "fetch_if_empty": 1,
+   "fieldname": "trailer_1",
+   "fieldtype": "Link",
+   "label": "Trailer 1",
+   "mandatory_depends_on": "eval:doc.route",
+   "options": "Trailers"
+  },
+  {
+   "fieldname": "column_break_4lrgp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.trailer_1",
+   "fieldname": "trailer_2",
+   "fieldtype": "Link",
+   "label": "Trailer 2",
+   "options": "Trailers"
+  },
+  {
+   "fieldname": "column_break_zgurb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.trailer_2",
+   "fieldname": "trailer_3",
+   "fieldtype": "Link",
+   "label": "Trailer 3",
+   "options": "Trailers"
+  },
+  {
+   "fetch_from": "trailer_1.trailer_type",
+   "fieldname": "trailer1_type",
+   "fieldtype": "Data",
+   "label": "Trailer 1 Type",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "trailer_2.trailer_type",
+   "fieldname": "trailer2_type",
+   "fieldtype": "Data",
+   "label": "Trailer 2 Type",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "trailer_3.trailer_type",
+   "fieldname": "trailer3_type",
+   "fieldtype": "Data",
+   "label": "Trailer 3 Type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fetch_from": "truck.trans_ms_driver",
+   "fetch_if_empty": 1,
+   "fieldname": "assigned_driver",
+   "fieldtype": "Link",
+   "label": "Assigned Driver",
+   "mandatory_depends_on": "eval:doc.route",
+   "options": "Truck Driver"
+  },
+  {
+   "fetch_from": "assigned_driver.full_name",
+   "fieldname": "driver_name",
+   "fieldtype": "Data",
+   "label": "Driver Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "truck.license_plate",
+   "fieldname": "truck_license_plate_no",
+   "fieldtype": "Data",
+   "label": "Truck License Plate No.",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-05-25 12:51:40.081258",
+ "modified": "2023-05-31 16:43:00.895796",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Manifest",
@@ -136,6 +195,8 @@
  "owner": "Administrator",
  "permissions": [
   {
+   "amend": 1,
+   "cancel": 1,
    "create": 1,
    "delete": 1,
    "email": 1,
@@ -145,11 +206,28 @@
    "report": 1,
    "role": "System Manager",
    "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "share": 1,
+   "submit": 1,
    "write": 1
   }
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
- "track_changes": 1
+ "track_changes": 1,
+ "track_seen": 1
 }
