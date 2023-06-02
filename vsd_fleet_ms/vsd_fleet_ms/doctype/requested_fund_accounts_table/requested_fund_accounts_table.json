@@ -8,6 +8,7 @@
  "engine": "InnoDB",
  "field_order": [
   "disburse_funds",
+  "section_break_4bitk",
   "request_date",
   "expense_type",
   "request_description",
@@ -299,12 +300,16 @@
    "fieldtype": "Data",
    "label": "Journal Entry",
    "read_only": 1
+  },
+  {
+   "fieldname": "section_break_4bitk",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-05-08 16:01:27.666315",
+ "modified": "2023-06-02 16:44:09.372828",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Requested Fund Accounts Table",

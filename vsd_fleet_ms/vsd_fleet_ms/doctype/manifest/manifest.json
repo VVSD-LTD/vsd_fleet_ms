@@ -1,5 +1,4 @@
 {
- "_comments": "[{\"comment\": \"<div class=\\\"ql-editor read-mode\\\"><p>sasa logs zinakupa shida gani</p></div>\", \"by\": \"joel@vvsdtz.com\", \"name\": \"d534f9f2ba\"}, {\"comment\": \"<div class=\\\"ql-editor read-mode\\\"><p>acha ujinga kaka G</p></div>\", \"by\": \"arnold@vvsdtz.com\", \"name\": \"6e7e56f921\"}]",
  "actions": [],
  "allow_rename": 1,
  "autoname": "format:MNFS-{####}",
@@ -33,7 +32,9 @@
   "section_break_smyta",
   "manifest_total_weight",
   "amended_from",
-  "create_a_trip"
+  "create_a_trip",
+  "column_break_xdvco",
+  "total_fuel_consumption"
  ],
  "fields": [
   {
@@ -188,12 +189,23 @@
    "fieldname": "create_a_trip",
    "fieldtype": "Button",
    "label": "Create A Trip"
+  },
+  {
+   "fieldname": "column_break_xdvco",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "route.total_fuel_consumption_qty",
+   "fieldname": "total_fuel_consumption",
+   "fieldtype": "Data",
+   "label": "Total Fuel Consumption",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-06-01 15:51:11.844856",
+ "modified": "2023-06-02 15:55:36.626910",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Manifest",

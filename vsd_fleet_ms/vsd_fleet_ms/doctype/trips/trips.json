@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "TRIP-YY-####",
+ "autoname": "naming_series:",
  "creation": "2023-06-01 12:05:54.682933",
  "default_view": "List",
  "doctype": "DocType",
@@ -9,28 +9,45 @@
  "engine": "InnoDB",
  "field_order": [
   "naming_series",
-  "manifest",
   "trip_direction",
+  "manifest",
+  "transporter",
+  "eta_end_of_trip",
   "column_break_bs0gw",
   "route",
   "round_trip",
+  "total_fuel",
+  "total_distance",
   "section_break_o887x",
   "side_trips",
-  "amended_from"
+  "amended_from",
+  "trip_funds_section",
+  "requested_fund_accounts_table",
+  "section_break_ld7mf",
+  "fuel_request_history",
+  "section_break_drqny",
+  "fuel_stock_out",
+  "reduce_stock",
+  "column_break_c2lwo",
+  "stock_out_entry",
+  "section_break_vefjo",
+  "trip_complited"
  ],
  "fields": [
   {
    "fieldname": "naming_series",
-   "fieldtype": "Data",
+   "fieldtype": "Select",
+   "hidden": 1,
    "in_list_view": 1,
    "label": "Trip Number",
-   "reqd": 1
+   "options": "TRIP-GO-.####\nTRIP-RET-.####"
   },
   {
    "fieldname": "manifest",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Manifest",
+   "options": "Manifest",
    "reqd": 1
   },
   {
@@ -44,6 +61,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "manifest.route",
    "fieldname": "route",
    "fieldtype": "Data",
    "label": "Route"
@@ -60,7 +78,7 @@
   {
    "fieldname": "side_trips",
    "fieldtype": "Table",
-   "label": "Side Trips",
+   "label": "Trips Steps",
    "options": "Side Trips"
   },
   {
@@ -71,16 +89,93 @@
    "options": "Trips",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "transporter",
+   "fieldtype": "Select",
+   "label": "Transporter",
+   "options": "In House\nSub-Contractor"
+  },
+  {
+   "fieldname": "total_fuel",
+   "fieldtype": "Float",
+   "label": "Total Fuel"
+  },
+  {
+   "fieldname": "total_distance",
+   "fieldtype": "Data",
+   "label": "Total Distance"
+  },
+  {
+   "fieldname": "eta_end_of_trip",
+   "fieldtype": "Data",
+   "label": "ETA End Of Trip"
+  },
+  {
+   "fieldname": "section_break_ld7mf",
+   "fieldtype": "Section Break",
+   "label": "Trip Fuel Request"
+  },
+  {
+   "fieldname": "fuel_request_history",
+   "fieldtype": "Table",
+   "label": "Fuel Request History",
+   "options": "Fuel Request History"
+  },
+  {
+   "fieldname": "section_break_vefjo",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "trip_complited",
+   "fieldtype": "Check",
+   "label": "Trip Complited"
+  },
+  {
+   "depends_on": "eval:doc.transporter == 'In House'",
+   "fieldname": "fuel_stock_out",
+   "fieldtype": "Float",
+   "label": "Fuel Stock Out"
+  },
+  {
+   "fieldname": "column_break_c2lwo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "stock_out_entry",
+   "fieldtype": "Data",
+   "label": "Stock Out Entry"
+  },
+  {
+   "fieldname": "section_break_drqny",
+   "fieldtype": "Section Break"
+  },
+  {
+   "depends_on": "eval:(doc.fuel_stock_out) > 0 && (!doc.stock_out_entry || doc.stock_out_entry == \"\")",
+   "fieldname": "reduce_stock",
+   "fieldtype": "Button",
+   "label": "Reduce Stock"
+  },
+  {
+   "fieldname": "trip_funds_section",
+   "fieldtype": "Section Break",
+   "label": "Trip Funds"
+  },
+  {
+   "fieldname": "requested_fund_accounts_table",
+   "fieldtype": "Table",
+   "options": "Requested Fund Accounts Table"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-06-02 11:22:12.331951",
+ "modified": "2023-06-02 17:20:29.942034",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Trips",
- "naming_rule": "Expression (old style)",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
