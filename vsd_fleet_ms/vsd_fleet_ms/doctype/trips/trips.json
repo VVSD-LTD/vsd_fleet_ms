@@ -1,0 +1,118 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "TRIP-YY-####",
+ "creation": "2023-06-01 12:05:54.682933",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "manifest",
+  "trip_direction",
+  "column_break_bs0gw",
+  "route",
+  "round_trip",
+  "section_break_o887x",
+  "side_trips",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Trip Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "manifest",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Manifest",
+   "reqd": 1
+  },
+  {
+   "fieldname": "trip_direction",
+   "fieldtype": "Select",
+   "label": "Trip Direction",
+   "options": "Go\nReturn"
+  },
+  {
+   "fieldname": "column_break_bs0gw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "Route"
+  },
+  {
+   "fieldname": "round_trip",
+   "fieldtype": "Data",
+   "label": "Round Trip "
+  },
+  {
+   "fieldname": "section_break_o887x",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "side_trips",
+   "fieldtype": "Table",
+   "label": "Side Trips",
+   "options": "Side Trips"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Trips",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-06-02 11:22:12.331951",
+ "modified_by": "Administrator",
+ "module": "VSD Fleet MS",
+ "name": "Trips",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

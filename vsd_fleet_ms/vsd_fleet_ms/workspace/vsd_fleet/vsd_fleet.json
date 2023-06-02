@@ -1,7 +1,8 @@
 {
  "charts": [],
- "content": "[{\"id\":\"D_r2tq24Wk\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">VSD Fleet</span>\",\"col\":12}},{\"id\":\"eEKQ_vxz6K\",\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}},{\"id\":\"_FHA1FtdB9\",\"type\":\"card\",\"data\":{\"card_name\":\"Trips\",\"col\":4}},{\"id\":\"tiOnXE60vg\",\"type\":\"card\",\"data\":{\"card_name\":\"Settings\",\"col\":4}},{\"id\":\"fgOY4518ML\",\"type\":\"card\",\"data\":{\"card_name\":\"Transactions\",\"col\":4}}]",
+ "content": "[{\"id\":\"D_r2tq24Wk\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">VSD Fleet</span>\",\"col\":12}},{\"id\":\"eEKQ_vxz6K\",\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}},{\"id\":\"_FHA1FtdB9\",\"type\":\"card\",\"data\":{\"card_name\":\"Trips\",\"col\":4}},{\"id\":\"tiOnXE60vg\",\"type\":\"card\",\"data\":{\"card_name\":\"Settings\",\"col\":4}},{\"id\":\"fgOY4518ML\",\"type\":\"card\",\"data\":{\"card_name\":\"Transactions\",\"col\":4}},{\"id\":\"RRWILp0x3t\",\"type\":\"card\",\"data\":{\"card_name\":\"Transport Records\",\"col\":4}}]",
  "creation": "2023-05-04 18:08:12.460715",
+ "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
  "for_user": "",
@@ -158,7 +159,7 @@
    "is_query_report": 0,
    "label": "Vehicle Trips",
    "link_count": 0,
-   "link_to": "Vehicle Trips",
+   "link_to": "Trips",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -192,10 +193,28 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Transport Records",
+   "link_count": 1,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Manifest",
+   "link_count": 0,
+   "link_to": "Manifest",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2023-05-25 11:11:16.507546",
- "modified_by": "joel@vvsdtz.com",
+ "modified": "2023-06-02 11:09:30.920570",
+ "modified_by": "arnold@vvsdtz.com",
  "module": "VSD Fleet MS",
  "name": "VSD Fleet",
  "number_cards": [],

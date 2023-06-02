@@ -32,7 +32,8 @@
   "manifest_cargo_details",
   "section_break_smyta",
   "manifest_total_weight",
-  "amended_from"
+  "amended_from",
+  "create_a_trip"
  ],
  "fields": [
   {
@@ -182,12 +183,17 @@
    "fieldtype": "Data",
    "label": "Truck License Plate No.",
    "read_only": 1
+  },
+  {
+   "fieldname": "create_a_trip",
+   "fieldtype": "Button",
+   "label": "Create A Trip"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-05-31 16:43:00.895796",
+ "modified": "2023-06-01 15:51:11.844856",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Manifest",
