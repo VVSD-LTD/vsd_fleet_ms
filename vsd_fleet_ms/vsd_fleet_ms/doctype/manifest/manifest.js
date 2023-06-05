@@ -3,7 +3,7 @@
 
 frappe.ui.form.on('Manifest', {
 	refresh: function(frm) {
-		if(frm.doc.docstatus == 0 && frm.doc.name){
+		if(frm.doc.docstatus == 0 && frm.doc.name && !frm.doc.vehicle_trip){
 			var args_array = [];
 			args_array = {manifest_name:frm.doc.name}
 		frm.add_custom_button(__('Vehicle Trip'), function () {

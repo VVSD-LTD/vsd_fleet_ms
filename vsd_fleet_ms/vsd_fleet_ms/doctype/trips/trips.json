@@ -8,6 +8,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "trip_details_tab",
   "naming_series",
   "trip_direction",
   "manifest",
@@ -31,13 +32,19 @@
   "column_break_sw9re",
   "trailer_3",
   "section_break_o887x",
+  "main_trips_tab",
   "main_route_steps",
   "section_break_2luhc",
+  "side_trips_tab",
   "side_trips",
+  "location_update_tab",
   "section_break_gfrrc",
+  "location_update",
   "amended_from",
   "trip_funds_section",
+  "trip_fundss_section",
   "requested_fund_accounts_table",
+  "fuel_tab",
   "section_break_ld7mf",
   "fuel_request_history",
   "section_break_drqny",
@@ -46,7 +53,7 @@
   "column_break_c2lwo",
   "stock_out_entry",
   "section_break_vefjo",
-  "trip_complited"
+  "trip_completed"
  ],
  "fields": [
   {
@@ -114,14 +121,18 @@
    "options": "In House\nSub-Contractor"
   },
   {
+   "fetch_from": "route.total_fuel_consumption_qty",
    "fieldname": "total_fuel",
    "fieldtype": "Float",
-   "label": "Total Fuel"
+   "label": "Total Fuel",
+   "read_only": 1
   },
   {
+   "fetch_from": "route.total_distance",
    "fieldname": "total_distance",
    "fieldtype": "Data",
-   "label": "Total Distance"
+   "label": "Total Distance",
+   "read_only": 1
   },
   {
    "fieldname": "eta_end_of_trip",
@@ -130,8 +141,7 @@
   },
   {
    "fieldname": "section_break_ld7mf",
-   "fieldtype": "Section Break",
-   "label": "Trip Fuel Request"
+   "fieldtype": "Section Break"
   },
   {
    "fieldname": "fuel_request_history",
@@ -141,13 +151,8 @@
   },
   {
    "fieldname": "section_break_vefjo",
-   "fieldtype": "Section Break"
-  },
-  {
-   "default": "0",
-   "fieldname": "trip_complited",
-   "fieldtype": "Check",
-   "label": "Trip Complited"
+   "fieldtype": "Tab Break",
+   "label": "Trip Status"
   },
   {
    "depends_on": "eval:doc.transporter == 'In House'",
@@ -176,12 +181,13 @@
   },
   {
    "fieldname": "trip_funds_section",
-   "fieldtype": "Section Break",
+   "fieldtype": "Tab Break",
    "label": "Trip Funds"
   },
   {
    "fieldname": "requested_fund_accounts_table",
    "fieldtype": "Table",
+   "label": "Trip Funds",
    "options": "Requested Fund Accounts Table"
   },
   {
@@ -257,7 +263,7 @@
    "fieldname": "main_route_steps",
    "fieldtype": "Table",
    "label": "Main Route Steps",
-   "options": "Main Route Steps"
+   "options": "Route Steps"
   },
   {
    "fieldname": "section_break_2luhc",
@@ -266,12 +272,53 @@
   {
    "fieldname": "section_break_gfrrc",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "location_update",
+   "fieldtype": "Table",
+   "label": "Location Update",
+   "options": "Truck Trip Location Update"
+  },
+  {
+   "fieldname": "side_trips_tab",
+   "fieldtype": "Tab Break",
+   "label": "Side Trips"
+  },
+  {
+   "fieldname": "main_trips_tab",
+   "fieldtype": "Tab Break",
+   "label": "Main Trips"
+  },
+  {
+   "fieldname": "location_update_tab",
+   "fieldtype": "Tab Break",
+   "label": "Location Update"
+  },
+  {
+   "fieldname": "trip_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Trip Details"
+  },
+  {
+   "fieldname": "trip_fundss_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "fuel_tab",
+   "fieldtype": "Tab Break",
+   "label": "Fuel"
+  },
+  {
+   "default": "0",
+   "fieldname": "trip_completed",
+   "fieldtype": "Check",
+   "label": "Trip Completed"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-06-05 15:38:59.559407",
+ "modified": "2023-06-05 16:10:46.844404",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Trips",
