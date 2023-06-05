@@ -37,3 +37,13 @@ frappe.ui.form.on('Trips', {
 			});
 		}
 });
+
+frappe.ui.form.on('Truck Trip Location Update', {
+    view_on_map: function (frm, cdt, cdn) {
+        if (locals[cdt][cdn].latitude & locals[cdt][cdn].longitude) {
+            var url = 'https://www.google.com/maps/search/?api=1&query=' + locals[cdt][cdn].latitude + ',' + locals[cdt][cdn].longitude;
+            var win = window.open(url, '_blank');
+            win.focus();
+        }
+    }
+});
