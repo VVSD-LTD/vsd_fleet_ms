@@ -2,9 +2,26 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Manifest', {
-	// refresh: function(frm) {
-
-	// }
+	refresh: function(frm) {
+		if(frm.doc.docstatus == 0 && frm.doc.name){
+			var args_array = [];
+			args_array = {manifest_name:frm.doc.name}
+		frm.add_custom_button(__('Vehicle Trip'), function () {
+			frappe.call({
+				args: {
+					args_array:args_array
+				},
+				method: "vsd_fleet_ms.vsd_fleet_ms.doctype.trips.trips.create_vehicle_trip_from_manifest",
+				callback: function (r) {
+					if (r.message){
+						var doc = frappe.model.sync(r.message)[0];
+					frappe.set_route("Form", doc.doctype, doc.name);
+					}
+				}
+			})
+		}, __("Create"));
+	}
+	},
 	onload: function(frm){
 		frm.get_field("manifest_cargo_details").grid.cannot_add_rows = true;
 		var total_kg = 0;
@@ -135,6 +152,7 @@ frappe.ui.form.on('Manifest', {
 		filters_for_trailers(trailer_names)
 	},
 	setup: function(frm){
+		
 		var trailer_names = []
 
 		if (frm.doc.trailer_1){

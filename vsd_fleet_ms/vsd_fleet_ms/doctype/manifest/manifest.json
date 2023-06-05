@@ -31,10 +31,7 @@
   "manifest_cargo_details",
   "section_break_smyta",
   "manifest_total_weight",
-  "amended_from",
-  "create_a_trip",
-  "column_break_xdvco",
-  "total_fuel_consumption"
+  "amended_from"
  ],
  "fields": [
   {
@@ -58,7 +55,7 @@
    "fieldname": "vehicle_trip",
    "fieldtype": "Link",
    "label": "Vehicle Trip",
-   "options": "Vehicle Trips",
+   "options": "Trips",
    "read_only": 1
   },
   {
@@ -184,28 +181,12 @@
    "fieldtype": "Data",
    "label": "Truck License Plate No.",
    "read_only": 1
-  },
-  {
-   "fieldname": "create_a_trip",
-   "fieldtype": "Button",
-   "label": "Create A Trip"
-  },
-  {
-   "fieldname": "column_break_xdvco",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fetch_from": "route.total_fuel_consumption_qty",
-   "fieldname": "total_fuel_consumption",
-   "fieldtype": "Data",
-   "label": "Total Fuel Consumption",
-   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-06-02 15:55:36.626910",
+ "modified": "2023-06-05 15:14:57.270295",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Manifest",

@@ -18,8 +18,23 @@
   "round_trip",
   "total_fuel",
   "total_distance",
+  "section_break_xkwta",
+  "truck_number",
+  "assigned_driver",
+  "column_break_s202g",
+  "truck_licence_plate",
+  "driver_name",
+  "section_break_xjznk",
+  "trailer_1",
+  "column_break_9ohfw",
+  "trailer_2",
+  "column_break_sw9re",
+  "trailer_3",
   "section_break_o887x",
+  "main_route_steps",
+  "section_break_2luhc",
   "side_trips",
+  "section_break_gfrrc",
   "amended_from",
   "trip_funds_section",
   "requested_fund_accounts_table",
@@ -63,8 +78,10 @@
   {
    "fetch_from": "manifest.route",
    "fieldname": "route",
-   "fieldtype": "Data",
-   "label": "Route"
+   "fieldtype": "Link",
+   "label": "Route",
+   "options": "Trip Routes",
+   "read_only": 1
   },
   {
    "fieldname": "round_trip",
@@ -78,7 +95,7 @@
   {
    "fieldname": "side_trips",
    "fieldtype": "Table",
-   "label": "Trips Steps",
+   "label": "Side Trips Steps",
    "options": "Side Trips"
   },
   {
@@ -166,12 +183,95 @@
    "fieldname": "requested_fund_accounts_table",
    "fieldtype": "Table",
    "options": "Requested Fund Accounts Table"
+  },
+  {
+   "fieldname": "section_break_xkwta",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "manifest.truck",
+   "fieldname": "truck_number",
+   "fieldtype": "Data",
+   "label": "Truck Number",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "manifest.assigned_driver",
+   "fieldname": "assigned_driver",
+   "fieldtype": "Data",
+   "label": "Assigned Driver",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_s202g",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "manifest.truck_license_plate_no",
+   "fieldname": "truck_licence_plate",
+   "fieldtype": "Data",
+   "label": "Truck Licence Plate",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "manifest.driver_name",
+   "fieldname": "driver_name",
+   "fieldtype": "Data",
+   "label": "Driver Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_xjznk",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "manifest.trailer_1",
+   "fieldname": "trailer_1",
+   "fieldtype": "Data",
+   "label": "Trailer 1",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_9ohfw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "manifest.trailer_2",
+   "fieldname": "trailer_2",
+   "fieldtype": "Data",
+   "label": "Trailer 2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_sw9re",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "manifest.trailer_3",
+   "fieldname": "trailer_3",
+   "fieldtype": "Data",
+   "label": "Trailer 3",
+   "read_only": 1
+  },
+  {
+   "fieldname": "main_route_steps",
+   "fieldtype": "Table",
+   "label": "Main Route Steps",
+   "options": "Main Route Steps"
+  },
+  {
+   "fieldname": "section_break_2luhc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_gfrrc",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-06-02 17:20:29.942034",
+ "modified": "2023-06-05 15:38:59.559407",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Trips",
