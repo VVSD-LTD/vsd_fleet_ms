@@ -44,6 +44,7 @@
   "trip_funds_section",
   "trip_fundss_section",
   "requested_fund_accounts_table",
+  "total_expense",
   "fuel_tab",
   "section_break_ld7mf",
   "fuel_request_history",
@@ -122,6 +123,7 @@
   },
   {
    "fetch_from": "route.total_fuel_consumption_qty",
+   "fetch_if_empty": 1,
    "fieldname": "total_fuel",
    "fieldtype": "Float",
    "label": "Total Fuel",
@@ -129,6 +131,7 @@
   },
   {
    "fetch_from": "route.total_distance",
+   "fetch_if_empty": 1,
    "fieldname": "total_distance",
    "fieldtype": "Data",
    "label": "Total Distance",
@@ -313,12 +316,17 @@
    "fieldname": "trip_completed",
    "fieldtype": "Check",
    "label": "Trip Completed"
+  },
+  {
+   "fieldname": "total_expense",
+   "fieldtype": "Data",
+   "label": "Total Expense"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-06-05 16:10:46.844404",
+ "modified": "2023-06-05 17:08:44.048813",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Trips",
