@@ -48,7 +48,7 @@
    "fieldname": "location_type",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Type"
+   "label": "Location Type"
   },
   {
    "fieldname": "fuel_consumption_qty",
@@ -128,7 +128,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-05-12 15:16:52.523407",
+ "modified": "2023-06-06 18:15:00.419459",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Route Steps",

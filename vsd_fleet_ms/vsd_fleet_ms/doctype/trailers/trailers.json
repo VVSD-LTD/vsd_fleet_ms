@@ -16,6 +16,7 @@
   "image",
   "status",
   "column_break_e1nwo",
+  "trailer_number",
   "manufacturing_year",
   "trailer_make",
   "trailer_type",
@@ -139,12 +140,17 @@
    "fieldname": "overview_tab",
    "fieldtype": "Tab Break",
    "label": "Overview"
+  },
+  {
+   "fieldname": "trailer_number",
+   "fieldtype": "Data",
+   "label": "Trailer Number"
   }
  ],
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-22 13:24:19.981394",
+ "modified": "2023-06-06 17:53:30.630966",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Trailers",

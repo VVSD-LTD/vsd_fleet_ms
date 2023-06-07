@@ -32,6 +32,7 @@
   },
   {
    "fetch_from": "expense.fixed_value",
+   "fetch_if_empty": 1,
    "fieldname": "amount",
    "fieldtype": "Currency",
    "in_list_view": 1,
@@ -51,7 +52,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-05-08 18:39:36.010600",
+ "modified": "2023-06-07 16:23:04.673352",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Fixed Expenses Table",
