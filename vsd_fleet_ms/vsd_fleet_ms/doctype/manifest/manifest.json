@@ -10,22 +10,32 @@
  "field_order": [
   "manifest",
   "section_break_8hd1v",
-  "truck",
-  "assigned_driver",
+  "transporter_type",
+  "section_break_6xysb",
   "vehicle_trip",
-  "posting_date",
-  "section_break_odxqz",
+  "truck",
   "truck_license_plate_no",
-  "driver_name",
+  "sub_contactor_truck_license_plate_no",
+  "sub_contractor_drivers_license_number",
+  "section_break_odxqz",
   "route",
+  "assigned_driver",
+  "driver_name",
+  "sub_contactor_driver_name",
+  "posting_date",
   "section_break_dh9ow",
+  "has_trailers",
+  "section_break_namuc",
   "trailer_1",
+  "sub_contactor_trailer_1",
   "trailer1_type",
   "column_break_4lrgp",
   "trailer_2",
+  "sub_contactor_trailer_2",
   "trailer2_type",
   "column_break_zgurb",
   "trailer_3",
+  "sub_contactor_trailer_3",
   "trailer3_type",
   "section_break_lchwp",
   "manifest_cargo_details",
@@ -55,8 +65,7 @@
    "fieldname": "vehicle_trip",
    "fieldtype": "Link",
    "label": "Vehicle Trip",
-   "options": "Trips",
-   "read_only": 1
+   "options": "Trips"
   },
   {
    "fieldname": "section_break_odxqz",
@@ -92,10 +101,11 @@
    "read_only": 1
   },
   {
+   "depends_on": "eval:doc.transporter_type == \"In House\"",
    "fieldname": "truck",
    "fieldtype": "Link",
    "label": "Truck Number",
-   "mandatory_depends_on": "eval:doc.route",
+   "mandatory_depends_on": "eval:doc.transporter_type == \"In House\"",
    "options": "Truck"
   },
   {
@@ -103,12 +113,13 @@
    "fieldtype": "Section Break"
   },
   {
+   "depends_on": "eval:doc.transporter_type == \"In House\" && doc.has_trailers == 1",
    "fetch_from": "truck.trans_ms_default_trailer",
    "fetch_if_empty": 1,
    "fieldname": "trailer_1",
    "fieldtype": "Link",
    "label": "Trailer 1",
-   "mandatory_depends_on": "eval:doc.route",
+   "mandatory_depends_on": "eval:doc.transporter_type == \"In House\"",
    "options": "Trailers"
   },
   {
@@ -116,7 +127,7 @@
    "fieldtype": "Column Break"
   },
   {
-   "depends_on": "eval:doc.trailer_1",
+   "depends_on": "eval:doc.trailer_1 && doc.has_trailers == 1",
    "fieldname": "trailer_2",
    "fieldtype": "Link",
    "label": "Trailer 2",
@@ -127,7 +138,7 @@
    "fieldtype": "Column Break"
   },
   {
-   "depends_on": "eval:doc.trailer_2",
+   "depends_on": "eval:doc.trailer_2 && doc.has_trailers == 1",
    "fieldname": "trailer_3",
    "fieldtype": "Link",
    "label": "Trailer 3",
@@ -141,6 +152,7 @@
    "read_only": 1
   },
   {
+   "depends_on": "eval:doc.has_trailers == 1",
    "fetch_from": "trailer_2.trailer_type",
    "fieldname": "trailer2_type",
    "fieldtype": "Data",
@@ -148,6 +160,7 @@
    "read_only": 1
   },
   {
+   "depends_on": "eval:doc.has_trailers == 1",
    "fetch_from": "trailer_3.trailer_type",
    "fieldname": "trailer3_type",
    "fieldtype": "Data",
@@ -160,15 +173,17 @@
    "label": "Date"
   },
   {
+   "depends_on": "eval:doc.transporter_type == \"In House\"",
    "fetch_from": "truck.trans_ms_driver",
    "fetch_if_empty": 1,
    "fieldname": "assigned_driver",
    "fieldtype": "Link",
    "label": "Assigned Driver",
-   "mandatory_depends_on": "eval:doc.route",
+   "mandatory_depends_on": "eval:doc.transporter_type == \"In House\"",
    "options": "Truck Driver"
   },
   {
+   "depends_on": "eval:doc.transporter_type == \"In House\"",
    "fetch_from": "assigned_driver.full_name",
    "fieldname": "driver_name",
    "fieldtype": "Data",
@@ -176,17 +191,78 @@
    "read_only": 1
   },
   {
+   "depends_on": "eval:doc.transporter_type == \"In House\"",
    "fetch_from": "truck.license_plate",
    "fieldname": "truck_license_plate_no",
    "fieldtype": "Data",
    "label": "Truck License Plate No.",
    "read_only": 1
+  },
+  {
+   "default": "In House",
+   "fieldname": "transporter_type",
+   "fieldtype": "Select",
+   "label": "Transporter",
+   "options": "In House\nSub-Contractor"
+  },
+  {
+   "depends_on": "eval:doc.transporter_type == \"Sub-Contractor\"",
+   "fieldname": "sub_contactor_driver_name",
+   "fieldtype": "Data",
+   "label": "Driver Name",
+   "mandatory_depends_on": "eval:doc.transporter_type == \"Sub-Contractor\""
+  },
+  {
+   "depends_on": "eval:doc.transporter_type == \"Sub-Contractor\"",
+   "fieldname": "sub_contactor_truck_license_plate_no",
+   "fieldtype": "Data",
+   "label": "Truck Licence Number",
+   "mandatory_depends_on": "eval:doc.transporter_type == \"Sub-Contractor\""
+  },
+  {
+   "depends_on": "eval:doc.transporter_type == \"Sub-Contractor\" && doc.has_trailers == 1",
+   "fieldname": "sub_contactor_trailer_1",
+   "fieldtype": "Data",
+   "label": "Trailer 1"
+  },
+  {
+   "depends_on": "eval:doc.sub_contactor_trailer_1 && doc.has_trailers == 1",
+   "fieldname": "sub_contactor_trailer_2",
+   "fieldtype": "Data",
+   "label": "Trailer 2"
+  },
+  {
+   "depends_on": "eval:doc.sub_contactor_trailer_2 && doc.has_trailers == 1",
+   "fieldname": "sub_contactor_trailer_3",
+   "fieldtype": "Data",
+   "label": "Trailer 3"
+  },
+  {
+   "fieldname": "section_break_6xysb",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_trailers",
+   "fieldtype": "Check",
+   "label": "Has Trailer(s)?"
+  },
+  {
+   "depends_on": "eval:doc.has_trailers == 1",
+   "fieldname": "section_break_namuc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "depends_on": "eval:doc.transporter_type == \"Sub-Contractor\"",
+   "fieldname": "sub_contractor_drivers_license_number",
+   "fieldtype": "Data",
+   "label": "Drivers License Number"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-06-05 15:14:57.270295",
+ "modified": "2023-06-14 18:18:52.625650",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Manifest",

@@ -7,7 +7,44 @@ from frappe.model.document import Document
 import datetime
 
 class Manifest(Document):
-	pass
+	def before_save(self):
+		self.validate_has_trailers()
+		self.validate_transporter_type()
+		
+	def validate_has_trailers(self):
+		if self.has_trailers == 0:
+			self.trailer_1 = ''
+			self.sub_contactor_trailer_1 = ''
+			self.trailer1_type = ''
+			self.trailer_2 = ''
+			self.sub_contactor_trailer_2 = ''
+			self.trailer2_type = ''
+			self.trailer_3 = ''
+			self.sub_contactor_trailer_3 = ''
+			self.trailer3_type = ''
+			for row in self.manifest_cargo_details:
+				row.cargo_allocation = "Truck"
+				row.sub_contractor_cargo_allocation = self.sub_contactor_truck_license_plate_no
+
+	def validate_transporter_type(self):
+		if self.transporter_type == "In House":
+			self.sub_contactor_truck_license_plate_no = ''
+			self.sub_contactor_driver_name = ''
+			self.sub_contactor_trailer_1 = ''
+			self.sub_contactor_trailer_2 = ''
+			self.sub_contactor_trailer_3 = ''
+		elif self.transporter_type == "Sub-Contractor":
+			self.truck = ''
+			self.assigned_driver = ''
+			self.driver_name = ''
+			self.truck_license_plate_no = ''
+			self.trailer_1 = ''
+			self.trailer1_type = ''
+			self.trailer_2 = ''
+			self.trailer2_type = ''
+			self.trailer_3 = ''
+			self.trailer3_type = ''
+
 
 @frappe.whitelist()
 def get_manifests(filter):

@@ -25,11 +25,11 @@ class RequestedPayment(Document):
 
     def get_all_children(self, parenttype=None):
         # For getting children
-        return self.get("payments_reference") or []
+        return self.get("payment_reference") or []
 
     def update_children(self):
         """update child tables"""
-        self.update_child_table("payments_reference")
+        self.update_child_table("payment_reference")
 
     def load_from_db(self):
         """Load document and children from database and create properties
@@ -64,7 +64,7 @@ class RequestedPayment(Document):
 
         for df in table_fields:
             # Load details for payments already paid
-            if df.fieldname == "payments_reference":
+            if df.fieldname == "payment_reference":
                 children = frappe.db.get_values(
                     df.options,
                     {
@@ -92,7 +92,7 @@ class RequestedPayment(Document):
                             "in",
                             (
                                 "requested_funds",
-                                "main_requested_funds",
+                                "requested_fund_accounts_table",
                                 "return_requested_funds",
                             ),
                         ],
@@ -119,7 +119,7 @@ class RequestedPayment(Document):
                             "in",
                             (
                                 "requested_funds",
-                                "main_requested_funds",
+                                "requested_fund_accounts_table",
                                 "return_requested_funds",
                             ),
                         ],
@@ -159,16 +159,16 @@ def get_outstanding_payments(self, account_currency):
     due_date = datetime.datetime.now().date()
 
     requested_from = frappe.get_doc(self.reference_doctype, self.reference_docname)
-    if self.reference_doctype == "Vehicle Trips":
-        for request in requested_from.main_requested_funds:
+    if self.reference_doctype == "Trips":
+        for request in requested_from.requested_fund_accounts_table:
             if (
                 request.request_status == "Approved"
                 and request.request_currency == account_currency
             ):
                 total_amount = total_amount + request.request_amount
                 # request_date = datetime.datetime.strptime(request.request_date, '%Y-%m-%d')
-                if request.request_date < due_date:
-                    due_date = request.request_date
+                if request.requested_date < due_date:
+                    due_date = request.requested_date
 
         for request in requested_from.return_requested_funds:
             if (
@@ -176,8 +176,8 @@ def get_outstanding_payments(self, account_currency):
                 and request.request_currency == account_currency
             ):
                 total_amount = total_amount + request.request_amount
-                if request.request_date < due_date:
-                    due_date = request.request_date
+                if request.requested_date < due_date:
+                    due_date = request.requested_date
     else:
         for request in requested_from.requested_funds:
             if (
@@ -185,8 +185,8 @@ def get_outstanding_payments(self, account_currency):
                 and request.request_currency == account_currency
             ):
                 total_amount = total_amount + request.request_amount
-                if request.request_date < due_date:
-                    due_date = request.request_date
+                if request.requested_date < due_date:
+                    due_date = request.requested_date
 
     paid_amount = frappe.db.sql(
         """SELECT (CASE WHEN SUM(debit_in_account_currency) > 0 THEN SUM(debit_in_account_currency) ELSE 0 END) AS paid_amount 
@@ -261,9 +261,9 @@ def request_funds(**args):
                 "reference_doctype": args.reference_doctype,
                 "reference_docname": args.reference_docname,
                 "company": args.company,
-                "customer": args.customer,
-                "vehicle_no": args.vehicle_no,
-                "driver": args.driver,
+                "manifest": args.manifest,
+                "truck_no": args.truck,
+                "truck_driver": args.truck_driver,
                 "trip_route": args.trip_route,
                 "approval_status": "Waiting Approval",
                 "payment_status": "Waiting Approval",

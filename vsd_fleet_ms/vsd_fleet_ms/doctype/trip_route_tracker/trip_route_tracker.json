@@ -1,0 +1,76 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-06-02 14:53:03.648057",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "timestamp",
+  "location",
+  "longitude",
+  "latitude",
+  "comment",
+  "type_of_update",
+  "view_on_map"
+ ],
+ "fields": [
+  {
+   "fieldname": "timestamp",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Location",
+   "reqd": 1
+  },
+  {
+   "fieldname": "longitude",
+   "fieldtype": "Data",
+   "label": "Longitude"
+  },
+  {
+   "fieldname": "latitude",
+   "fieldtype": "Data",
+   "label": "Latitude"
+  },
+  {
+   "fieldname": "comment",
+   "fieldtype": "Data",
+   "label": "Comment"
+  },
+  {
+   "default": "Manual Update",
+   "fieldname": "type_of_update",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Type of Update",
+   "options": "Manual Update\nGPS Update",
+   "read_only": 1
+  },
+  {
+   "fieldname": "view_on_map",
+   "fieldtype": "Button",
+   "in_list_view": 1,
+   "label": "View on Map"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-06-12 16:28:41.326706",
+ "modified_by": "Administrator",
+ "module": "VSD Fleet MS",
+ "name": "Trip Route Tracker",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -8,11 +8,6 @@ frappe.ui.form.on('Requested Payment', {
 		html += '<button style="background-color: red; color: #FFF;" class="btn btn-default btn-xs" onclick="cur_frm.cscript.reject_request(\'' + frm + '\');">Reject</button>'
 		$(frm.fields_dict.html1.wrapper).html(html);
 		
-		//Load the recommend and recommend against buttons
-		var html2 = '<button style="background-color: green; color: #FFF;" class="btn btn-default btn-xs" onclick="cur_frm.cscript.recommend_request(\'' + frm + '\');">Recommend</button> ';
-		html2 += '<button style="background-color: red; color: #FFF;" class="btn btn-default btn-xs" onclick="cur_frm.cscript.recommend_against_request(\'' + frm + '\');">Recommend Against</button>'
-		$(frm.fields_dict.html2.wrapper).html(html2);
-		
 		//Load the accounts approval buttons
 		var html3 = '<button style="background-color: green; color: #FFF;" class="btn btn-default btn-xs" onclick="cur_frm.cscript.accounts_approval(\'' + frm + '\');">Approve</button> ';
 		html3 += '<button style="background-color: red; color: #FFF;" class="btn btn-default btn-xs" onclick="cur_frm.cscript.accounts_cancel(\'' + frm + '\');">Cancel</button>'
@@ -23,13 +18,12 @@ frappe.ui.form.on('Requested Payment', {
 			frm.events.show_hide_sections(frm);
 		});
 	},
-	
-	refresh: function(frm){
-		console.log(frm);
-		
-		//Beautify the previous approved table
+	setup:function(frm){
 		$(frm.wrapper).on("grid-row-render", function(e, grid_row) {
-			if(grid_row.doc.request_status == "Approved")
+			if (grid_row.doc.request_status == "Requested") {
+				$(grid_row.columns.request_status).css({"font-weight": "bold","color": "blue"});
+			}	
+			else if(grid_row.doc.request_status == "Approved")
 			{
 				$(grid_row.columns.request_status).css({"font-weight": "bold", "color": "green"});
 			}
@@ -38,6 +32,15 @@ frappe.ui.form.on('Requested Payment', {
 				$(grid_row.columns.request_status).css({"font-weight": "bold", "color": "red"});
 			}
 		});
+	},
+	
+	refresh: function(frm){
+		// console.log(frm);
+
+		// Hide delete buttons for Requested fuel Child Doctype
+		$('*[data-fieldname="requested_funds"]').find('.grid-remove-rows').hide();
+		$('*[data-fieldname="requested_funds"]').find('.grid-remove-all-rows').hide();
+		$('*[data-fieldname="requested_funds"]').find('.grid-add-row').hide();
 		
 		frappe.after_ajax(function(){
 			frm.events.show_hide_sections(frm);
@@ -87,7 +90,7 @@ frappe.ui.form.on('Requested Payment', {
 		//For total paid amount
 		var total_tsh = 0;
 		var total_usd = 0;
-		frm.doc.payments_reference.forEach(function(row){
+		frm.doc.payment_reference.forEach(function(row){
 			if(row.currency == "TZS")
 			{
 				total_tsh += row.amount;
@@ -138,7 +141,7 @@ frappe.ui.form.on('Requested Payment', {
 	
 	validate_payment: function(frm){
 		var to_return = true;
-		frm.doc.payments_reference.forEach(function(row){
+		frm.doc.payment_reference.forEach(function(row){
 			if(row.amount <= 0 || !row.date_of_payment || row.date_of_payment == "" || !row.reference_no || row.reference_no == "" || !row.paid_to || row.paid_to == "" || row.payment_method == "" || row.payment_account == "")
 			{
 				to_return = false;
@@ -148,11 +151,11 @@ frappe.ui.form.on('Requested Payment', {
 	},
 	
 	show_hide_sections: function(frm){
-		frm.toggle_display(['request_total_amount', 'html1', 'html2'], (frm.doc.requested_funds.length > 0));
+		frm.toggle_display(['request_total_amount', 'html1'], (frm.doc.requested_funds.length > 0));
 		//frm.toggle_display('section_previous_requested_funds', (frm.doc.previous_requested_funds.length > 0));
 		//frm.toggle_display('section_payments_details', frm.doc.previous_requested_funds.length > 0);
 		//frm.toggle_display('total_paid_amount', (frm.doc.previous_requested_funds.length > 0));
-		//frm.toggle_display(['requested_funds', 'request_total_amount', 'section_previous_requested_funds', 'total_approved_amount', 'payments_reference', 'total_paid_amount'], true);
+		//frm.toggle_display(['requested_funds', 'request_total_amount', 'section_previous_requested_funds', 'total_approved_amount', 'payment_reference', 'total_paid_amount'], true);
 	},
 	
 	get_account_currency(frm, cdt, cdn, account){
@@ -173,9 +176,19 @@ frappe.ui.form.on('Requested Payment', {
 		}
 	}
 });
+frappe.ui.form.on('Requested Fund Details', {
 
+	form_render (frm, cdt, cdn) {
+		frm.fields_dict.requested_funds.grid.wrapper.find('.grid-delete-row').hide();
+		frm.fields_dict.requested_funds.grid.wrapper.find('.grid-duplicate-row').hide();
+		frm.fields_dict.requested_funds.grid.wrapper.find('.grid-move-row').hide();
+		frm.fields_dict.requested_funds.grid.wrapper.find('.grid-append-row').hide();
+		frm.fields_dict.requested_funds.grid.wrapper.find('.grid-insert-row-below').hide();
+		frm.fields_dict.requested_funds.grid.wrapper.find('.grid-insert-row').hide();
+	},
+});
 
-frappe.ui.form.on('Requested Funds Accounts Table', {
+frappe.ui.form.on('Requested Fund Accounts Table', {
 	form_render: function(frm, cdt, cdn){
 		frappe.call({
 			'method': 'frappe.client.get_value',
@@ -292,7 +305,7 @@ cur_frm.cscript.recommend_against_request = function(frm){
 			function(){
 				$.each(selected['requested_funds'], function(index, value){
 					frappe.call({
-						method: "erpnext.accounts.doctype.requested_payments.requested_payments.recommend_against_request",
+						method: "vsd_fleet_ms.vsd_fleet_ms.doctype.requested_payment.requested_payment.recommend_against_request",
 						freeze: true,
 						args: {
 							request_doctype: "Requested Fund Details",
@@ -480,17 +493,17 @@ cur_frm.cscript.populate_child = function(reference_doctype, reference_docname){
 		var request_total_amount_usd = 0;
 		var reference_doc = frappe.get_doc(reference_doctype, reference_docname);
 		
-		//If its requested from vehicle trip, there is main and return requested funds
-		if('Vehicle Trip' == reference_doctype)
+		//If its reqrom s, there is main and return requested funds
+		if('Trips' == reference_doctype)
 		{
 			//For main trip
-			reference_doc.main_requested_funds.forEach(function(row){
+			reference_doc.requested_fund_accounts_table.forEach(function(row){
 				//if(row.request_hidden_status == "0")
 				if(row.request_status != "Approved" && row.request_status != "Rejected")
 				{
 					var new_row = cur_frm.add_child("requested_funds");
 					new_row.name = row.name;
-					new_row.request_date = row.request_date;
+					new_row.request_date = row.requested_date;
 					new_row.request_amount = row.request_amount;
 					new_row.request_currency = row.request_currency;
 					new_row.request_description = row.request_description;
@@ -510,7 +523,7 @@ cur_frm.cscript.populate_child = function(reference_doctype, reference_docname){
 					console.log("Executing");
 					var new_row = cur_frm.add_child("previous_requested_funds");
 					new_row.name = row.name;
-					new_row.request_date = row.request_date;
+					new_row.request_date = row.requested_date;
 					new_row.request_amount = row.request_amount;
 					new_row.request_currency = row.request_currency;
 					new_row.request_description = row.request_description;
@@ -527,7 +540,7 @@ cur_frm.cscript.populate_child = function(reference_doctype, reference_docname){
 				{
 					var new_row = cur_frm.add_child("requested_funds");
 					new_row.name = row.name;
-					new_row.request_date = row.request_date;
+					new_row.requested_date = row.request_date;
 					new_row.request_amount = row.request_amount;
 					new_row.request_currency = row.request_currency;
 					new_row.request_description = row.request_description;
@@ -546,7 +559,7 @@ cur_frm.cscript.populate_child = function(reference_doctype, reference_docname){
 				else{
 					var new_row = cur_frm.add_child("previous_requested_funds");
 					new_row.name = row.name;
-					new_row.request_date = row.request_date;
+					new_row.requested_date = row.request_date;
 					new_row.request_amount = row.request_amount;
 					new_row.request_currency = row.request_currency;
 					new_row.request_description = row.request_description;
@@ -564,7 +577,7 @@ cur_frm.cscript.populate_child = function(reference_doctype, reference_docname){
 				{
 					var new_row = cur_frm.add_child("requested_funds");
 					new_row.name = row.name;
-					new_row.request_date = row.request_date;
+					new_row.requested_date = row.request_date;
 					new_row.request_amount = row.request_amount;
 					new_row.request_currency = row.request_currency;
 					new_row.request_description = row.request_description;
@@ -596,7 +609,6 @@ cur_frm.cscript.populate_child = function(reference_doctype, reference_docname){
 		if(request_total_amount_tsh != 0 || request_total_amount_usd != 0)
 		{
 			cur_frm.set_df_property("html1", "hidden", 0);
-			cur_frm.set_df_property("html2", "hidden", 0);
 			console.log(cur_frm.get_field('request_total_amount'));
 			cur_frm.get_field("request_total_amount").$wrapper[0].innerHTML = '<p class="text-muted small">Total Requested Amount</p><b>USD ' + request_total_amount_usd + ' <br> TZS ' + request_total_amount_tsh.toLocaleString() + '</b>';
 			//cur_frm.refresh_field("request_total_amount");
@@ -605,8 +617,28 @@ cur_frm.cscript.populate_child = function(reference_doctype, reference_docname){
 		{
 			cur_frm.set_df_property("request_total_amount", "hidden", 1);
 			cur_frm.set_df_property("html1", "hidden", 1);
-			cur_frm.set_df_property("html2", "hidden", 1);
 		}
 	});
 };
 
+frappe.ui.form.on('Requested Fund Accounts Table', {
+	disburse_funds: function (frm, cdt, cdn) {
+		frm.save_or_update();
+		if (frm.is_dirty()) {
+			frappe.throw(__("Plase Save First"));
+			return;
+		}
+		const row = locals[cdt][cdn];
+		if (row.journal_entry) return;
+		frappe.call({
+			method: "vsd_fleet_ms.vsd_fleet_ms.doctype.trips.trips.create_fund_jl",
+			args: {
+				doc: frm.doc,
+				row: row
+			},
+			callback: function (data) {
+				frappe.set_route('Form', data.message.doctype, data.message.name);
+			}
+		});
+	}
+});

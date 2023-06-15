@@ -1,8 +1,17 @@
 # Copyright (c) 2023, VV SYSTEMS DEVELOPER LTD and contributors
 # For license information, please see license.txt
 
+from __future__ import unicode_literals
+from operator import mul
 import frappe
+import time
+import datetime
 from frappe.model.document import Document
+from frappe.model.mapper import get_mapped_doc
+import json
+from frappe.utils import nowdate, cstr, cint, flt, comma_or, now
+from frappe import _, msgprint
+from vsd_fleet_ms.utils.dimension import set_dimension
 
 class CargoRegistration(Document):
 	pass
@@ -20,18 +29,18 @@ def create_sales_invoice(doc, rows):
         description = ""
         trip_info = None
         if row["transporter_type"] == "In House":
-            description += "<b>VEHICLE NUMBER: " + row["assigned_vehicle"]
+            description += "<b>VEHICLE NUMBER: " + row["assigned_truck"]
             trip_info = "<BR>TRIP: " + row["created_trip"]
         elif row["transporter_type"] == "Sub-Contractor":
             description += "<b>VEHICLE NUMBER: " + row["vehicle_plate_number"]
-        if row["route"]:
-            description += "<BR>ROUTE: " + row["route"]
+        if row["cargo_route"]:
+            description += "<BR>ROUTE: " + row["cargo_route"]
         if trip_info:
             description += trip_info
         item = frappe._dict({
-                "item_code": row["item"],
+                "item_code": row["service_item"],
                 "qty": 1,
-                "uom": frappe.get_value("Item", row["item"], "stock_uom"),
+                "uom": frappe.get_value("Item", row["service_item"], "stock_uom"),
                 "rate": row["rate"],
                 "description": description,
             }
@@ -62,13 +71,13 @@ def create_sales_invoice(doc, rows):
     invoice.flags.ignore_mandatory = True
     invoice.calculate_taxes_and_totals()
     invoice.insert(ignore_permissions=True)
-    for item in doc.assign_transport:
+    for item in doc.cargo_details:
         if item.name in [i["name"] for i in rows]:
             item.invoice = invoice.name
-            if item.transporter_type == "In House":
-                trip = frappe.get_doc("Vehicle Trips", item.created_trip)
-                trip.invoice_number = invoice.name
-                trip.save()
+            # if item.transporter_type == "In House":
+            #     trip = frappe.get_doc("Trips", item.created_trip)
+            #     trip.invoice_number = invoice.name
+            #     trip.save()
     doc.save()
            
         

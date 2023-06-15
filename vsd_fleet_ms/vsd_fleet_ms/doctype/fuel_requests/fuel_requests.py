@@ -14,27 +14,14 @@ from frappe.utils import nowdate
 class FuelRequests(Document):
     def onload(self):
         trip = frappe.get_doc(self.reference_doctype, self.reference_docname)
-        # Load approved fuel for main trip
-        if trip.main_route and trip.vehicle:
-            consumption = frappe.db.get_value(
-                "Truck", trip.vehicle, "trans_ms_fuel_consumption"
-                )
-            route = frappe.db.get_value("Trip Routes", trip.main_route, "total_distance")
-            approved_fuel = consumption * route
-            self.set("main_route", trip.main_route)
-            self.set("main_approved_fuel", str(approved_fuel) + " Litres")
-
-        # Load approved fuel for return trip
-        if trip.return_route and trip.vehicle:
-            consumption = frappe.db.get_value(
-                "Truck", trip.vehicle, "trans_ms_fuel_consumption"
-            )
-            route = frappe.db.get_value(
-                "Trip Routes", trip.return_route, "total_distance"
-            )
-            approved_fuel = consumption * route
-            self.set("return_route", trip.return_route)
-            self.set("return_approved_fuel", str(approved_fuel) + " Litres")
+        if not self.main_route:
+            self.set("main_route", trip.route)
+        if not self.truck:
+            self.set("truck", trip.truck_number)
+        if not self.truck_driver:
+            self.set("truck_driver", trip.assigned_driver)
+        if not self.driver_name:
+            self.set("driver_name", trip.driver_name)
 
     def get_all_children(self, parenttype=None):
         # For getting children
@@ -46,7 +33,7 @@ class FuelRequests(Document):
     def before_save(self):
         for row in self.approved_requests:
             doc = frappe.get_doc("Fuel Requests Table", row.name)
-            doc.db_set("disburcement_type", row.disburcement_type)
+            doc.db_set("disbursement_type", row.disbursement_type)
             doc.db_set("supplier", row.supplier)
             doc.db_set("receipt_date", row.receipt_date)
             doc.db_set("receipt_time", row.receipt_time)
@@ -91,7 +78,7 @@ class FuelRequests(Document):
                     {
                         "parent": self.get("reference_docname"),
                         "parenttype": self.get("reference_doctype"),
-                        "parentfield": "main_fuel_request",
+                        "parentfield": "fuel_request_history",
                         "status": "Approved",
                     },
                     "*",
@@ -103,7 +90,7 @@ class FuelRequests(Document):
                     {
                         "parent": self.get("reference_docname"),
                         "parenttype": self.get("reference_doctype"),
-                        "parentfield": "main_fuel_request",
+                        "parentfield": "fuel_request_history",
                         "status": "Rejected",
                     },
                     "*",
@@ -151,7 +138,7 @@ class FuelRequests(Document):
                     {
                         "parent": self.get("reference_docname"),
                         "parenttype": self.get("reference_doctype"),
-                        "parentfield": "main_fuel_request",
+                        "parentfield": "fuel_request_history",
                         "status": "Requested",
                     },
                     "*",

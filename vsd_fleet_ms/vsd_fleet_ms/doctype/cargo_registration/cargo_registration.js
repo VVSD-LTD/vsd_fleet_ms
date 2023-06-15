@@ -22,10 +22,17 @@ frappe.ui.form.on('Cargo Registration', {
 			}
 		});
 		// frm.add_custom_button(__('Manifest'), function() {
-		// 	fetchManifestData();
-		// });
-	},
+			// 	fetchManifestData();
+			// });
+		},
 	setup: function(frm,cdt,cdn){
+		frm.set_query("service_item", "cargo_details", function (doc, cdt, cdn) {
+			return {
+				filters: {
+					item_group: "Services",
+				}
+			};
+		});
 		cargo_location_city_filter(frm,cdt,cdn);
 		cargo_destination_city_filter(frm,cdt,cdn);
 	},
@@ -49,10 +56,10 @@ frappe.ui.form.on('Cargo Registration', {
 					}
 				});
 			} else {
-				frappe.msgprint(__("All Rows Invoiced!"));
+				frappe.msgprint(__("All Rows are Invoiced!"));
 			}
 		} else {
-			frappe.msgprint(__("No Rows Selected!"));
+			frappe.msgprint(__("No Row is Selected!"));
 		}
 	},
 });

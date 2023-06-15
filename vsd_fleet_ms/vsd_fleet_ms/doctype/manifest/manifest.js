@@ -2,10 +2,40 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Manifest', {
+	has_trailers: function(frm){
+		if (frm.doc.has_trailers == 0){
+		frm.doc.manifest_cargo_details.forEach(function(row) {
+			cur_frm.set_df_property("manifest_cargo_details", "cargo_allocation", "read_only", 1, row.idx);
+		  });	
+		  cur_frm.refresh_field("manifest_cargo_details")	
+		}	  
+	},
 	refresh: function(frm) {
+		if (frm.doc.has_trailers == 0){
+			frm.doc.manifest_cargo_details.forEach(function(row) {
+				cur_frm.set_df_property("manifest_cargo_details", "cargo_allocation", "read_only", 1, row.idx);
+			  });
+			  cur_frm.refresh_field("manifest_cargo_details")	
+			}
 		if(frm.doc.docstatus == 0 && frm.doc.name && !frm.doc.vehicle_trip){
 			var args_array = [];
-			args_array = {manifest_name:frm.doc.name}
+			if (frm.doc.transporter_type == "In House"){
+			args_array = {
+				manifest_name:frm.doc.name,
+				transporter_type:frm.doc.transporter_type,
+				driver:frm.doc.assigned_driver,
+				trip_route:frm.doc.route,
+				truck:frm.doc.truck
+			}
+		}else{
+			args_array = {
+				manifest_name:frm.doc.name,
+				transporter_type:frm.doc.transporter_type,
+				sub_contactor_driver_name:frm.doc.sub_contactor_driver_name,
+				trip_route:frm.doc.route,
+				sub_contactor_truck_license_plate_no:frm.doc.sub_contactor_truck_license_plate_no
+			}
+		}
 		frm.add_custom_button(__('Vehicle Trip'), function () {
 			frappe.call({
 				args: {
@@ -198,6 +228,7 @@ frappe.ui.form.on('Manifest', {
 				filters: filters
 			};
 		}else if (row.cargo_allocation == "Truck"){
+			if ( frm.doc.transporter_type == "In House"){
 			if (!frm.doc.truck){
 				frappe.msgprint("Please select truck before Allocating cargo to Truck")
 				row.specific_cargo_allocated = ''
@@ -208,6 +239,7 @@ frappe.ui.form.on('Manifest', {
 				frm.refresh_field("manifest_cargo_details")
 			}
 		}
+	}
 	});
 	},
 });

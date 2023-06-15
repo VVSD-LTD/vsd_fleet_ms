@@ -11,16 +11,17 @@
   "request_date",
   "section_break_8sacw",
   "company",
-  "customer",
+  "manifest",
   "truck_no",
+  "truck_plate_no",
   "column_break_ipkh8",
   "truck_driver",
+  "transporter_type",
   "driver_name",
   "trip_route",
   "section_break_x5sbl",
   "requested_funds",
   "approve_buttons",
-  "html2",
   "html1",
   "request_total_amount",
   "section_break_x20fq",
@@ -57,12 +58,8 @@
    "options": "Company"
   },
   {
-   "fieldname": "customer",
-   "fieldtype": "Link",
-   "label": "Customer",
-   "options": "Customer"
-  },
-  {
+   "depends_on": "eval:doc.transporter_type == \"In House\"",
+   "fetch_from": "manifest.truck",
    "fieldname": "truck_no",
    "fieldtype": "Link",
    "label": "Truck No",
@@ -73,18 +70,23 @@
    "fieldtype": "Column Break"
   },
   {
+   "depends_on": "eval:doc.transporter_type == \"In House\"",
+   "fetch_from": "manifest.assigned_driver",
    "fieldname": "truck_driver",
    "fieldtype": "Link",
    "label": "Truck Driver",
-   "options": "Truck Driver"
+   "options": "Truck Driver",
+   "read_only": 1
   },
   {
-   "fetch_from": "truck_driver.full_name",
+   "depends_on": "eval:doc.transporter_type == \"In House\"",
+   "fetch_from": "manifest.driver_name",
    "fieldname": "driver_name",
    "fieldtype": "Data",
    "label": "Driver Name"
   },
   {
+   "fetch_from": "manifest.route",
    "fieldname": "trip_route",
    "fieldtype": "Link",
    "label": "Trip Route",
@@ -106,12 +108,6 @@
    "label": "Approve Buttons"
   },
   {
-   "fieldname": "html2",
-   "fieldtype": "HTML",
-   "label": "Recommendation Buttons",
-   "permlevel": 1
-  },
-  {
    "fieldname": "html1",
    "fieldtype": "HTML",
    "label": "Approval Buttons"
@@ -124,7 +120,8 @@
   },
   {
    "fieldname": "section_break_x20fq",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "hidden": 1
   },
   {
    "fieldname": "total_approved_amount",
@@ -135,13 +132,15 @@
   {
    "fieldname": "payment_details_section",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Payment Details"
   },
   {
    "fieldname": "payment_reference",
    "fieldtype": "Table",
    "label": "Payment Reference",
-   "options": "Reference Payments Table"
+   "options": "Reference Payments Table",
+   "permlevel": 3
   },
   {
    "fieldname": "total_paid_amount",
@@ -157,7 +156,8 @@
   {
    "fieldname": "accounts_approval",
    "fieldtype": "Table",
-   "options": "Requested Fund Accounts Table"
+   "options": "Requested Fund Accounts Table",
+   "read_only": 1
   },
   {
    "fieldname": "total_amount",
@@ -219,11 +219,32 @@
    "options": "Requested Payment",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "manifest",
+   "fieldtype": "Link",
+   "label": "Manifest",
+   "options": "Manifest"
+  },
+  {
+   "depends_on": "eval:doc.truck_no != doc.truck_plate_no & doc.transporter_type == \"In House\"",
+   "fetch_from": "manifest.truck_license_plate_no",
+   "fieldname": "truck_plate_no",
+   "fieldtype": "Data",
+   "label": "Truck Plate No",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "manifest.transporter_type",
+   "fieldname": "transporter_type",
+   "fieldtype": "Data",
+   "label": "Transporter Type",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-08 16:00:50.702692",
+ "modified": "2023-06-14 18:30:03.364798",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Requested Payment",
@@ -239,6 +260,41 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Expense Approver",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Expense Recommender",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "permlevel": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Expense Recommender",
    "share": 1,
    "write": 1
   }

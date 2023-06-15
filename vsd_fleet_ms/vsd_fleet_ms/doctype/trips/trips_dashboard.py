@@ -6,7 +6,6 @@ def get_data():
         'non_standard_fieldnames': {
             'Requested Payment': 'reference_docname',
             'Fuel Requests': 'reference_docname',
-            'Transport Assignments': 'vehicle_trips'
         },
         'internal_links': {
             # 'Purchase Order': ['items', 'purchase_order'],
@@ -15,7 +14,7 @@ def get_data():
         'transactions': [
             {
                 'label': _('Reference'),
-                'items': ['Requested Payment', 'Fuel Requests', 'Transport Assignments']
+                'items': ['Requested Payment', 'Fuel Requests']
             },
         ]
     }

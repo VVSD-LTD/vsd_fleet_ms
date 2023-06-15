@@ -14,7 +14,6 @@
   "cargo_type",
   "container_size",
   "seal_number",
-  "container_number",
   "bl_number",
   "column_break_yjxzq",
   "cargo_route",
@@ -22,6 +21,12 @@
   "gross_weight",
   "tare_weight",
   "number_of_packages",
+  "container_number",
+  "service_charges_section",
+  "service_item",
+  "currency",
+  "column_break_aqtqk",
+  "rate",
   "section_break_srbto",
   "cargo_location_country",
   "cargo_location_city",
@@ -32,9 +37,14 @@
   "expected_offloading_date",
   "section_break_clej3",
   "extra_details",
+  "section_break_mc959",
   "manifest_number",
+  "assigned_truck",
+  "created_trip",
+  "column_break_yp7ah",
+  "transporter_type",
   "assigned_driver",
-  "assigned_truck"
+  "invoice"
  ],
  "fields": [
   {
@@ -176,7 +186,8 @@
   },
   {
    "fieldname": "section_break_srbto",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "Location Information"
   },
   {
    "fieldname": "column_break_pprhp",
@@ -184,7 +195,8 @@
   },
   {
    "fieldname": "section_break_yd0cj",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "Cargo Details"
   },
   {
    "default": "Cargo-.YY.-.",
@@ -217,12 +229,72 @@
    "fieldname": "assign_manifest",
    "fieldtype": "Button",
    "label": "Assign Manifest"
+  },
+  {
+   "fetch_from": "manifest_number.transporter_type",
+   "fieldname": "transporter_type",
+   "fieldtype": "Data",
+   "label": "Transporter Type",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "manifest_number.vehicle_trip",
+   "fieldname": "created_trip",
+   "fieldtype": "Data",
+   "label": "Created Trip",
+   "read_only": 1
+  },
+  {
+   "bold": 1,
+   "fieldname": "service_charges_section",
+   "fieldtype": "Section Break",
+   "label": "Service Charges"
+  },
+  {
+   "default": "Transportation Service",
+   "fieldname": "service_item",
+   "fieldtype": "Link",
+   "label": "Service Item",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "rate",
+   "fieldtype": "Float",
+   "label": "Rate",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_aqtqk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "invoice",
+   "fieldtype": "Link",
+   "label": "Sales Invoice",
+   "options": "Sales Invoice",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_mc959",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_yp7ah",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-05-31 17:53:55.036865",
+ "modified": "2023-06-15 15:08:43.908029",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Cargo Detail",

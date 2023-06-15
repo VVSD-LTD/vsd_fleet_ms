@@ -12,6 +12,7 @@
   "column_break_aruf5",
   "cargo_type",
   "cargo_allocation",
+  "sub_contractor_cargo_allocation",
   "specific_cargo_allocated",
   "section_break_ordr3",
   "seal_number",
@@ -168,12 +169,18 @@
    "label": "Specific Cargo Allocated",
    "options": "cargo_allocation",
    "read_only_depends_on": "eval:doc.cargo_allocation == \"Truck\""
+  },
+  {
+   "fieldname": "sub_contractor_cargo_allocation",
+   "fieldtype": "Data",
+   "label": "Sub-Contractor Cargo Allocation",
+   "read_only_depends_on": "eval:doc.cargo_allocation == \"Truck\""
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-05-31 17:52:30.820102",
+ "modified": "2023-06-14 15:28:49.060278",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Manifest Cargo Details",

@@ -1,0 +1,104 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-06-01 12:15:25.231474",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "starting_location",
+  "start_date",
+  "column_break_apfmf",
+  "ending_location",
+  "end_date",
+  "section_break_wcdr0",
+  "reason",
+  "section_break_lgtno",
+  "total_distance",
+  "total_expense",
+  "column_break_tdeaw",
+  "total_fuel"
+ ],
+ "fields": [
+  {
+   "fieldname": "starting_location",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Starting Location",
+   "reqd": 1
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Start Date ",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_apfmf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ending_location",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Ending Location",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "End Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_wcdr0",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "reason",
+   "fieldtype": "Small Text",
+   "label": "Reason ",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_lgtno",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "total_distance",
+   "fieldtype": "Float",
+   "label": "Total Distance",
+   "reqd": 1
+  },
+  {
+   "fieldname": "total_expense",
+   "fieldtype": "Data",
+   "label": "Total Expense ",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_tdeaw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_fuel",
+   "fieldtype": "Float",
+   "label": "Total Fuel",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-06-10 16:18:28.904141",
+ "modified_by": "Administrator",
+ "module": "VSD Fleet MS",
+ "name": "Side Trips",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -72,25 +72,7 @@ frappe.ui.form.on('Fuel Requests Table', {
         frm.fields_dict.requested_fuel.grid.wrapper.find('.grid-append-row').hide();
         frm.fields_dict.requested_fuel.grid.wrapper.find('.grid-insert-row-below').hide();
         frm.fields_dict.requested_fuel.grid.wrapper.find('.grid-insert-row').hide();
-    },
-
-
-    // create_purchase_order: (frm, cdt, cdn) => {
-    //     const row = locals[cdt][cdn];
-    //     if (row.purchase_order || row.status != "Approved") return;
-    //     console.info("frm", frm);
-    //     frappe.call({
-    //         method: "vsd_fleet_ms.vsd_fleet_ms.doctype.fuel_requests.fuel_requests.create_purchase_order",
-    //         args: {
-    //             request_doc: frm.doc,
-    //             item: row,
-    //         },
-    //         callback: function (r) {
-    //             frm.reload_doc();
-    //             frm.refresh_field("requested_fuel");
-    //         }
-    //     });
-    // },
+    }
 });
 
 
@@ -116,7 +98,7 @@ cur_frm.cscript.approve_request = function (frm) {
                     });
                 });
                 frappe.call({
-                    method: "vsd_fleet_ms.vsd_fleet_ms.doctype.fuel_requests.fuel_requests.set_statust",
+                    method: "vsd_fleet_ms.vsd_fleet_ms.doctype.fuel_requests.fuel_requests.set_status",
                     freeze: true,
                     args: {
                         request_doctype: "Fuel Requests Table",
@@ -159,7 +141,7 @@ cur_frm.cscript.reject_request = function (frm) {
                     });
                 });
                 frappe.call({
-                    method: "vsd_fleet_ms.vsd_fleet_ms.doctype.fuel_requests.fuel_requests.set_statust",
+                    method: "vsd_fleet_ms.vsd_fleet_ms.doctype.fuel_requests.fuel_requests.set_status",
                     freeze: true,
                     args: {
                         request_doctype: "Fuel Requests Table",

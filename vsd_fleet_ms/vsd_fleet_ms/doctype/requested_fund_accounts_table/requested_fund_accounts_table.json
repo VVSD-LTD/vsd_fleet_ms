@@ -8,8 +8,9 @@
  "engine": "InnoDB",
  "field_order": [
   "disburse_funds",
+  "journal_entry",
   "section_break_4bitk",
-  "request_date",
+  "requested_date",
   "expense_type",
   "request_description",
   "request_amount",
@@ -48,26 +49,22 @@
   "column_break_fxpgo",
   "accounts_approved_by",
   "accounts_approved_on",
-  "accounts_approver_comment",
-  "journal_entry"
+  "accounts_approver_comment"
  ],
  "fields": [
   {
+   "depends_on": "eval:!doc.journal_entry",
    "fieldname": "disburse_funds",
    "fieldtype": "Button",
    "label": "Disburse Funds"
   },
   {
-   "fieldname": "request_date",
-   "fieldtype": "Date",
-   "in_list_view": 1,
-   "label": "Required On Date"
-  },
-  {
    "fieldname": "expense_type",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Expense",
-   "options": "Fixed Expenses"
+   "options": "Fixed Expenses",
+   "read_only_depends_on": "eval:doc.request_status == \"Approved\""
   },
   {
    "fieldname": "request_description",
@@ -78,12 +75,12 @@
    "fieldname": "request_amount",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Amount"
+   "label": "Amount",
+   "read_only_depends_on": "eval:doc.request_status == \"Approved\""
   },
   {
    "fieldname": "request_currency",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "label": "Currency",
    "options": "Currency"
   },
@@ -94,20 +91,22 @@
   {
    "fieldname": "party_type",
    "fieldtype": "Select",
-   "in_list_view": 1,
    "label": "Party Type",
-   "options": "Employee\nSupplier\nAgent"
+   "options": "Employee\nSupplier\nAgent",
+   "read_only_depends_on": "eval:doc.request_status == \"Approved\" && doc.party_type"
   },
   {
    "fieldname": "party",
    "fieldtype": "Dynamic Link",
    "label": "Party",
-   "options": "party_type"
+   "options": "party_type",
+   "read_only_depends_on": "eval:doc.request_status == \"Approved\" && !doc.party"
   },
   {
    "fieldname": "invoice_number",
    "fieldtype": "Data",
-   "label": "Invoice Number"
+   "label": "Invoice Number",
+   "read_only": 1
   },
   {
    "fieldname": "quote_attachment",
@@ -137,6 +136,7 @@
    "fetch_from": "expense_type.expense_account",
    "fieldname": "expense_account",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Expense Account",
    "options": "Account",
    "reqd": 1
@@ -145,6 +145,7 @@
    "fetch_from": "expense_type.cash__bank_account",
    "fieldname": "payable_account",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Payable Account",
    "options": "Account",
    "reqd": 1
@@ -208,7 +209,8 @@
    "default": "Open",
    "fieldname": "request_status",
    "fieldtype": "Data",
-   "label": "status",
+   "in_list_view": 1,
+   "label": "Status",
    "read_only": 1
   },
   {
@@ -296,20 +298,28 @@
    "label": "Accounts Approver Comment"
   },
   {
+   "depends_on": "eval:doc.journal_entry",
    "fieldname": "journal_entry",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "label": "Journal Entry",
+   "options": "Journal Entry",
    "read_only": 1
   },
   {
    "fieldname": "section_break_4bitk",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "requested_date",
+   "fieldtype": "Date",
+   "label": "Required On Date",
+   "read_only_depends_on": "eval:doc.request_status == \"Approved\""
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-06-02 16:44:09.372828",
+ "modified": "2023-06-13 12:47:48.569232",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Requested Fund Accounts Table",

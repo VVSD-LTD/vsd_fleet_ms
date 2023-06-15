@@ -11,27 +11,35 @@
   "trip_details_tab",
   "naming_series",
   "manifest",
-  "transporter",
-  "eta_end_of_trip",
+  "transporter_type",
+  "date",
   "column_break_bs0gw",
+  "company",
   "route",
   "round_trip",
   "section_break_xkwta",
   "truck_number",
+  "eta_end_of_trip",
   "column_break_s202g",
   "truck_licence_plate",
+  "sub_contactor_truck_license_plate_no",
   "section_break_xjznk",
   "assigned_driver",
   "phone_number",
   "column_break_5odgn",
   "driver_name",
+  "sub_contactor_driver_name",
   "licence_number",
+  "sub_contractor_licence_number",
   "section_break_7vc12",
   "trailer_1",
+  "sub_contactor_trailer_1",
   "column_break_9ohfw",
   "trailer_2",
+  "sub_contactor_trailer_2",
   "column_break_sw9re",
   "trailer_3",
+  "sub_contactor_trailer_3",
   "section_break_o887x",
   "main_trips_tab",
   "main_route_steps",
@@ -49,25 +57,35 @@
   "trip_funds_section",
   "trip_fundss_section",
   "requested_fund_accounts_table",
-  "total_expense",
+  "section_break_2erx7",
+  "html",
+  "column_break_42yqy",
+  "html2",
+  "column_break_u8jga",
+  "html3",
   "fuel_tab",
   "section_break_ld7mf",
   "fuel_request_history",
   "section_break_drqny",
   "fuel_stock_out",
   "reduce_stock",
+  "html4",
   "column_break_c2lwo",
   "stock_out_entry",
   "section_break_vefjo",
-  "trip_completed"
+  "trip_completed",
+  "reference_doctype",
+  "reference_docname",
+  "return_route",
+  "approve_status",
+  "connections_tab"
  ],
  "fields": [
   {
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "hidden": 1,
-   "in_list_view": 1,
-   "label": "Trip Number",
+   "label": "Naming Series",
    "options": "TRIP-.####"
   },
   {
@@ -76,6 +94,7 @@
    "in_list_view": 1,
    "label": "Manifest",
    "options": "Manifest",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -115,12 +134,6 @@
    "read_only": 1
   },
   {
-   "fieldname": "transporter",
-   "fieldtype": "Select",
-   "label": "Transporter",
-   "options": "In House\nSub-Contractor"
-  },
-  {
    "fetch_from": "route.total_fuel_consumption_qty",
    "fetch_if_empty": 1,
    "fieldname": "total_fuel",
@@ -148,19 +161,21 @@
   {
    "fieldname": "fuel_request_history",
    "fieldtype": "Table",
-   "label": "Fuel Request History",
-   "options": "Fuel Request History"
+   "label": "Main Trip Fuel Request",
+   "options": "Fuel Requests Table"
   },
   {
+   "depends_on": "eval:doc.trip_completed == 1",
    "fieldname": "section_break_vefjo",
    "fieldtype": "Tab Break",
    "label": "Trip Status"
   },
   {
-   "depends_on": "eval:doc.transporter == 'In House'",
+   "depends_on": "eval:doc.transporter_type == 'In House'",
    "fieldname": "fuel_stock_out",
    "fieldtype": "Float",
-   "label": "Fuel Stock Out"
+   "label": "Fuel Stock Out",
+   "read_only_depends_on": "eval:doc.stock_out_entry"
   },
   {
    "fieldname": "column_break_c2lwo",
@@ -168,8 +183,10 @@
   },
   {
    "fieldname": "stock_out_entry",
-   "fieldtype": "Data",
-   "label": "Stock Out Entry"
+   "fieldtype": "Link",
+   "label": "Stock Out Entry",
+   "options": "Stock Entry",
+   "read_only": 1
   },
   {
    "fieldname": "section_break_drqny",
@@ -182,6 +199,7 @@
    "label": "Reduce Stock"
   },
   {
+   "depends_on": "eval:doc.transporter_type == \"In House\"",
    "fieldname": "trip_funds_section",
    "fieldtype": "Tab Break",
    "label": "Trip Funds"
@@ -198,17 +216,21 @@
    "label": "Truck Details"
   },
   {
+   "depends_on": "eval:doc.transporter_type == \"In House\"",
    "fetch_from": "manifest.truck",
    "fieldname": "truck_number",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "label": "Truck Number",
+   "options": "Truck",
    "read_only": 1
   },
   {
+   "depends_on": "eval:doc.transporter_type == \"In House\"",
    "fetch_from": "manifest.assigned_driver",
    "fieldname": "assigned_driver",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "label": "Assigned Driver",
+   "options": "Truck Driver",
    "read_only": 1
   },
   {
@@ -216,6 +238,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "depends_on": "eval:doc.transporter_type == \"In House\"",
    "fetch_from": "manifest.truck_license_plate_no",
    "fieldname": "truck_licence_plate",
    "fieldtype": "Data",
@@ -223,6 +246,7 @@
    "read_only": 1
   },
   {
+   "depends_on": "eval:doc.transporter_type == \"In House\"",
    "fetch_from": "manifest.driver_name",
    "fieldname": "driver_name",
    "fieldtype": "Data",
@@ -235,6 +259,7 @@
    "label": "Driver Details"
   },
   {
+   "depends_on": "eval:doc.transporter_type == \"In House\"",
    "fetch_from": "manifest.trailer_1",
    "fieldname": "trailer_1",
    "fieldtype": "Data",
@@ -242,10 +267,12 @@
    "read_only": 1
   },
   {
+   "depends_on": "eval:doc.transporter_type == \"In House\"",
    "fieldname": "column_break_9ohfw",
    "fieldtype": "Column Break"
   },
   {
+   "depends_on": "eval:doc.transporter_type == \"In House\"",
    "fetch_from": "manifest.trailer_2",
    "fieldname": "trailer_2",
    "fieldtype": "Data",
@@ -257,6 +284,7 @@
    "fieldtype": "Column Break"
   },
   {
+   "depends_on": "eval:doc.transporter_type == \"In House\"",
    "fetch_from": "manifest.trailer_3",
    "fieldname": "trailer_3",
    "fieldtype": "Data",
@@ -308,20 +336,18 @@
    "fieldtype": "Section Break"
   },
   {
+   "depends_on": "eval:doc.transporter_type == \"In House\"",
    "fieldname": "fuel_tab",
    "fieldtype": "Tab Break",
    "label": "Fuel"
   },
   {
+   "allow_on_submit": 1,
    "default": "0",
    "fieldname": "trip_completed",
    "fieldtype": "Check",
-   "label": "Trip Completed"
-  },
-  {
-   "fieldname": "total_expense",
-   "fieldtype": "Data",
-   "label": "Total Expense"
+   "label": "Trip Completed",
+   "read_only": 1
   },
   {
    "fieldname": "phone_number",
@@ -329,6 +355,7 @@
    "label": "Phone Number"
   },
   {
+   "depends_on": "eval:doc.transporter_type == \"In House\"",
    "fieldname": "licence_number",
    "fieldtype": "Data",
    "label": "Licence Number"
@@ -350,12 +377,145 @@
   {
    "fieldname": "column_break_g36mb",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Link",
+   "label": "Reference Doctype",
+   "options": "DocType",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.transporter_type == \"Sub-Contractor\"",
+   "fetch_from": "manifest.sub_contactor_truck_license_plate_no",
+   "fieldname": "sub_contactor_truck_license_plate_no",
+   "fieldtype": "Data",
+   "label": "Truck License Plate ",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.transporter_type == \"Sub-Contractor\"",
+   "fetch_from": "manifest.sub_contactor_driver_name",
+   "fieldname": "sub_contactor_driver_name",
+   "fieldtype": "Data",
+   "label": "Driver Name",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.transporter_type == \"Sub-Contractor\"",
+   "fetch_from": "manifest.sub_contractor_drivers_license_number",
+   "fieldname": "sub_contractor_licence_number",
+   "fieldtype": "Data",
+   "label": "License Number",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.transporter_type == \"Sub-Contractor\"",
+   "fetch_from": "manifest.sub_contactor_trailer_1",
+   "fieldname": "sub_contactor_trailer_1",
+   "fieldtype": "Data",
+   "label": "Trailer 1",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.transporter_type == \"Sub-Contractor\"",
+   "fetch_from": "manifest.sub_contactor_trailer_2",
+   "fieldname": "sub_contactor_trailer_2",
+   "fieldtype": "Data",
+   "label": "Trailer 2",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.transporter_type == \"Sub-Contractor\"",
+   "fetch_from": "manifest.sub_contactor_trailer_3",
+   "fieldname": "sub_contactor_trailer_3",
+   "fieldtype": "Data",
+   "label": "Trailer 3",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reference_docname",
+   "fieldtype": "Dynamic Link",
+   "label": "Reference Document",
+   "options": "reference_doctype"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "transporter_type",
+   "fieldtype": "Data",
+   "label": "Transporter",
+   "read_only": 1
+  },
+  {
+   "fieldname": "return_route",
+   "fieldtype": "Read Only",
+   "label": "return_route"
+  },
+  {
+   "fieldname": "approve_status",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Approve Status",
+   "read_only": 1
+  },
+  {
+   "fieldname": "html",
+   "fieldtype": "HTML",
+   "label": "Total Amount Requested"
+  },
+  {
+   "fieldname": "html2",
+   "fieldtype": "HTML",
+   "label": "Total Amount Approved"
+  },
+  {
+   "fieldname": "html3",
+   "fieldtype": "HTML",
+   "label": "Total Amount Rejected"
+  },
+  {
+   "fieldname": "connections_tab",
+   "fieldtype": "Tab Break",
+   "label": "Connections",
+   "show_dashboard": 1
+  },
+  {
+   "fieldname": "section_break_2erx7",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_42yqy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_u8jga",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "html4",
+   "fieldtype": "HTML",
+   "label": "Fuel Amount"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-06-07 10:57:51.239652",
+ "modified": "2023-06-15 12:32:29.932041",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Trips",
