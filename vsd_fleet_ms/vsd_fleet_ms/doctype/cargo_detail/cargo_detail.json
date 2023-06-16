@@ -40,10 +40,12 @@
   "section_break_mc959",
   "manifest_number",
   "assigned_truck",
+  "truck_number",
   "created_trip",
   "column_break_yp7ah",
   "transporter_type",
   "assigned_driver",
+  "driver_name",
   "invoice"
  ],
  "fields": [
@@ -289,12 +291,26 @@
   {
    "fieldname": "column_break_yp7ah",
    "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "manifest_number.sub_contactor_truck_license_plate_no",
+   "fieldname": "truck_number",
+   "fieldtype": "Data",
+   "label": "Truck Number",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "manifest_number.sub_contactor_driver_name",
+   "fieldname": "driver_name",
+   "fieldtype": "Data",
+   "label": "Driver Name",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-06-15 15:08:43.908029",
+ "modified": "2023-06-16 12:13:43.575367",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Cargo Detail",

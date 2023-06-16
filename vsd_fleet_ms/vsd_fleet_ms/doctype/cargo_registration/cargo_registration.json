@@ -51,7 +51,8 @@
    "fieldname": "company",
    "fieldtype": "Link",
    "label": "Company",
-   "options": "Company"
+   "options": "Company",
+   "set_only_once": 1
   },
   {
    "fieldname": "section_break_fuqjo",
@@ -95,7 +96,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-05-29 16:14:48.232494",
+ "modified": "2023-06-16 12:30:45.543391",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Cargo Registration",
