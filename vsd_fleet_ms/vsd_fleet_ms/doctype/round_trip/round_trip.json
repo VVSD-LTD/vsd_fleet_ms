@@ -11,15 +11,18 @@
   "truck_on_trip",
   "trip_details_section",
   "trip_details",
-  "trip_completed",
-  "status"
+  "section_break_29lsm",
+  "status",
+  "column_break_ramjd",
+  "trip_completed"
  ],
  "fields": [
   {
    "fieldname": "truck_on_trip",
    "fieldtype": "Link",
    "label": "Truck on Trip",
-   "options": "Truck"
+   "options": "Truck",
+   "reqd": 1
   },
   {
    "fieldname": "trip_details_section",
@@ -47,11 +50,19 @@
    "options": "In Progress\nCompleted",
    "read_only": 1,
    "reqd": 1
+  },
+  {
+   "fieldname": "section_break_29lsm",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_ramjd",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-19 11:46:11.335489",
+ "modified": "2023-06-19 14:30:59.355927",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Round Trip",

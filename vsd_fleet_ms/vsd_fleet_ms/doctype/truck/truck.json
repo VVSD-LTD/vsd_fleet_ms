@@ -171,10 +171,10 @@
   {
    "depends_on": "eval:doc.status == \"In Trip\"",
    "fieldname": "trans_ms_current_trip",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "label": "Current Trip",
    "mandatory_depends_on": "eval:doc.status == \"In Trip\"",
-   "read_only_depends_on": "eval:doc.status == \"In Trip\""
+   "options": "Trips"
   },
   {
    "fieldname": "documents_section",
@@ -232,7 +232,7 @@
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-08 10:13:29.231558",
+ "modified": "2023-06-19 12:55:54.466061",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Truck",
