@@ -11,15 +11,16 @@ frappe.ui.form.on('Trips', {
             frm.add_custom_button(__("Complete Trip"), function () {
                 frm.set_value("trip_completed", 1);
 				frm.set_value("trip_completed_date", frappe.datetime.nowdate());
+				var truck = frm.doc.truck_number;
+				frm.save();
                 if (frm.doc.transporter_type == "In House") {
-					frappe.db.set_value('Truck', frm.doc.truck_number, {
-						current_trip: '',
+					frappe.db.set_value('Truck', truck, {
+						trans_ms_current_trip: '',
                         status: 'Available'
                     }).then(r => {
-						frappe.msgprint(__(`Truck ${frm.doc.truck_number} is Available now`));
+						frappe.msgprint(__(`Truck ${truck} is Available now`));
                     });
                 }
-				frm.save();
             });
         }
 	// 	if (frm.doc.route && frm.doc.docstatus == 0 && frm.doc.main_route_steps.length < 1 ) {
