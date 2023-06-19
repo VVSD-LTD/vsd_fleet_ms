@@ -525,7 +525,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-06-19 15:51:55.324666",
+ "modified": "2023-06-19 17:32:34.098370",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Trips",
@@ -561,6 +561,7 @@
    "write": 1
   }
  ],
+ "search_fields": "manifest,transporter_type,route",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []

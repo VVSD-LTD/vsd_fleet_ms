@@ -8,6 +8,7 @@ frappe.ui.form.on('Round Trip', {
 			return {
 				filters: {
 					truck_number: frm.doc.truck_on_trip,
+					transporter_type: "In House",
 					docstatus:0
 				}
 			};
@@ -16,7 +17,8 @@ frappe.ui.form.on('Round Trip', {
 		frm.set_query("trip_id", "trip_details", function () {
 			return {
 				filters: {
-					docstatus:0
+					docstatus:0,
+					transporter_type: "In House"
 				}
 			};
 		});
