@@ -2,7 +2,24 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Round Trip', {
-	// refresh: function(frm) {
-
-	// }
+	refresh: function(frm) {
+		if (frm.doc.truck_on_trip){
+		frm.set_query("trip_id", "trip_details", function () {
+			return {
+				filters: {
+					truck_number: frm.doc.truck_on_trip,
+					docstatus:0
+				}
+			};
+		});
+	}else{
+		frm.set_query("trip_id", "trip_details", function () {
+			return {
+				filters: {
+					docstatus:0
+				}
+			};
+		});
+	}
+	}
 });
