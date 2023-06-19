@@ -8,18 +8,25 @@ import datetime
 
 class Manifest(Document):
 	def onload(self):
-		if self.name:
+		if self.name and self.docstatus == 0:
 			self.update_cargo_registration_details()
 			self.update_trips()
-
-	def validate(self):
-		self.validate_has_trailers()
-		self.validate_transporter_type()
+			self.validate_has_trailers()
 
 	def before_save(self):
+		self.validate_transporter_type()
+		self.validate_has_trailers()
 		if self.name:
 			self.update_cargo_registration_details()
 			self.update_trips()
+
+	def cargo_allocation(self):
+		if self.transporter_type == "Sub-Contractor":
+			for row in self.manifest_cargo_details:
+				row.specific_cargo_allocated = ''
+		elif self.transporter_type == "In House":
+			for row in self.manifest_cargo_details:
+				row.sub_contractor_cargo_allocation = ''
 
 	def update_trips(self):
 		trips = frappe.get_all("Trips",filters={"manifest":self.name,"docstatus":0})
@@ -83,9 +90,17 @@ class Manifest(Document):
 			self.trailer_3 = ''
 			self.sub_contactor_trailer_3 = ''
 			self.trailer3_type = ''
-			for row in self.manifest_cargo_details:
-				row.cargo_allocation = "Truck"
-				row.sub_contractor_cargo_allocation = self.sub_contactor_truck_license_plate_no
+			if self.transporter_type == "Sub-Contractor":
+				for row in self.manifest_cargo_details:
+					row.cargo_allocation = "Truck"
+					row.sub_contractor_cargo_allocation = self.sub_contactor_truck_license_plate_no
+					row.specific_cargo_allocated = ''
+
+			elif self.transporter_type == "In House":
+				for row in self.manifest_cargo_details:
+					row.cargo_allocation = "Truck"
+					row.specific_cargo_allocated = self.truck
+					row.sub_contractor_cargo_allocation = ''
 
 	def validate_transporter_type(self):
 		if self.transporter_type == "In House":
@@ -94,6 +109,7 @@ class Manifest(Document):
 			self.sub_contactor_trailer_1 = ''
 			self.sub_contactor_trailer_2 = ''
 			self.sub_contactor_trailer_3 = ''
+
 		elif self.transporter_type == "Sub-Contractor":
 			self.truck = ''
 			self.assigned_driver = ''
