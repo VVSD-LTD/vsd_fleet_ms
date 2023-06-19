@@ -10,7 +10,9 @@
  "field_order": [
   "truck_on_trip",
   "trip_details_section",
-  "trip_details"
+  "trip_details",
+  "trip_completed",
+  "status"
  ],
  "fields": [
   {
@@ -28,11 +30,28 @@
    "fieldname": "trip_details",
    "fieldtype": "Table",
    "options": "Vehicle Trips Table"
+  },
+  {
+   "default": "0",
+   "fieldname": "trip_completed",
+   "fieldtype": "Check",
+   "label": "Trip Completed",
+   "read_only": 1
+  },
+  {
+   "default": "In Progress",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "In Progress\nCompleted",
+   "read_only": 1,
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-19 11:16:43.423775",
+ "modified": "2023-06-19 11:46:11.335489",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Round Trip",
@@ -54,7 +73,16 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": [],
+ "states": [
+  {
+   "color": "Blue",
+   "title": "In Progress"
+  },
+  {
+   "color": "Green",
+   "title": "Completed"
+  }
+ ],
  "track_changes": 1,
  "track_seen": 1,
  "track_views": 1

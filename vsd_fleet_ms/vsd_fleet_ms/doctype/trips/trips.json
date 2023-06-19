@@ -55,7 +55,6 @@
   "location_update",
   "amended_from",
   "trip_funds_section",
-  "trip_fundss_section",
   "requested_fund_accounts_table",
   "section_break_2erx7",
   "html",
@@ -75,9 +74,11 @@
   "section_break_vefjo",
   "trip_completed",
   "reference_doctype",
+  "approve_status",
+  "column_break_pfmbr",
+  "trip_completed_date",
   "reference_docname",
   "return_route",
-  "approve_status",
   "connections_tab"
  ],
  "fields": [
@@ -332,10 +333,6 @@
    "label": "Trip Details"
   },
   {
-   "fieldname": "trip_fundss_section",
-   "fieldtype": "Section Break"
-  },
-  {
    "depends_on": "eval:doc.transporter_type == \"In House\"",
    "fieldname": "fuel_tab",
    "fieldtype": "Tab Break",
@@ -463,6 +460,7 @@
   {
    "fieldname": "return_route",
    "fieldtype": "Read Only",
+   "hidden": 1,
    "label": "return_route"
   },
   {
@@ -510,12 +508,21 @@
    "fieldname": "html4",
    "fieldtype": "HTML",
    "label": "Fuel Amount"
+  },
+  {
+   "fieldname": "column_break_pfmbr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "trip_completed_date",
+   "fieldtype": "Date",
+   "label": "Trip Completed Date"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-06-15 12:32:29.932041",
+ "modified": "2023-06-19 11:52:29.210923",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Trips",

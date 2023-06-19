@@ -24,24 +24,28 @@
    "fetch_from": "trip_id.driver_name",
    "fieldname": "trip_driver",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Trip Driver",
    "read_only": 1
   },
   {
+   "fetch_from": "trip_id.date",
    "fieldname": "trip_start_date",
    "fieldtype": "Date",
+   "in_list_view": 1,
    "label": "Trip Start Date"
   },
   {
    "fieldname": "trip_end_date",
    "fieldtype": "Date",
+   "in_list_view": 1,
    "label": "Trip End Date"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-06-19 11:08:41.289297",
+ "modified": "2023-06-19 11:47:10.242617",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Vehicle Trips Table",
