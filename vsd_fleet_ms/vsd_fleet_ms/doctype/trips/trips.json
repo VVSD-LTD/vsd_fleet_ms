@@ -239,7 +239,7 @@
    "fieldtype": "Column Break"
   },
   {
-   "depends_on": "eval:doc.transporter_type == \"In House\"",
+   "depends_on": "eval:doc.transporter_type == \"In House\" && doc.truck_licence_plate != doc.truck_number",
    "fetch_from": "manifest.truck_license_plate_no",
    "fieldname": "truck_licence_plate",
    "fieldtype": "Data",
@@ -525,7 +525,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-06-19 12:59:07.555677",
+ "modified": "2023-06-19 15:51:55.324666",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Trips",
