@@ -22,7 +22,7 @@ class Manifest(Document):
 			self.update_trips()
 
 	def update_trips(self):
-		trips = frappe.get_all("Trips",filters={"manifest":self.name})
+		trips = frappe.get_all("Trips",filters={"manifest":self.name,docstatus:0})
 		for trip in trips:
 			trip_doc = frappe.get_doc("Trips", trip.name)
 			if self.transporter_type == "Sub-Contractor":
@@ -54,7 +54,7 @@ class Manifest(Document):
 			trip_doc.save()
 
 	def update_cargo_registration_details(self):
-		cargo_details = frappe.get_all("Cargo Detail",filters={"manifest_number":self.name})
+		cargo_details = frappe.get_all("Cargo Detail",filters={"manifest_number":self.name,docstatus:0})
 		for cargo in cargo_details:
 			cargo_detail = frappe.get_doc("Cargo Detail", cargo.name)
 			if self.transporter_type == "Sub-Contractor":
