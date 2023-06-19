@@ -7,8 +7,9 @@
  "engine": "InnoDB",
  "field_order": [
   "trip_id",
-  "trip_driver",
   "trip_start_date",
+  "column_break_sy8hs",
+  "trip_driver",
   "trip_end_date"
  ],
  "fields": [
@@ -33,19 +34,26 @@
    "fieldname": "trip_start_date",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Trip Start Date"
+   "label": "Trip Start Date",
+   "read_only": 1
   },
   {
+   "fetch_from": "trip_id.trip_completed_date",
    "fieldname": "trip_end_date",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Trip End Date"
+   "label": "Trip End Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_sy8hs",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-06-19 11:47:10.242617",
+ "modified": "2023-06-19 11:58:18.551354",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Vehicle Trips Table",

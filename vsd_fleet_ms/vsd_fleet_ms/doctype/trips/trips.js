@@ -10,6 +10,7 @@ frappe.ui.form.on('Trips', {
 		if (frm.doc.trip_completed == 0) {
             frm.add_custom_button(__("Complete Trip"), function () {
                 frm.set_value("trip_completed", 1);
+				frm.set_value("trip_completed_date", frappe.datetime.nowdate());
                 if (frm.doc.transporter_type == "In House") {
 					frappe.db.set_value('Truck', frm.doc.truck_number, {
 						current_trip: '',
