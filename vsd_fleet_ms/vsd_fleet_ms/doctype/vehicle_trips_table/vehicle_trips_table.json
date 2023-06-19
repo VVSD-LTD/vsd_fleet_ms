@@ -17,7 +17,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Trip ID",
-   "options": "Vehicle Trips",
+   "options": "Trips",
    "reqd": 1
   },
   {
@@ -41,7 +41,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-05-12 16:55:16.010925",
+ "modified": "2023-06-19 11:08:41.289297",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Vehicle Trips Table",

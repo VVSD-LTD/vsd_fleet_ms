@@ -9,16 +9,6 @@
  "engine": "InnoDB",
  "field_order": [
   "truck_on_trip",
-  "expenses_section",
-  "trip_fixed_expenses",
-  "section_break_y24cs",
-  "trip_variable_expenses",
-  "section_break_wudei",
-  "total_fixed_expense",
-  "column_break_aulrp",
-  "total_variable_expense",
-  "column_break_zm65t",
-  "total_expense",
   "trip_details_section",
   "trip_details"
  ],
@@ -28,54 +18,6 @@
    "fieldtype": "Link",
    "label": "Truck on Trip",
    "options": "Truck"
-  },
-  {
-   "fieldname": "expenses_section",
-   "fieldtype": "Section Break",
-   "label": "Expenses"
-  },
-  {
-   "fieldname": "trip_fixed_expenses",
-   "fieldtype": "Table",
-   "label": "Trip Fixed Expenses",
-   "options": "Fixed Expenses Table"
-  },
-  {
-   "fieldname": "section_break_y24cs",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "trip_variable_expenses",
-   "fieldtype": "Table",
-   "label": "Trip Variable Expenses",
-   "options": "Trip Variable Expenses"
-  },
-  {
-   "fieldname": "section_break_wudei",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "total_fixed_expense",
-   "fieldtype": "Data",
-   "label": "Total fixed Expense"
-  },
-  {
-   "fieldname": "column_break_aulrp",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "total_variable_expense",
-   "fieldtype": "Data",
-   "label": "Total Variable Expense"
-  },
-  {
-   "fieldname": "column_break_zm65t",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "total_expense",
-   "fieldtype": "Data",
-   "label": "Total Expense"
   },
   {
    "fieldname": "trip_details_section",
@@ -90,7 +32,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-10 08:53:25.272622",
+ "modified": "2023-06-19 11:16:43.423775",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Round Trip",

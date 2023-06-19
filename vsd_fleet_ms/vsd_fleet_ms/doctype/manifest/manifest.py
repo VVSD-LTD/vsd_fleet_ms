@@ -10,7 +10,28 @@ class Manifest(Document):
 	def before_save(self):
 		self.validate_has_trailers()
 		self.validate_transporter_type()
-		
+		if self.name:
+			self.update_children_details()
+
+	def update_children_details(self):
+		cargo_details = frappe.get_all("Cargo Detail",filters={"manifest_number":self.name})
+		for cargo in cargo_details:
+			cargo_detail = frappe.get_doc("Cargo Detail", cargo.name)
+			if self.transporter_type == "Sub-Contractor":
+				cargo_detail.transporter_type = "Sub-Contractor"
+				cargo_detail.assigned_truck = ''
+				cargo_detail.assigned_driver = ''
+				cargo_detail.truck_number = self.sub_contactor_truck_license_plate_no
+				cargo_detail.driver_name = self.sub_contactor_driver_name
+			elif self.transporter_type == "In House":
+				cargo_detail.transporter_type = "In House"
+				cargo_detail.assigned_truck = self.truck_license_plate_no
+				cargo_detail.assigned_driver = self.driver_name
+				cargo_detail.truck_number = ''
+				cargo_detail.driver_name = ''
+			cargo_detail.save()
+
+
 	def validate_has_trailers(self):
 		if self.has_trailers == 0:
 			self.trailer_1 = ''

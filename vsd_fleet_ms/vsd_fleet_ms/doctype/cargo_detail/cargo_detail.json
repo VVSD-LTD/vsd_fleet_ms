@@ -234,6 +234,7 @@
   },
   {
    "fetch_from": "manifest_number.transporter_type",
+   "fetch_if_empty": 1,
    "fieldname": "transporter_type",
    "fieldtype": "Data",
    "label": "Transporter Type",
@@ -241,6 +242,7 @@
   },
   {
    "fetch_from": "manifest_number.vehicle_trip",
+   "fetch_if_empty": 1,
    "fieldname": "created_trip",
    "fieldtype": "Data",
    "label": "Created Trip",
@@ -294,6 +296,7 @@
   },
   {
    "fetch_from": "manifest_number.sub_contactor_truck_license_plate_no",
+   "fetch_if_empty": 1,
    "fieldname": "truck_number",
    "fieldtype": "Data",
    "label": "Truck Number",
@@ -301,6 +304,7 @@
   },
   {
    "fetch_from": "manifest_number.sub_contactor_driver_name",
+   "fetch_if_empty": 1,
    "fieldname": "driver_name",
    "fieldtype": "Data",
    "label": "Driver Name",
@@ -310,7 +314,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-06-16 12:13:43.575367",
+ "modified": "2023-06-16 16:40:05.553413",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Cargo Detail",
