@@ -7,13 +7,53 @@ from frappe.model.document import Document
 import datetime
 
 class Manifest(Document):
-	def before_save(self):
+	def onload(self):
+		if self.name:
+			self.update_cargo_registration_details()
+			self.update_trips()
+
+	def validate(self):
 		self.validate_has_trailers()
 		self.validate_transporter_type()
-		if self.name:
-			self.update_children_details()
 
-	def update_children_details(self):
+	def before_save(self):
+		if self.name:
+			self.update_cargo_registration_details()
+			self.update_trips()
+
+	def update_trips(self):
+		trips = frappe.get_all("Trips",filters={"manifest":self.name})
+		for trip in trips:
+			trip_doc = frappe.get_doc("Trips", trip.name)
+			if self.transporter_type == "Sub-Contractor":
+				trip_doc.transporter_type = "Sub-Contractor"
+				trip_doc.sub_contactor_truck_license_plate_no = self.sub_contactor_truck_license_plate_no
+				trip_doc.sub_contactor_driver_name = self.sub_contactor_driver_name
+				trip_doc.truck_number = ''
+				trip_doc.assigned_driver = ''
+				trip_doc.driver_name = ''
+				trip_doc.trailer_1 = ''
+				trip_doc.sub_contactor_trailer_1 = self.sub_contactor_trailer_1
+				trip_doc.trailer_2 = ''
+				trip_doc.sub_contactor_trailer_2 = self.sub_contactor_trailer_2
+				trip_doc.trailer_3 = ''
+				trip_doc.sub_contactor_trailer_3 = self.sub_contactor_trailer_3
+
+			elif self.transporter_type == "In House":
+				trip_doc.transporter_type = "In House"
+				trip_doc.sub_contactor_truck_license_plate_no = ''
+				trip_doc.sub_contactor_driver_name = ''
+				trip_doc.truck_number = self.truck_license_plate_no
+				trip_doc.assigned_driver = self.driver_name
+				trip_doc.trailer_1 = self.trailer_1
+				trip_doc.sub_contactor_trailer_1 = ''
+				trip_doc.trailer_2 = self.trailer_2
+				trip_doc.sub_contactor_trailer_2 = ''
+				trip_doc.trailer_3 = self.trailer_3
+				trip_doc.sub_contactor_trailer_3 = ''
+			trip_doc.save()
+
+	def update_cargo_registration_details(self):
 		cargo_details = frappe.get_all("Cargo Detail",filters={"manifest_number":self.name})
 		for cargo in cargo_details:
 			cargo_detail = frappe.get_doc("Cargo Detail", cargo.name)
