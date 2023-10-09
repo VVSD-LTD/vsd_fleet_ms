@@ -75,7 +75,7 @@
    "fieldname": "trip",
    "fieldtype": "Link",
    "label": "Trip Reference",
-   "options": "Vehicle Trips"
+   "options": "Trips"
   },
   {
    "fieldname": "truck_lighting_checklist_section",
@@ -239,7 +239,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-15 12:47:53.865216",
+ "modified": "2023-10-09 17:07:48.778329",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Truck and Trailer Inspection",

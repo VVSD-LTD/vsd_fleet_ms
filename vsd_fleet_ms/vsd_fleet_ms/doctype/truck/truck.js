@@ -38,5 +38,11 @@ frappe.ui.form.on('Truck', {
 	trans_ms_maintain_stock: (frm) => {
 		frm.doc.trans_ms_fuel_warehouse = "";
 
+	},
+	refresh: function(frm){
+		if (frm.doc.status != "On Trip"){
+			frm.doc.trans_ms_current_trip = ''
+			frm.refresh_field("trans_ms_current_trip")
+		}
 	}
 });

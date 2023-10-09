@@ -213,6 +213,14 @@ def create_vehicle_trip_from_manifest(args_array):
         manifest = frappe.get_doc("Manifest", args_dict.get("manifest_name"))
         manifest.vehicle_trip = vehicle_trip.name
         manifest.save()
+        cargos = frappe.get_all("Cargo Detail", filters={"manifest_number":manifest.name}, fields="*")
+        for cargo in cargos:
+            cargo_registration = frappe.get_doc("Cargo Registration", cargo.parent )
+            for row in cargo_registration.cargo_details:
+                if row.manifest_number == manifest.name:
+                    row.created_trip = vehicle_trip.name
+                    cargo_registration.save()
+                    break
         
         if args_dict.get("transporter_type") == "In House":
             funds_args = {
@@ -441,5 +449,49 @@ def create_purchase_order(request_doc, item):
     frappe.msgprint(_("Purchase Order {0} is created").format(doc.name))
     frappe.set_value(item.doctype, item.name, "purchase_order", doc.name)
     return doc.name
+
+@frappe.whitelist()
+def create_breakdown(docname):
+    trip = frappe.get_doc("Trips", docname)
+    trip.trip_status = "Breakdown"
+    trip.status = "Not Re-Assigned"
+    trip.breakdown_date = now()
+    trip.save()
+    return "successful"
+
+@frappe.whitelist()
+def create_resumption_trip(docname):
+    old_trip = frappe.get_doc("Trips", docname)
+
+    new_trip = frappe.new_doc("Trips")
+
+    new_trip.update(old_trip.as_dict())
+    new_trip.location_update = []
+    new_trip.trip_status = "Pending"
+    new_trip.stock_out_entry = ""
+
+    new_trip.insert()
+
+    if new_trip.transporter_type == "In House":
+        funds_args = {
+            "reference_doctype": "Trips",
+            "reference_docname": new_trip.name,
+            "manifest": new_trip.manifest,
+            "truck": new_trip.truck_number,
+            "truck_driver": new_trip.assigned_driver,
+            "trip_route": new_trip.route
+            }
+        request_funds(**funds_args)
+    if new_trip.round_trip:
+        round_trip = frappe.get_doc("Round Trip",new_trip.round_trip)
+        round_trip.append("trip_details",{
+            "trip_id":new_trip.name
+            })
+        round_trip.save()
+        
+    old_trip.resumption_trip = new_trip.name
+    old_trip.status = "Re-Assigned"
+    old_trip.save()
+    return new_trip.as_dict()
 
 

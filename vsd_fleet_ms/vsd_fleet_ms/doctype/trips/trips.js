@@ -7,7 +7,7 @@ frappe.ui.form.on('Trips', {
 		requested_total();
 		rejected_total();
 		fuel_amount();
-		if (frm.doc.trip_completed == 0) {
+		if (frm.doc.trip_completed == 0 && frm.doc.trip_status != "Breakdown") {
             frm.add_custom_button(__("Complete Trip"), function () {
                 frm.set_value("trip_completed", 1);
 				frm.set_value("trip_completed_date", frappe.datetime.nowdate());
@@ -16,103 +16,47 @@ frappe.ui.form.on('Trips', {
                 if (frm.doc.transporter_type == "In House") {
 					frappe.db.set_value('Truck', truck, {
 						trans_ms_current_trip: '',
-                        status: 'Available'
+                        status: 'Idle'
                     }).then(r => {
 						frappe.msgprint(__(`Truck ${truck} is Available now`));
                     });
                 }
-            });
+            }, __('Actions'));
         }
-	// 	if (frm.doc.route && frm.doc.docstatus == 0 && frm.doc.main_route_steps.length < 1 ) {
-	// 		frappe.model.with_doc('Trip Routes', frm.doc.route, function (frm) {
-	// 			var reference_route = frappe.model.get_doc('Trip Routes', cur_frm.doc.route);
-	// 			cur_frm.clear_table('main_route_steps');
-	// 			reference_route.trip_steps.forEach(function (row) {
-	// 				var new_row = cur_frm.add_child('main_route_steps');
-	// 				new_row.location = row.location;
-	// 				new_row.distance = row.distance;
-	// 				new_row.fuel_consumption_qty = row.fuel_consumption_qty;
-	// 				new_row.location_type = row.location_type;
-	// 				cur_frm.refresh_field('main_route_steps');
-	// 			});
-	// 			cur_frm.clear_table('');
-	// 			reference_route.fixed_expenses.forEach(function(row) {
-	// 				frappe.model.with_doc('Fixed Expenses', row.expense, function (frm) {
-	// 				var fixed_expense_doc = frappe.model.get_doc("Fixed Expenses", row.expense);
-	// 				var new_row = cur_frm.add_child('requested_fund_accounts_table');
-	// 				new_row.requested_date = frappe.datetime.nowdate();
-	// 				new_row.request_amount = row.amount;
-	// 				new_row.request_currency = row.currency;
-	// 				new_row.request_status = "Pre-Approved";
-	// 				new_row.expense_type = row.expense;
-	// 				new_row.expense_account = fixed_expense_doc.expense_account;
-	// 				new_row.payable_account = fixed_expense_doc.cash_bank_account;
-	// 				new_row.party_type = row.party_type;
-	// 				// if (row.party_type == "Employee" && cur_frm.doc.assigned_driver) {
-	// 				// 	new_row.party = frappe.db.get_value("Driver", cur_frm.doc.assigned_driver, "employee");
-	// 				// }
-	// 				cur_frm.refresh_field('requested_fund_accounts_table');
-	// 			})
-	// 		});	
-	// 	});
-	// 	cur_frm.dirty();
-	// 	cur_frm.save();
-	// }
-	// if (frm.doc.route && frm.doc.docstatus == 0 && frm.doc.requested_fund_accounts_table.length < 1 ) {
-	// 		frappe.model.with_doc('Trip Routes', frm.doc.route, function (frm) {
-	// 			var reference_route = frappe.model.get_doc('Trip Routes', cur_frm.doc.route);
-	// 			cur_frm.clear_table('main_route_steps');
-	// 			reference_route.trip_steps.forEach(function (row) {
-	// 				var new_row = cur_frm.add_child('main_route_steps');
-	// 				new_row.location = row.location;
-	// 				new_row.distance = row.distance;
-	// 				new_row.fuel_consumption_qty = row.fuel_consumption_qty;
-	// 				new_row.location_type = row.location_type;
-	// 				cur_frm.refresh_field('main_route_steps');
-	// 			});
-	// 			cur_frm.clear_table('requested_fund_accounts_table');
-	// 			reference_route.fixed_expenses.forEach(function(row) {
-	// 				frappe.model.with_doc('Fixed Expenses', row.expense, function (frm) {
-	// 				var fixed_expense_doc = frappe.model.get_doc("Fixed Expenses", row.expense);
-	// 				var new_row = cur_frm.add_child('requested_fund_accounts_table');
-	// 				new_row.requested_date = frappe.datetime.nowdate();
-	// 				new_row.request_amount = row.amount;
-	// 				new_row.request_currency = row.currency;
-	// 				new_row.request_status = "Pre-Approved";
-	// 				new_row.expense_type = row.expense;
-	// 				new_row.expense_account = fixed_expense_doc.expense_account;
-	// 				new_row.payable_account = fixed_expense_doc.cash_bank_account;
-	// 				new_row.party_type = row.party_type;
-	// 				// if (row.party_type == "Employee" && cur_frm.doc.assigned_driver) {
-	// 				// 	new_row.party = frappe.db.get_value("Driver", cur_frm.doc.assigned_driver, "employee");
-	// 				// }
-	// 				cur_frm.refresh_field('requested_fund_accounts_table');
-	// 			})
-	// 		});	
-	// 	});
-	// 	cur_frm.dirty();
-	// 	cur_frm.save();
-	// }
-		// var total_fuel = 0;
-		// var total_distance = 0;
-		// frm.doc.main_route_steps.forEach(function (row) {
-		// 	total_fuel = total_fuel + parseInt(row.fuel_consumption_qty);
-		// 	total_distance = total_distance + parseInt(row.distance);
-		// });
-		// frm.doc.side_trips.forEach(function (row) {
-		// 	total_fuel = total_fuel + parseInt(row.total_fuel);
-		// 	total_distance = total_distance + parseInt(row.total_distance);
-		// });
-		// if (frm.doc.total_fuel != total_fuel) {
-		// 	frm.doc.total_fuel = total_fuel
-		// 	frm.dirty();
-		// 	frm.save();
-		// }
-		// if (frm.doc.total_distance != total_distance) {
-		// 	frm.doc.total_distance = total_distance
-		// 	frm.dirty();
-		// 	frm.save();
-		// }
+		if(frm.doc.trip_completed == 0 && frm.doc.trip_status == "Pending" && frm.doc.docstatus == 0){
+			frm.add_custom_button(__('Create Breakdown Entry'), function() {
+				frappe.confirm('Do you want to create breakdown entry?',function() {
+					frappe.call({
+						method: 'vsd_fleet_ms.vsd_fleet_ms.doctype.trips.trips.create_breakdown',
+						args: {
+							docname: frm.doc.name
+						},
+						callback: function (r) {
+							if (r.message){
+								location.reload();
+							frappe.msgprint("Successful Created Breakdown Entry")
+						}
+					}
+					});
+				});
+			}, __('Actions'));
+		}
+		if(!frm.doc.resumption_trip && frm.doc.trip_status == "Breakdown" && frm.doc.status != "Re-Assigned"){
+			frm.add_custom_button(__('Resume Trip'), function() {
+					frappe.call({
+						method: 'vsd_fleet_ms.vsd_fleet_ms.doctype.trips.trips.create_resumption_trip',
+						args: {
+							"docname": frm.doc.name
+						},
+						callback: function (r) {
+							if (r.message){
+							var doc = frappe.model.sync(r.message)[0];
+							frappe.set_route("Form", doc.doctype, doc.name);
+						}
+					}
+					});
+			}, __('Actions'));
+		}
 	},
 	setup: function(frm){
 		$(frm.wrapper).on("grid-row-render", function(e, grid_row) {

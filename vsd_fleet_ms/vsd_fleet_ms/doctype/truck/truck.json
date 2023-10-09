@@ -10,14 +10,16 @@
  "field_order": [
   "overview_tab",
   "disabled",
-  "section_break_471de",
+  "section_break_730cm",
   "license_plate",
-  "make",
-  "image",
-  "acquisition_date",
-  "status",
   "column_break_xpjhi",
   "truck_number",
+  "section_break_471de",
+  "image",
+  "make",
+  "acquisition_date",
+  "status",
+  "column_break_y9xcd",
   "manufacturing_year",
   "model",
   "located_yard",
@@ -135,11 +137,11 @@
    "label": "Image"
   },
   {
-   "default": "Available",
+   "default": "Idle",
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
-   "options": "Available\nUnder Maintenance\nIn Trip\nDisabled"
+   "options": "Idle\nUnder Maintenance\nOn Trip\nDisabled"
   },
   {
    "fieldname": "license_plate",
@@ -169,11 +171,11 @@
    "translatable": 1
   },
   {
-   "depends_on": "eval:doc.status == \"In Trip\"",
+   "depends_on": "eval:doc.status == \"On Trip\"",
    "fieldname": "trans_ms_current_trip",
    "fieldtype": "Link",
    "label": "Current Trip",
-   "mandatory_depends_on": "eval:doc.status == \"In Trip\"",
+   "mandatory_depends_on": "eval:doc.status == \"On Trip\"",
    "options": "Trips"
   },
   {
@@ -227,12 +229,20 @@
    "fieldtype": "Data",
    "label": "Truck Number",
    "unique": 1
+  },
+  {
+   "fieldname": "column_break_y9xcd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_730cm",
+   "fieldtype": "Section Break"
   }
  ],
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-19 12:55:54.466061",
+ "modified": "2023-10-06 17:57:58.278000",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Truck",
@@ -258,7 +268,7 @@
  "states": [
   {
    "color": "Blue",
-   "title": "Available"
+   "title": "Idle"
   },
   {
    "color": "Red",
@@ -266,7 +276,7 @@
   },
   {
    "color": "Green",
-   "title": "In Trip"
+   "title": "On Trip"
   },
   {
    "color": "Red",

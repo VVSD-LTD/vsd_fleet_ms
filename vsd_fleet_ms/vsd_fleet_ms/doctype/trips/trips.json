@@ -72,14 +72,22 @@
   "column_break_c2lwo",
   "stock_out_entry",
   "section_break_vefjo",
-  "trip_completed",
+  "trip_status",
   "reference_doctype",
   "approve_status",
-  "column_break_pfmbr",
-  "trip_completed_date",
+  "column_break_zuguh",
+  "trip_completed",
   "reference_docname",
+  "trip_completed_date",
   "return_route",
-  "connections_tab"
+  "connections_tab",
+  "vehicle_breakdown_tab",
+  "breakdown_date",
+  "location",
+  "resumption_trip",
+  "column_break_xjxpi",
+  "status",
+  "description"
  ],
  "fields": [
   {
@@ -112,8 +120,10 @@
   },
   {
    "fieldname": "round_trip",
-   "fieldtype": "Data",
-   "label": "Round Trip "
+   "fieldtype": "Link",
+   "label": "Round Trip",
+   "options": "Round Trip",
+   "read_only": 1
   },
   {
    "fieldname": "section_break_o887x",
@@ -123,7 +133,8 @@
    "fieldname": "side_trips",
    "fieldtype": "Table",
    "label": "Side Trips Steps",
-   "options": "Side Trips"
+   "options": "Side Trips",
+   "read_only_depends_on": "eval:doc.trip_status == \"Breakdown\""
   },
   {
    "fieldname": "amended_from",
@@ -153,7 +164,8 @@
   {
    "fieldname": "eta_end_of_trip",
    "fieldtype": "Data",
-   "label": "ETA End Of Trip"
+   "label": "ETA End Of Trip",
+   "read_only_depends_on": "eval:doc.trip_status == \"Breakdown\""
   },
   {
    "fieldname": "section_break_ld7mf",
@@ -163,10 +175,10 @@
    "fieldname": "fuel_request_history",
    "fieldtype": "Table",
    "label": "Main Trip Fuel Request",
-   "options": "Fuel Requests Table"
+   "options": "Fuel Requests Table",
+   "read_only_depends_on": "eval:doc.trip_status == \"Breakdown\""
   },
   {
-   "depends_on": "eval:doc.trip_completed == 1",
    "fieldname": "section_break_vefjo",
    "fieldtype": "Tab Break",
    "label": "Trip Status"
@@ -176,7 +188,7 @@
    "fieldname": "fuel_stock_out",
    "fieldtype": "Float",
    "label": "Fuel Stock Out",
-   "read_only_depends_on": "eval:doc.stock_out_entry"
+   "read_only_depends_on": "eval:doc.stock_out_entry || doc.trip_status == \"Breakdown\""
   },
   {
    "fieldname": "column_break_c2lwo",
@@ -194,10 +206,11 @@
    "fieldtype": "Section Break"
   },
   {
-   "depends_on": "eval:(doc.fuel_stock_out) > 0 && (!doc.stock_out_entry || doc.stock_out_entry == \"\")",
+   "depends_on": "eval:(doc.fuel_stock_out) > 0 && (!doc.stock_out_entry || doc.stock_out_entry == \"\") && doc.trip_status != \"Breakdown\"",
    "fieldname": "reduce_stock",
    "fieldtype": "Button",
-   "label": "Reduce Stock"
+   "label": "Reduce Stock",
+   "read_only_depends_on": "eval:doc.trip_status == \"Breakdown\""
   },
   {
    "depends_on": "eval:doc.transporter_type == \"In House\"",
@@ -209,7 +222,8 @@
    "fieldname": "requested_fund_accounts_table",
    "fieldtype": "Table",
    "label": "Trip Funds",
-   "options": "Requested Fund Details"
+   "options": "Requested Fund Details",
+   "read_only_depends_on": "eval:doc.trip_status == \"Breakdown\""
   },
   {
    "fieldname": "section_break_xkwta",
@@ -219,6 +233,7 @@
   {
    "depends_on": "eval:doc.transporter_type == \"In House\"",
    "fetch_from": "manifest.truck",
+   "fetch_if_empty": 1,
    "fieldname": "truck_number",
    "fieldtype": "Link",
    "label": "Truck Number",
@@ -296,7 +311,8 @@
    "fieldname": "main_route_steps",
    "fieldtype": "Table",
    "label": "Route Steps",
-   "options": "Route Steps"
+   "options": "Route Steps",
+   "read_only_depends_on": "eval:doc.trip_status == \"Breakdown\""
   },
   {
    "fieldname": "section_break_2luhc",
@@ -310,7 +326,8 @@
    "fieldname": "location_update",
    "fieldtype": "Table",
    "label": "Location Update",
-   "options": "Truck Trip Location Update"
+   "options": "Truck Trip Location Update",
+   "read_only_depends_on": "eval:doc.trip_status == \"Breakdown\""
   },
   {
    "fieldname": "side_trips_tab",
@@ -349,13 +366,15 @@
   {
    "fieldname": "phone_number",
    "fieldtype": "Data",
-   "label": "Phone Number"
+   "label": "Phone Number",
+   "read_only_depends_on": "eval:doc.trip_status == \"Breakdown\""
   },
   {
    "depends_on": "eval:doc.transporter_type == \"In House\"",
    "fieldname": "licence_number",
    "fieldtype": "Data",
-   "label": "Licence Number"
+   "label": "Licence Number",
+   "read_only_depends_on": "eval:doc.trip_status == \"Breakdown\""
   },
   {
    "fieldname": "section_break_7vc12",
@@ -511,21 +530,69 @@
    "label": "Fuel Amount"
   },
   {
-   "fieldname": "column_break_pfmbr",
-   "fieldtype": "Column Break"
-  },
-  {
    "allow_on_submit": 1,
    "fieldname": "trip_completed_date",
    "fieldtype": "Date",
    "label": "Trip Completed Date",
    "read_only": 1
+  },
+  {
+   "fieldname": "column_break_zuguh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "trip_status",
+   "fieldtype": "Select",
+   "label": "Trip Status",
+   "options": "Pending\nCompleted\nBreakdown",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.trip_status == \"Breakdown\"",
+   "fieldname": "vehicle_breakdown_tab",
+   "fieldtype": "Tab Break",
+   "label": "Vehicle Breakdown"
+  },
+  {
+   "fieldname": "breakdown_date",
+   "fieldtype": "Datetime",
+   "label": "Date"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "label": "Location"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Not Re-Assigned\nRe-Assigned",
+   "read_only": 1
+  },
+  {
+   "fieldname": "resumption_trip",
+   "fieldtype": "Link",
+   "label": "Resumption Trip",
+   "options": "Trips",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_xjxpi",
+   "fieldtype": "Column Break"
   }
  ],
+ "in_create": 1,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-06-19 17:32:34.098370",
+ "modified": "2023-07-03 12:54:16.849252",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Trips",

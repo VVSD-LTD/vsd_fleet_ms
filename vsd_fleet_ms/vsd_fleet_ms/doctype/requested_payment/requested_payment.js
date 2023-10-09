@@ -8,11 +8,6 @@ frappe.ui.form.on('Requested Payment', {
 		html += '<button style="background-color: red; color: #FFF;" class="btn btn-default btn-xs" onclick="cur_frm.cscript.reject_request(\'' + frm + '\');">Reject</button>'
 		$(frm.fields_dict.html1.wrapper).html(html);
 		
-		//Load the accounts approval buttons
-		var html3 = '<button style="background-color: green; color: #FFF;" class="btn btn-default btn-xs" onclick="cur_frm.cscript.accounts_approval(\'' + frm + '\');">Approve</button> ';
-		html3 += '<button style="background-color: red; color: #FFF;" class="btn btn-default btn-xs" onclick="cur_frm.cscript.accounts_cancel(\'' + frm + '\');">Cancel</button>'
-		$(frm.fields_dict.account_approval_buttons.wrapper).html(html3);
-		
 		//cur_frm.disable_save();
 		frappe.after_ajax(function(){
 			frm.events.show_hide_sections(frm);
@@ -36,8 +31,8 @@ frappe.ui.form.on('Requested Payment', {
 	
 	refresh: function(frm){
 		// console.log(frm);
-
-		// Hide delete buttons for Requested fuel Child Doctype
+		var disburseFundsButton = cur_frm.fields_dict['accounts_approval'];
+        disburseFundsButton.$wrapper.find('[data-fieldname="disburse_funds"]').hide();
 		$('*[data-fieldname="requested_funds"]').find('.grid-remove-rows').hide();
 		$('*[data-fieldname="requested_funds"]').find('.grid-remove-all-rows').hide();
 		$('*[data-fieldname="requested_funds"]').find('.grid-add-row').hide();
@@ -71,50 +66,68 @@ frappe.ui.form.on('Requested Payment', {
 		cur_frm.get_field("request_total_amount").wrapper.innerHTML = '<p class="text-muted small">Total Amount Approved</p><b>USD ' + total_request_usd.toLocaleString() + ' <br> TZS ' + total_request_tsh.toLocaleString() + '</b>';
 	
 		
-		//For total approved
+		if (cur_frm.doc.requested_funds.length > 0){
+			frm.set_value('payment_status', 'Waiting Approval');
+			frm.save_or_update();
+		} else{
+			//For total approved
 		var total_approved_tsh = 0;
 		var total_approved_usd = 0;
-		/*cur_frm.doc.previous_requested_funds.forEach(function(row){
-			if(row.request_status == "Approved" && row.request_currency == 'TZS')
+		cur_frm.doc.accounts_approval.forEach(function(row){
+			if(row.request_status == "Approved" && row.request_currency == 'TZS' && row.journal_entry != '')
 			{
 				total_approved_tsh += row.request_amount;
 			}
-			else if(row.request_status == "Approved" && row.request_currency == 'USD')
+			else if(row.request_status == "Approved" && row.request_currency == 'USD' && row.journal_entry != '')
 			{
 				total_approved_usd += row.request_amount;
 			}
 		});
 		
-		cur_frm.get_field("total_approved_amount").wrapper.innerHTML = '<p class="text-muted small">Total Amount Approved</p><b>USD ' + total_approved_usd.toLocaleString() + ' <br> TZS ' + total_approved_tsh.toLocaleString() + '</b>'; */
+		cur_frm.get_field("total_amount").wrapper.innerHTML = '<p class="text-muted small">Total Amount Approved</p><b>USD ' + total_approved_usd.toLocaleString() + ' <br> TZS ' + total_approved_tsh.toLocaleString() + '</b>';
 		
 		//For total paid amount
 		var total_tsh = 0;
 		var total_usd = 0;
-		frm.doc.payment_reference.forEach(function(row){
-			if(row.currency == "TZS")
+		cur_frm.doc.accounts_approval.forEach(function(row){
+			if(row.request_currency == "TZS")
 			{
-				total_tsh += row.amount;
+				total_tsh += row.request_amount;
 			}
-			else if(row.currency == 'USD')
+			else if(row.request_currency == 'USD')
 			{
-				total_usd += row.amount;
+				total_usd += row.request_amount;
+			}
+		});
+		
+		var total_paid_tsh = 0;
+		var total_paid_usd = 0;
+		cur_frm.doc.accounts_approval.forEach(function(row){
+			if(row.request_status == "Approved" && row.request_currency == 'TZS' && row.journal_entry)
+			{
+				total_paid_tsh += row.request_amount;
+			}
+			else if(row.request_status == "Approved" && row.request_currency == 'USD' && row.journal_entry)
+			{
+				total_paid_usd += row.request_amount;
 			}
 		});
 		
 		//For payment status (If all payments have been paid, payment status == 'Paid')
-		if(total_usd > 0 && total_tsh > 0 && total_usd >= total_approved_usd && total_tsh >= total_approved_tsh && frm.doc.payment_status != "Paid")
+		if(total_usd >= 0 && total_tsh >= 0 && total_usd == total_paid_usd && total_tsh == total_paid_tsh && frm.doc.payment_status != "Paid")
 		{
 			frm.set_value('payment_status', "Paid");
 			frm.save_or_update();
 		}
-		else if((total_approved_tsh > total_tsh || total_approved_usd > total_usd) && frm.doc.payment_status != "Waiting Payment")
+		else if((total_paid_tsh < total_tsh || total_paid_usd < total_usd) && frm.doc.payment_status != "Waiting Payment")
 		{
 			frm.set_value('payment_status', 'Waiting Payment');
 			frm.save_or_update();
 		}
 		
-		cur_frm.get_field("total_paid_amount").wrapper.innerHTML = '<p class="text-muted small">Total Amount Paid</p><b>USD ' + total_usd.toLocaleString() + ' <br> TZS ' + total_tsh.toLocaleString() + '</b>';
+		cur_frm.get_field("account_approval_buttons").wrapper.innerHTML = '<p class="text-muted small">Total Amount Paid</p><b>USD ' + total_paid_usd.toLocaleString() + ' <br> TZS ' + total_paid_tsh.toLocaleString() + '</b>';
 		
+		}
 		//Make payment button
 		frm.add_custom_button(__('Make Payment'),
 			function() {
@@ -190,6 +203,8 @@ frappe.ui.form.on('Requested Fund Details', {
 
 frappe.ui.form.on('Requested Fund Accounts Table', {
 	form_render: function(frm, cdt, cdn){
+		var disburseFundsButton = cur_frm.fields_dict['accounts_approval'];
+        disburseFundsButton.$wrapper.find('[data-fieldname="disburse_funds"]').hide();
 		frappe.call({
 			'method': 'frappe.client.get_value',
 			'args': {
@@ -621,24 +636,4 @@ cur_frm.cscript.populate_child = function(reference_doctype, reference_docname){
 	});
 };
 
-frappe.ui.form.on('Requested Fund Accounts Table', {
-	disburse_funds: function (frm, cdt, cdn) {
-		frm.save_or_update();
-		if (frm.is_dirty()) {
-			frappe.throw(__("Plase Save First"));
-			return;
-		}
-		const row = locals[cdt][cdn];
-		if (row.journal_entry) return;
-		frappe.call({
-			method: "vsd_fleet_ms.vsd_fleet_ms.doctype.trips.trips.create_fund_jl",
-			args: {
-				doc: frm.doc,
-				row: row
-			},
-			callback: function (data) {
-				frappe.set_route('Form', data.message.doctype, data.message.name);
-			}
-		});
-	}
-});
+

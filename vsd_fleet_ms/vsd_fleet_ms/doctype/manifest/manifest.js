@@ -17,7 +17,7 @@ frappe.ui.form.on('Manifest', {
 			  });
 			  cur_frm.refresh_field("manifest_cargo_details")	
 			}
-		if(frm.doc.docstatus == 0 && frm.doc.name && !frm.doc.vehicle_trip){
+		if(frm.doc.docstatus == 1 && frm.doc.name && !frm.doc.vehicle_trip){
 			var args_array = [];
 			if (frm.doc.transporter_type == "In House"){
 			args_array = {
@@ -88,7 +88,7 @@ frappe.ui.form.on('Manifest', {
 		frm.set_query("truck", function () {
 			return {
 				filters: {
-					status: "Available",
+					status: "Idle",
 					disabled:0
 				}
 			};
@@ -113,7 +113,7 @@ frappe.ui.form.on('Manifest', {
 		// 		return {
 		// 			filters: {
 		// 				disabled:0,
-		// 				status:"Available"
+		// 				status:"Idle"
 		// 			}
 		// 		};
 		// 	});

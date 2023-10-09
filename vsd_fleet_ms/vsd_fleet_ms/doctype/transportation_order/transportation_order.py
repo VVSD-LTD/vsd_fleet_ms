@@ -310,12 +310,6 @@ def assign_vehicle(**args):
         )
         request.insert(ignore_permissions=True)
 
-    # Edit vehicle status
-
-    """vehicle = frappe.get_doc("Truck", args.assigned_vehicle)
-	if vehicle.status == 'Available':
-		vehicle.status = "Booked"
-		vehicle.save()"""
     return "success"
 
 

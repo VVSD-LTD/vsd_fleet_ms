@@ -13,7 +13,15 @@ class Manifest(Document):
 			self.update_trips()
 			self.validate_has_trailers()
 
+	def validate(self):
+		if self.transporter_type == "In House" and self.truck and self.docstatus == 1 and self.vehicle_trip:
+			truck = frappe.get_doc("Truck", self.truck)
+			truck.status = "On Trip"
+			truck.trans_ms_current_trip = self.vehicle_trip
+			truck.save()
+
 	def before_save(self):
+		
 		self.validate_transporter_type()
 		self.validate_has_trailers()
 		if self.name:
@@ -99,7 +107,7 @@ class Manifest(Document):
 			elif self.transporter_type == "In House":
 				for row in self.manifest_cargo_details:
 					row.cargo_allocation = "Truck"
-					row.specific_cargo_allocated = self.truck
+					row.specific_cargo_allocated = self.truck if self.truck else ""
 					row.sub_contractor_cargo_allocation = ''
 
 	def validate_transporter_type(self):
@@ -114,7 +122,7 @@ class Manifest(Document):
 			self.truck = ''
 			self.assigned_driver = ''
 			self.driver_name = ''
-			self.truck_license_plate_no = ''
+			self.truck = ''
 			self.trailer_1 = ''
 			self.trailer1_type = ''
 			self.trailer_2 = ''
@@ -131,7 +139,7 @@ def get_manifests(filter):
 	manifests = frappe.get_all(
         'Manifest',
         filters=filter,
-        fields=['name', 'route', 'truck_license_plate_no','driver_name']  # Adjust the fields as per your requirements
+        fields=['name', 'route', 'truck','driver_name']  # Adjust the fields as per your requirements
     )
 	
 	return manifests
