@@ -7,18 +7,20 @@ from frappe.model.document import Document
 class Truck(Document):
 	def before_save(self):
 		current_status = frappe.db.get_value("Truck",self.name,"status")
-		if current_status != self.status:
-			if self.status == "On Trip":
-				doc = frappe.new_doc("Truck Log")
-				doc.truck = self.name
-				doc.vehicle_status = self.status
-				doc.current_trip = self.trans_ms_current_trip 
-				doc.save()
-			else:
-				doc = frappe.new_doc("Truck Log")
-				doc.truck = self.name
-				doc.vehicle_status = self.status
-				doc.save()
+
+		if current_status:
+			if current_status != self.status:
+				if self.status == "On Trip":
+					doc = frappe.new_doc("Truck Log")
+					doc.truck = self.name
+					doc.vehicle_status = self.status
+					doc.current_trip = self.trans_ms_current_trip 
+					doc.save()
+				else:
+					doc = frappe.new_doc("Truck Log")
+					doc.truck = self.name
+					doc.vehicle_status = self.status
+					doc.save()
     
 		if not self.truck_number:
 			self.truck_number = self.license_plate
@@ -41,10 +43,4 @@ class Truck(Document):
 				self.status = "Disabled"
 		if self.status == "Disabled":
 			self.disabled == 1
-	
-	
-	def vehicle_log(self,):
-		doc = frappe.new_doc("Truck Log")
-		doc.truck = self.name
-		doc.vehicle_status = "Idle"
 

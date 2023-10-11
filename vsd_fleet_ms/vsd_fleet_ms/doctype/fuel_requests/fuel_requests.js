@@ -11,12 +11,22 @@ frappe.ui.form.on('Fuel Requests', {
     },
 
     refresh: function (frm, cdt, cdn) {
+        if (frm.doc.requested_fuel.length > 0 && frm.doc.approved_requests.length < 1){
+            frappe.db.set_value(frm.doc.doctype,frm.doc.name,"status","Waiting Approval")
+        }
+        if (frm.doc.requested_fuel.length > 0 && frm.doc.approved_requests.length > 0){
+            frappe.db.set_value(frm.doc.doctype,frm.doc.name,"status","Partially Processed")
+        }
+        if (frm.doc.requested_fuel.length < 1 && frm.doc.approved_requests.length > 0){
+            frappe.db.set_value(frm.doc.doctype,frm.doc.name,"status","Fully Processed")
+        }
         frm.events.show_hide_sections(frm);
 
         // Hide delete buttons for Requested fuel Child Doctype
         $('*[data-fieldname="requested_fuel"]').find('.grid-remove-rows').hide();
         $('*[data-fieldname="requested_fuel"]').find('.grid-remove-all-rows').hide();
         $('*[data-fieldname="requested_fuel"]').find('.grid-add-row').hide();
+        $('*[data-fieldname="approved_requests"]').find('.btn[data-fieldname="create_purchase_order"]').hide();
 
         // if (cur_frm.doc.status === "Fully Processed") {
         //     frappe.msgprint(locals[cdt][cdn].status);
@@ -62,16 +72,17 @@ frappe.ui.form.on('Fuel Requests', {
 });
 
 
-
 frappe.ui.form.on('Fuel Requests Table', {
-
+    
     form_render(frm, cdt, cdn) {
+        frm.fields_dict.approved_requests.grid.wrapper.find('.btn[data-fieldname="create_purchase_order"]').hide();
         frm.fields_dict.requested_fuel.grid.wrapper.find('.grid-delete-row').hide();
         frm.fields_dict.requested_fuel.grid.wrapper.find('.grid-duplicate-row').hide();
         frm.fields_dict.requested_fuel.grid.wrapper.find('.grid-move-row').hide();
         frm.fields_dict.requested_fuel.grid.wrapper.find('.grid-append-row').hide();
         frm.fields_dict.requested_fuel.grid.wrapper.find('.grid-insert-row-below').hide();
         frm.fields_dict.requested_fuel.grid.wrapper.find('.grid-insert-row').hide();
+        
     }
 });
 

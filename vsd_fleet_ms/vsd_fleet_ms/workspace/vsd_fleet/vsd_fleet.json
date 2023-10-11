@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"D_r2tq24Wk\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">VSD Fleet</span>\",\"col\":12}},{\"id\":\"eEKQ_vxz6K\",\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}},{\"id\":\"_FHA1FtdB9\",\"type\":\"card\",\"data\":{\"card_name\":\"Trips\",\"col\":4}},{\"id\":\"tiOnXE60vg\",\"type\":\"card\",\"data\":{\"card_name\":\"Settings\",\"col\":4}},{\"id\":\"fgOY4518ML\",\"type\":\"card\",\"data\":{\"card_name\":\"Transactions\",\"col\":4}},{\"id\":\"RRWILp0x3t\",\"type\":\"card\",\"data\":{\"card_name\":\"Transport Records\",\"col\":4}}]",
+ "content": "[{\"id\":\"D_r2tq24Wk\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">VSD Fleet</span>\",\"col\":12}},{\"id\":\"eEKQ_vxz6K\",\"type\":\"card\",\"data\":{\"card_name\":\"Masters\",\"col\":4}},{\"id\":\"_FHA1FtdB9\",\"type\":\"card\",\"data\":{\"card_name\":\"Trips\",\"col\":4}},{\"id\":\"tiOnXE60vg\",\"type\":\"card\",\"data\":{\"card_name\":\"Settings\",\"col\":4}},{\"id\":\"fgOY4518ML\",\"type\":\"card\",\"data\":{\"card_name\":\"Transactions\",\"col\":4}},{\"id\":\"RRWILp0x3t\",\"type\":\"card\",\"data\":{\"card_name\":\"Transport Records\",\"col\":4}},{\"id\":\"Fvhi34VUqU\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}}]",
  "creation": "2023-05-04 18:08:12.460715",
  "custom_blocks": [],
  "docstatus": 0,
@@ -231,9 +231,27 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Reports",
+   "link_count": 1,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Trip Report and Expenses",
+   "link_count": 0,
+   "link_to": "Trip Report and Expenses",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2023-10-06 10:23:10.703449",
+ "modified": "2023-10-11 10:00:39.409804",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "VSD Fleet",

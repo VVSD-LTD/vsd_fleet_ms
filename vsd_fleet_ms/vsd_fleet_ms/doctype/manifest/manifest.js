@@ -181,6 +181,20 @@ frappe.ui.form.on('Manifest', {
 		}
 		filters_for_trailers(trailer_names)
 	},
+	has_trailers: function(frm){
+		if (frm.doc.has_trailers == 0){
+			frm.doc.trailer_1 = "";
+			frm.doc.trailer1_type = "";
+			frm.doc.trailer_2 = "";
+			frm.doc.trailer2_type = "";
+			frm.doc.trailer_3 = "";
+			frm.doc.trailer3_type = "";
+			frm.refresh_field("trailer_2")
+			frm.refresh_field("trailer2_type")
+			frm.refresh_field("trailer_3")
+			frm.refresh_field("trailer3_type")
+		}
+	},
 	setup: function(frm){
 		
 		var trailer_names = []

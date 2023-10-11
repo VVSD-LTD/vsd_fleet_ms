@@ -185,7 +185,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-08 16:00:40.440570",
+ "modified": "2023-10-10 12:51:29.391273",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Fuel Requests",
@@ -207,6 +207,19 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": [],
+ "states": [
+  {
+   "color": "Red",
+   "title": "Waiting Approval"
+  },
+  {
+   "color": "Cyan",
+   "title": "Partially Processed"
+  },
+  {
+   "color": "Blue",
+   "title": "Fully Processed"
+  }
+ ],
  "track_changes": 1
 }

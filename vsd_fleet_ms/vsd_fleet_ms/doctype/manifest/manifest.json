@@ -11,6 +11,8 @@
   "manifest",
   "section_break_8hd1v",
   "transporter_type",
+  "column_break_tvryv",
+  "sub_contractor_name",
   "section_break_6xysb",
   "vehicle_trip",
   "truck",
@@ -96,6 +98,7 @@
    "fieldtype": "Section Break"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "manifest_total_weight",
    "fieldtype": "Int",
    "label": "Manifest Total Weight",
@@ -259,12 +262,23 @@
    "fieldname": "sub_contractor_drivers_license_number",
    "fieldtype": "Data",
    "label": "Drivers License Number"
+  },
+  {
+   "fieldname": "column_break_tvryv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.transporter_type == \"Sub-Contractor\"",
+   "fieldname": "sub_contractor_name",
+   "fieldtype": "Data",
+   "label": "Sub-Contractor Name",
+   "mandatory_depends_on": "eval:doc.transporter_type == \"Sub-Contractor\""
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-10-06 17:02:38.405790",
+ "modified": "2023-10-10 16:51:36.979640",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Manifest",

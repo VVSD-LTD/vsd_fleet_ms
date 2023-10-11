@@ -1,0 +1,31 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2023-10-10 15:32:52.384290",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "json": "{}",
+ "modified": "2023-10-11 09:55:42.442912",
+ "modified_by": "Administrator",
+ "module": "VSD Fleet MS",
+ "name": "Trip Report and Expenses",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "SELECT \n\t`tabTrips`.name AS reference,\n\t`tabTrips`.transporter_type,\n\tIF(`tabTrips`.transporter_type = 'In House', '', `tabTrips`.sub_contractor_name) AS transporter_name,\n\tIF(`tabTrips`.transporter_type = 'In House', `tabTrips`.truck_licence_plate, `tabTrips`.sub_contactor_truck_license_plate_no) AS vehicle_plate_number,\n\tIF(`tabTrips`.transporter_type = 'In House', `tabTrips`.driver_name, `tabTrips`.sub_contactor_driver_name) AS driver_name,\n\troute,\n\t`tabTrips`.trip_status as status,\n\t(\n\t\tSELECT SUM(request_amount)\n\t\tFROM `tabRequested Fund Details`\n\t\tWHERE parenttype = 'Trips' AND parent = `tabTrips`.name AND request_currency = 'USD' AND request_status = 'Approved' AND journal_entry != ''\n\t) AS trip_expenses_usd,\n\t(\n\t\tSELECT SUM(request_amount)\n\t\tFROM `tabRequested Fund Details`\n\t\tWHERE parenttype = 'Trips' AND parent = `tabTrips`.name AND request_currency = 'TZS' AND request_status = 'Approved' AND journal_entry != ''\n\t) AS trip_expenses_tzs,\n\tdate as posting_date\nFROM\n\t`tabTrips`",
+ "ref_doctype": "Trips",
+ "report_name": "Trip Report and Expenses",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "All"
+  }
+ ]
+}

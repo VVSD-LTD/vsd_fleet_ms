@@ -15,6 +15,7 @@
   "date",
   "column_break_bs0gw",
   "company",
+  "sub_contractor_name",
   "route",
   "round_trip",
   "section_break_xkwta",
@@ -175,8 +176,7 @@
    "fieldname": "fuel_request_history",
    "fieldtype": "Table",
    "label": "Main Trip Fuel Request",
-   "options": "Fuel Requests Table",
-   "read_only_depends_on": "eval:doc.trip_status == \"Breakdown\""
+   "options": "Fuel Requests Table"
   },
   {
    "fieldname": "section_break_vefjo",
@@ -188,7 +188,7 @@
    "fieldname": "fuel_stock_out",
    "fieldtype": "Float",
    "label": "Fuel Stock Out",
-   "read_only_depends_on": "eval:doc.stock_out_entry || doc.trip_status == \"Breakdown\""
+   "read_only_depends_on": "eval:doc.stock_out_entry"
   },
   {
    "fieldname": "column_break_c2lwo",
@@ -206,11 +206,10 @@
    "fieldtype": "Section Break"
   },
   {
-   "depends_on": "eval:(doc.fuel_stock_out) > 0 && (!doc.stock_out_entry || doc.stock_out_entry == \"\") && doc.trip_status != \"Breakdown\"",
+   "depends_on": "eval:(doc.fuel_stock_out) > 0 && (!doc.stock_out_entry || doc.stock_out_entry == \"\")",
    "fieldname": "reduce_stock",
    "fieldtype": "Button",
-   "label": "Reduce Stock",
-   "read_only_depends_on": "eval:doc.trip_status == \"Breakdown\""
+   "label": "Reduce Stock"
   },
   {
    "depends_on": "eval:doc.transporter_type == \"In House\"",
@@ -222,8 +221,7 @@
    "fieldname": "requested_fund_accounts_table",
    "fieldtype": "Table",
    "label": "Trip Funds",
-   "options": "Requested Fund Details",
-   "read_only_depends_on": "eval:doc.trip_status == \"Breakdown\""
+   "options": "Requested Fund Details"
   },
   {
    "fieldname": "section_break_xkwta",
@@ -586,13 +584,20 @@
   {
    "fieldname": "column_break_xjxpi",
    "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "manifest.sub_contractor_name",
+   "fieldname": "sub_contractor_name",
+   "fieldtype": "Data",
+   "label": "Sub-Contractor Name",
+   "read_only": 1
   }
  ],
  "in_create": 1,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-07-03 12:54:16.849252",
+ "modified": "2023-10-10 16:54:29.081582",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Trips",

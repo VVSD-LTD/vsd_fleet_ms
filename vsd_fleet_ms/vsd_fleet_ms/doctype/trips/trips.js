@@ -42,7 +42,7 @@ frappe.ui.form.on('Trips', {
 			}, __('Actions'));
 		}
 		if(!frm.doc.resumption_trip && frm.doc.trip_status == "Breakdown" && frm.doc.status != "Re-Assigned"){
-			frm.add_custom_button(__('Resume Trip'), function() {
+			frm.add_custom_button(__('Allocate New Vehicle Trip'), function() {
 					frappe.call({
 						method: 'vsd_fleet_ms.vsd_fleet_ms.doctype.trips.trips.create_resumption_trip',
 						args: {
