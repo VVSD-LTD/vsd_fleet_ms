@@ -11,13 +11,13 @@ frappe.ui.form.on('Fuel Requests', {
     },
 
     refresh: function (frm, cdt, cdn) {
-        if (frm.doc.requested_fuel.length > 0 && frm.doc.approved_requests.length < 1){
+        if (frm.doc.requested_fuel.length > 0 && frm.doc.approved_requests.length < 1 && frm.doc.status != "Waiting Approval"){
             frappe.db.set_value(frm.doc.doctype,frm.doc.name,"status","Waiting Approval")
         }
-        if (frm.doc.requested_fuel.length > 0 && frm.doc.approved_requests.length > 0){
+        if (frm.doc.requested_fuel.length > 0 && frm.doc.approved_requests.length > 0 && frm.doc.status != "Partially Processed"){
             frappe.db.set_value(frm.doc.doctype,frm.doc.name,"status","Partially Processed")
         }
-        if (frm.doc.requested_fuel.length < 1 && frm.doc.approved_requests.length > 0){
+        if (frm.doc.requested_fuel.length < 1 && frm.doc.approved_requests.length > 0 && frm.doc.status != "Fully Processed"){
             frappe.db.set_value(frm.doc.doctype,frm.doc.name,"status","Fully Processed")
         }
         frm.events.show_hide_sections(frm);
