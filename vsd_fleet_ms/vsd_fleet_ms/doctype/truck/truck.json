@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "field:truck_number",
  "creation": "2023-05-04 10:40:28.075276",
@@ -243,7 +244,7 @@
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-10-10 14:35:24.957370",
+ "modified": "2024-03-25 16:44:36.452165",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Truck",

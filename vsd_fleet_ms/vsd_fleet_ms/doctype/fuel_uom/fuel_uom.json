@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "field:uom_name",
  "creation": "2023-05-04 11:11:56.648756",
@@ -29,7 +30,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-04 11:34:03.861691",
+ "modified": "2024-03-25 16:45:19.407923",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Fuel UOM",

@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "autoname": "field:plate_number",
  "creation": "2023-05-04 11:10:09.208129",
  "default_view": "List",
@@ -150,7 +151,7 @@
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-06 17:53:30.630966",
+ "modified": "2024-03-25 16:44:50.899761",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Trailers",
