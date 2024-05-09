@@ -29,7 +29,8 @@
   "column_break_0byuc",
   "cargo_destination_country",
   "cargo_destination_city",
-  "expected_offloading_date"
+  "expected_offloading_date",
+  "transporter_type"
  ],
  "fields": [
   {
@@ -64,6 +65,7 @@
    "read_only": 1
   },
   {
+   "depends_on": "eval:doc.transporter_type != \"Sub-Contractor\"",
    "fieldname": "cargo_allocation",
    "fieldtype": "Select",
    "in_list_view": 1,
@@ -163,24 +165,34 @@
    "read_only": 1
   },
   {
-   "depends_on": "eval:doc.cargo_allocation == \"Truck\" || doc.cargo_allocation == \"Trailers\"",
+   "depends_on": "eval:doc.transporter_type != \"Sub-Contractor\"",
    "fieldname": "specific_cargo_allocated",
    "fieldtype": "Dynamic Link",
    "label": "Specific Cargo Allocated",
    "options": "cargo_allocation",
-   "read_only_depends_on": "eval:doc.cargo_allocation == \"Truck\""
+   "read_only_depends_on": "eval:doc.cargo_allocation == \"Truck\" || doc.transporter_type == \"Sub-Contractor\""
   },
   {
+   "depends_on": "eval:doc.transporter_type == \"Sub-Contractor\"",
    "fieldname": "sub_contractor_cargo_allocation",
    "fieldtype": "Data",
    "label": "Sub-Contractor Cargo Allocation",
-   "read_only_depends_on": "eval:doc.cargo_allocation == \"Truck\""
+   "read_only_depends_on": "eval:doc.transporter_type != \"Sub-Contractor\""
+  },
+  {
+   "default": "In House",
+   "fieldname": "transporter_type",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Transporter Type",
+   "print_hide": 1,
+   "report_hide": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-06-14 15:28:49.060278",
+ "modified": "2024-03-19 16:42:23.377161",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Manifest Cargo Details",

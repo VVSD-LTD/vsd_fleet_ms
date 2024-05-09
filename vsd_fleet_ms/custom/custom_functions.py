@@ -1,4 +1,6 @@
 import frappe
+from frappe import qb
+
 @frappe.whitelist()
 def update_child_table(self, fieldname, df=None):
 	'''Updated function to prevent saving of approved or rejected funds request'''
@@ -38,18 +40,43 @@ def update_child_table(self, fieldname, df=None):
 			(self.name, self.doctype, fieldname))
 
 @frappe.whitelist()
-def validate_requested_funds(doc):
-	make_request = False
-	open_requests = []
-	for requested_fund in doc.requested_funds:
-		if requested_fund.request_status == "open":
-			make_request = True
-			open_requests.append(requested_fund)
-			
-	if make_request:
-		args = {"reference_doctype": doc.doctype, "reference_docname": doc.name, "company": doc.company}
-		request_status = request_funds(reference_doctype = doc.doctype, reference_docname = doc.name, company = doc.company)
-		if request_status == "Request Inserted" or request_status == "Request Updated":
-			for open_request in open_requests:
-				open_request.set("request_status", "Requested")
+def add_to_manifest(route_starting_point):
+	# Define your parent and child DocTypes
+	cargo_registration = qb.DocType("Cargo Registration")
+	cargo_detail = qb.DocType("Cargo Detail")
+
+	# Perform the query
+	existing_cargo_details = (
+		qb.from_(cargo_detail)
+    	.from_(cargo_registration)
+    	.select(
+			cargo_detail.name.as_("cargo_id"),
+			cargo_registration.customer.as_("customer_name"),
+			cargo_registration.name.as_("parent_doctype_name"),
+			cargo_registration.posting_date,
+			cargo_detail.net_weight,
+			cargo_detail.number_of_packages,
+			cargo_detail.bl_number,
+			cargo_detail.cargo_route,
+			cargo_detail.cargo_type,
+			cargo_detail.loading_date,
+			cargo_detail.expected_offloading_date,
+			cargo_detail.cargo_destination_country,
+			cargo_detail.cargo_destination_city,
+			cargo_detail.container_size,
+			cargo_detail.seal_number,
+			cargo_detail.container_number,
+			cargo_detail.cargo_location_city,
+			cargo_detail.cargo_location_country,
+			cargo_detail.cargo_route
+		)
+		.where(
+			(cargo_detail.parent == cargo_registration.name)
+			& (cargo_registration.docstatus == 1)
+			& (cargo_detail.manifest_number.isnull())
+			& (cargo_detail.route_starting_point == route_starting_point)
+		)
+		.run(as_dict=True)
+	)
+	return existing_cargo_details
 		

@@ -10,7 +10,7 @@
  "icon": "map",
  "idx": 0,
  "is_hidden": 0,
- "label": "VSD Fleet",
+ "label": "Fleet MS",
  "links": [
   {
    "hidden": 0,
@@ -236,7 +236,8 @@
    "hidden": 0,
    "is_query_report": 0,
    "label": "Reports",
-   "link_count": 1,
+   "link_count": 2,
+   "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
   },
@@ -249,12 +250,22 @@
    "link_type": "Report",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Fuel Expense By Trip",
+   "link_count": 0,
+   "link_to": "Fuel Expense By Trip",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2023-10-11 10:00:39.409804",
+ "modified": "2024-05-06 12:10:09.083876",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
- "name": "VSD Fleet",
+ "name": "Fleet MS",
  "number_cards": [],
  "owner": "arnold@vvsdtz.com",
  "parent_page": "",
@@ -263,5 +274,5 @@
  "roles": [],
  "sequence_id": 1.0,
  "shortcuts": [],
- "title": "VSD Fleet"
+ "title": "Fleet MS"
 }

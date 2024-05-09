@@ -10,6 +10,9 @@
  "field_order": [
   "route_name",
   "section_break_cm0yq",
+  "starting_point",
+  "column_break_rm5sh",
+  "ending_point",
   "route_steps_section",
   "trip_steps",
   "section_break_48gug",
@@ -87,11 +90,27 @@
    "fieldtype": "Float",
    "label": "Total USD",
    "read_only": 1
+  },
+  {
+   "fieldname": "starting_point",
+   "fieldtype": "Data",
+   "label": "Starting Point",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_rm5sh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ending_point",
+   "fieldtype": "Data",
+   "label": "Ending Point",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-08 18:08:17.988026",
+ "modified": "2024-03-12 17:03:48.465615",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Trip Routes",

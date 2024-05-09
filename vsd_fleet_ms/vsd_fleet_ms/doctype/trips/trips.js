@@ -166,35 +166,65 @@ frappe.ui.form.on('Trips', {
 		if (frm.doc.total_distance != total_distance) {
 			frm.doc.total_distance = total_distance
 		}
+	},
+	date_of_departure_from_border: (frm) => {
+		if (frm.doc.date_of_departure_from_border && frm.doc.arrival_date_at_border){
+			var date1 = frappe.datetime.str_to_obj(cur_frm.doc.date_of_departure_from_border);
+			var date2 = frappe.datetime.str_to_obj(cur_frm.doc.arrival_date_at_border);
+
+			// Calculate the difference in milliseconds
+			var difference_ms = date1 - date2;
+
+			// Convert milliseconds to days
+			var difference_days = Math.floor(difference_ms / (1000 * 60 * 60 * 24));
+
+			frm.doc.total_days_at_the_border = difference_days;
+			frm.refresh_field("total_days_at_the_border");
+		}
+	},
+	arrival_date_at_border: (frm) => {
+		if (frm.doc.date_of_departure_from_border && frm.doc.arrival_date_at_border){
+			var date1 = frappe.datetime.str_to_obj(cur_frm.doc.date_of_departure_from_border);
+			var date2 = frappe.datetime.str_to_obj(cur_frm.doc.arrival_date_at_border);
+
+			// Calculate the difference in milliseconds
+			var difference_ms = date1 - date2;
+
+			// Convert milliseconds to days
+			var difference_days = Math.floor(difference_ms / (1000 * 60 * 60 * 24));
+
+			frm.doc.total_days_at_the_border = difference_days;
+			frm.refresh_field("total_days_at_the_border");
+		}
 	}
 });
 
-frappe.ui.form.on('Side Trips', {
-	total_distance: function (frm, cdt, cdn) {
-		var total_distance = 0;
-		frm.doc.main_route_steps.forEach(function (row) {
-			total_distance = total_distance + parseInt(row.distance);
-		});
-		frm.doc.side_trips.forEach(function (row) {
-			total_distance = total_distance + parseInt(row.total_distance);
-		});
-		if (frm.doc.total_distance != total_distance){
-			frm.doc.total_distance = total_distance
-		}
-	},
-	total_fuel: function(frm, cdt, cdn){
-		var total_fuel = 0;
-		frm.doc.main_route_steps.forEach(function (row) {
-			total_fuel = total_fuel + parseInt(row.fuel_consumption_qty);
-		});
-		frm.doc.side_trips.forEach(function (row) {
-			total_fuel = total_fuel + parseInt(row.total_fuel);
-		});
-		if (frm.doc.total_fuel != total_fuel) {
-			frm.doc.total_fuel = total_fuel
-		}
-	}
-});
+// frappe.ui.form.on('Side Trips', {
+// 	total_distance: function (frm, cdt, cdn) {
+// 		var total_distance = 0;
+// 		frm.doc.main_route_steps.forEach(function (row) {
+// 			total_distance = total_distance + parseInt(row.distance);
+// 		});
+// 		frm.doc.side_trips.forEach(function (row) {
+// 			total_distance = total_distance + parseInt(row.total_distance);
+// 		});
+// 		if (frm.doc.total_distance != total_distance){
+// 			frm.doc.total_distance = total_distance
+// 		}
+// 	},
+// 	total_fuel: function(frm, cdt, cdn){
+// 		var total_fuel = 0;
+// 		frm.doc.main_route_steps.forEach(function (row) {
+// 			total_fuel = total_fuel + parseInt(row.fuel_consumption_qty);
+// 		});
+// 		frm.doc.side_trips.forEach(function (row) {
+// 			total_fuel = total_fuel + parseInt(row.total_fuel);
+// 		});
+// 		if (frm.doc.total_fuel != total_fuel) {
+// 			frm.doc.total_fuel = total_fuel
+// 		}
+// 	}
+// });
 
 frappe.ui.form.on('Truck Trip Location Update', {
 	view_on_map: function (frm, cdt, cdn) {

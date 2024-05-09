@@ -88,7 +88,16 @@
   "resumption_trip",
   "column_break_xjxpi",
   "status",
-  "description"
+  "description",
+  "border_details_tab",
+  "arrival_date_at_border",
+  "expected_days_at_the_border",
+  "charges_currency",
+  "total_days_at_the_border",
+  "column_break_s1tul",
+  "date_of_departure_from_border",
+  "total_charges_of_extra_days",
+  "container_return_time"
  ],
  "fields": [
   {
@@ -591,13 +600,62 @@
    "fieldtype": "Data",
    "label": "Sub-Contractor Name",
    "read_only": 1
+  },
+  {
+   "fieldname": "border_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Border Details"
+  },
+  {
+   "fieldname": "arrival_date_at_border",
+   "fieldtype": "Datetime",
+   "label": "Arrival Date at Border"
+  },
+  {
+   "fieldname": "expected_days_at_the_border",
+   "fieldtype": "Int",
+   "label": "Expected Days at the Border"
+  },
+  {
+   "default": "TZS",
+   "fieldname": "charges_currency",
+   "fieldtype": "Link",
+   "label": "Charges Currency",
+   "options": "Currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "total_days_at_the_border",
+   "fieldtype": "Int",
+   "label": "Total Days at the Border",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_s1tul",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "date_of_departure_from_border",
+   "fieldtype": "Datetime",
+   "label": "Date of Departure from Border"
+  },
+  {
+   "fieldname": "total_charges_of_extra_days",
+   "fieldtype": "Currency",
+   "label": "Total Charges of Extra Days",
+   "options": "charges_currency"
+  },
+  {
+   "fieldname": "container_return_time",
+   "fieldtype": "Data",
+   "label": "Container Return Time(Interchange)"
   }
  ],
  "in_create": 1,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-10-10 16:54:29.081582",
+ "modified": "2024-03-12 17:38:37.420035",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Trips",

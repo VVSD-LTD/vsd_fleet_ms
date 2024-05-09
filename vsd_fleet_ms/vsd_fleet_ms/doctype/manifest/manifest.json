@@ -12,15 +12,16 @@
   "section_break_8hd1v",
   "transporter_type",
   "column_break_tvryv",
+  "vehicle_trip",
   "sub_contractor_name",
   "section_break_6xysb",
-  "vehicle_trip",
   "truck",
   "truck_license_plate_no",
   "sub_contactor_truck_license_plate_no",
   "sub_contractor_drivers_license_number",
   "section_break_odxqz",
   "route",
+  "route_starting_point",
   "assigned_driver",
   "driver_name",
   "sub_contactor_driver_name",
@@ -68,7 +69,8 @@
    "fieldname": "vehicle_trip",
    "fieldtype": "Link",
    "label": "Vehicle Trip",
-   "options": "Trips"
+   "options": "Trips",
+   "read_only": 1
   },
   {
    "fieldname": "section_break_odxqz",
@@ -273,12 +275,22 @@
    "fieldtype": "Data",
    "label": "Sub-Contractor Name",
    "mandatory_depends_on": "eval:doc.transporter_type == \"Sub-Contractor\""
+  },
+  {
+   "fetch_from": "route.starting_point",
+   "fieldname": "route_starting_point",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Route Starting Point",
+   "print_hide": 1,
+   "read_only": 1,
+   "report_hide": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-10-10 16:51:36.979640",
+ "modified": "2024-03-12 17:15:22.743578",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Manifest",
