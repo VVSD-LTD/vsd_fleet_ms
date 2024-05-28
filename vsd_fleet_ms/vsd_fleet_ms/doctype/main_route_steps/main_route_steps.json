@@ -30,7 +30,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Location",
-   "options": "Trip Locations"
+   "options": "Trip Location"
   },
   {
    "fieldname": "column_break_2",
@@ -113,7 +113,7 @@
  ],
  "istable": 1,
  "links": [],
- "modified": "2023-06-06 18:09:39.726863",
+ "modified": "2024-05-28 15:52:36.003633",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Main Route Steps",

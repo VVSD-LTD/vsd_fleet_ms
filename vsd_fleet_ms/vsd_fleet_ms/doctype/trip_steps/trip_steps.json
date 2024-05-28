@@ -19,7 +19,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Location",
-   "options": "Trip Locations",
+   "options": "Trip Location",
    "reqd": 1
   },
   {
@@ -59,7 +59,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-05-08 18:24:02.134087",
+ "modified": "2024-05-28 15:52:34.981491",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Trip Steps",

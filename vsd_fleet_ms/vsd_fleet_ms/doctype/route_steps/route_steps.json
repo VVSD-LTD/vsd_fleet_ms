@@ -32,7 +32,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Location",
-   "options": "Trip Locations"
+   "options": "Trip Location"
   },
   {
    "fieldname": "distance",
@@ -128,7 +128,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-06-06 18:15:00.419459",
+ "modified": "2024-05-28 15:52:35.588144",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Route Steps",
