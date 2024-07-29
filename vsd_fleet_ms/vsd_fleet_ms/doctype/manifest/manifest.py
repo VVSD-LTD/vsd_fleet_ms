@@ -27,6 +27,9 @@ class Manifest(Document):
 		if self.name:
 			self.update_cargo_registration_details()
 			self.update_trips()
+	
+	def on_submit(self):
+		self.set_truck_dimension()
 
 	def cargo_allocation(self):
 		if self.transporter_type == "Sub-Contractor":
@@ -130,6 +133,19 @@ class Manifest(Document):
 			self.trailer_3 = ''
 			self.trailer3_type = ''
 
+	def set_truck_dimension(self):
+		cargo = frappe.db.get_value("Cargo Detail", {"manifest_number": self.name}, ["parent", "invoice"], as_dict=True)
+
+		# Make sure truck custom field for sales invoice and sales invoice item is ticked allow on submit
+		invoice_doc = frappe.get_doc("Sales Invoice", cargo.get("invoice"))
+		invoice_doc.truck = self.truck
+
+		for d in invoice_doc.items:
+			d.truck = self.truck
+
+		invoice_doc.save(ignore_permissions=True)
+
+		frappe.db.set_value("Cargo Registration", cargo.get("parent"), "truck", self.truck)
 
 @frappe.whitelist()
 def get_manifests(filter):
