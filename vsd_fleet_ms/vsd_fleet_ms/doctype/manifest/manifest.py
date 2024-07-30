@@ -3,6 +3,7 @@
 
 import frappe
 import json
+from frappe.query_builder import DocType
 from frappe.model.document import Document
 import datetime
 
@@ -134,18 +135,58 @@ class Manifest(Document):
 			self.trailer3_type = ''
 
 	def set_truck_dimension(self):
-		cargo = frappe.db.get_value("Cargo Detail", {"manifest_number": self.name}, ["parent", "invoice"], as_dict=True)
+		# Check if truck is settled as accounting dimension on transport settings
+		tr_settings = frappe.get_doc("Transport Settings")
+		has_si_truck_dimension = None
+		has_sii_truck_dimension = None
+		for d in tr_settings.accounting_dimension:
+			if (
+				not has_si_truck_dimension and
+				d.get("dimension_name") == "Truck" and
+				d.get("target_doctype") == "Sales Invoice"
+			):
+				has_si_truck_dimension = True
+			
+			if (
+				not has_sii_truck_dimension and
+				d.get("dimension_name") == "Truck" and
+				d.get("target_doctype") == "Sales Invoice Item"
+			):
+				has_sii_truck_dimension = True
 
-		# Make sure truck custom field for sales invoice and sales invoice item is ticked allow on submit
-		invoice_doc = frappe.get_doc("Sales Invoice", cargo.get("invoice"))
-		invoice_doc.truck = self.truck
+		if not has_si_truck_dimension and not has_sii_truck_dimension:
+			return
+		
+		cd = DocType("Cargo Detail")
+		cr = DocType("Cargo Registration")
+		cargo_details = (
+			frappe.qb.from_(cd)
+			.inner_join(cr)
+			.on(cd.parent == cr.name)
+			.select(
+				cr.name.as_("cargo_registration"),
+				cd.invoice.as_("sales_invoice")
+			)
+			.where(
+				(cd.manifest_number == self.name)
+				& (cd.docstatus == 1)
+			)
+			.groupby(cd.parent, cd.invoice)
+		).run(as_dict=True)
 
-		for d in invoice_doc.items:
-			d.truck = self.truck
+		for row in cargo_details:
+			invoice_doc = frappe.get_doc("Sales Invoice", row.get("sales_invoice"))
 
-		invoice_doc.save(ignore_permissions=True)
+			if has_si_truck_dimension:
+				invoice_doc.truck = self.truck
 
-		frappe.db.set_value("Cargo Registration", cargo.get("parent"), "truck", self.truck)
+			if has_sii_truck_dimension:
+				for d in invoice_doc.items:
+					d.truck = self.truck
+
+			invoice_doc.save(ignore_permissions=True)
+
+			frappe.db.set_value("Cargo Registration", row.get("cargo_registration"), "truck", self.truck)
 
 @frappe.whitelist()
 def get_manifests(filter):
