@@ -10,6 +10,7 @@
  "field_order": [
   "customer",
   "posting_date",
+  "truck",
   "column_break_ta7ta",
   "transport_type",
   "naming_series",
@@ -91,12 +92,19 @@
    "fieldname": "posting_date",
    "fieldtype": "Date",
    "label": "Date"
+  },
+  {
+   "fieldname": "truck",
+   "fieldtype": "Link",
+   "label": "Truck",
+   "options": "Truck",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-06-16 12:30:45.543391",
+ "modified": "2024-07-29 23:38:13.951558",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Cargo Registration",
