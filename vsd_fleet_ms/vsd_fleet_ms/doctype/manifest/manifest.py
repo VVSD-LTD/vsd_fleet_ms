@@ -169,7 +169,6 @@ class Manifest(Document):
 			)
 			.where(
 				(cd.manifest_number == self.name)
-				& (cd.docstatus == 1)
 			)
 			.groupby(cd.parent, cd.invoice)
 		).run(as_dict=True)
@@ -186,7 +185,6 @@ class Manifest(Document):
 
 			invoice_doc.save(ignore_permissions=True)
 
-			frappe.db.set_value("Cargo Registration", row.get("cargo_registration"), "truck", self.truck)
 
 @frappe.whitelist()
 def get_manifests(filter):
