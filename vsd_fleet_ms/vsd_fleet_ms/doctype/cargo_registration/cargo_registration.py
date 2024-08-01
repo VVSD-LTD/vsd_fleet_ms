@@ -28,13 +28,14 @@ def create_sales_invoice(doc, rows):
     for row in rows:
         description = ""
         trip_info = None
-        if row["transporter_type"] == "In House":
-            description += "<b>VEHICLE NUMBER: " + row["assigned_truck"]
-            if row["created_trip"]:
-                trip_info = "<BR>TRIP: " + row["created_trip"]
-        elif row["transporter_type"] == "Sub-Contractor":
-            description += "<b>VEHICLE NUMBER: " + row["truck_number"]
-            description += "<br><b>DRIVER NAME: " + row["driver_name"]
+        if row.get("transporter_type"):
+            if row["transporter_type"] == "In House":
+                description += "<b>VEHICLE NUMBER: " + row["assigned_truck"]
+                if row["created_trip"]:
+                    trip_info = "<BR>TRIP: " + row["created_trip"]
+            elif row["transporter_type"] == "Sub-Contractor":
+                description += "<b>VEHICLE NUMBER: " + row["truck_number"]
+                description += "<br><b>DRIVER NAME: " + row["driver_name"]
         if row["cargo_route"]:
             description += "<BR>ROUTE: " + row["cargo_route"]
         if trip_info:
