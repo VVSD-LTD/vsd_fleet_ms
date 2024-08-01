@@ -45,6 +45,7 @@ def create_sales_invoice(doc, rows):
                 "uom": frappe.get_value("Item", row["service_item"], "stock_uom"),
                 "rate": row["rate"],
                 "description": description,
+                "cargo_id": row.get("name"),
             }
         )
         item_row_per.append([row, item])

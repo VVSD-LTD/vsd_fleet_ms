@@ -157,31 +157,18 @@ class Manifest(Document):
 		if not has_si_truck_dimension and not has_sii_truck_dimension:
 			return
 		
-		cd = DocType("Cargo Detail")
-		cr = DocType("Cargo Registration")
-		cargo_details = (
-			frappe.qb.from_(cd)
-			.inner_join(cr)
-			.on(cd.parent == cr.name)
-			.select(
-				cr.name.as_("cargo_registration"),
-				cd.invoice.as_("sales_invoice")
-			)
-			.where(
-				(cd.manifest_number == self.name)
-			)
-			.groupby(cd.parent, cd.invoice)
-		).run(as_dict=True)
+		# Set truck dimension on sales invoice and sales invoice item
+		for row in self.manifest_cargo_details:
+			invoice_id = frappe.db.get_value("Cargo Detail", row.cargo_id, "invoice")
+			invoice_doc = frappe.get_doc("Sales Invoice", invoice_id)
 
-		for row in cargo_details:
-			invoice_doc = frappe.get_doc("Sales Invoice", row.get("sales_invoice"))
-
-			if has_si_truck_dimension:
-				invoice_doc.truck = self.truck
+			# if has_si_truck_dimension and not invoice_doc.truck:
+			# 	invoice_doc.truck = self.truck
 
 			if has_sii_truck_dimension:
 				for d in invoice_doc.items:
-					d.truck = self.truck
+					if row.cargo_id == d.cargo_id:
+						d.truck = self.truck
 
 			invoice_doc.save(ignore_permissions=True)
 
