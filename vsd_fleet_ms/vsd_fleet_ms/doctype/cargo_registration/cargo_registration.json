@@ -19,7 +19,13 @@
   "section_break_er7n8",
   "column_break_wl4cu",
   "create_invoice",
-  "amended_from"
+  "amended_from",
+  "request_funds_section",
+  "requested_fund",
+  "section_break_32ewt",
+  "column_break_4bmj4",
+  "column_break_sx93e",
+  "request_payment"
  ],
  "fields": [
   {
@@ -91,12 +97,40 @@
    "fieldname": "posting_date",
    "fieldtype": "Date",
    "label": "Date"
+  },
+  {
+   "fieldname": "request_funds_section",
+   "fieldtype": "Section Break",
+   "label": "Request Funds"
+  },
+  {
+   "fieldname": "requested_fund",
+   "fieldtype": "Table",
+   "options": "Requested Fund Details"
+  },
+  {
+   "fieldname": "section_break_32ewt",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_4bmj4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_sx93e",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "request_payment",
+   "fieldtype": "Link",
+   "options": "Requested Payment",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-08-01 11:12:50.486146",
+ "modified": "2024-09-24 10:42:21.738171",
  "modified_by": "Administrator",
  "module": "VSD Fleet MS",
  "name": "Cargo Registration",
