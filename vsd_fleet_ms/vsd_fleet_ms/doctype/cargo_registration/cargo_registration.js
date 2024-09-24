@@ -86,6 +86,20 @@ frappe.ui.form.on('Cargo Detail', {
 			frm.refresh_field("cargo_details")
 		}
 	},
+	net_weight: function(frm, cdt, cdn){
+		var row = locals[cdt][cdn];
+		console.log("hi");
+		
+		// Convert kg to tonnes (1 tonne = 1000 kg)
+		if (row.net_weight) {
+			row.net_weight_tonne = row.net_weight / 1000;
+		} else {
+			row.net_weight_tonne = 0;
+		}
+
+		// Refresh the field in the child table
+		frm.refresh_field('cargo_details');
+	},
 	expected_offloading_date: function(frm, cdt, cdn){
 		var row = locals[cdt][cdn];
 		if (row.expected_offloading_date < row.loading_date){
