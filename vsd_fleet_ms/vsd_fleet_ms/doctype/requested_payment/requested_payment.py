@@ -94,6 +94,7 @@ class RequestedPayment(Document):
                                 "requested_funds",
                                 "requested_fund_accounts_table",
                                 "return_requested_funds",
+                                "requested_fund"
                             ),
                         ],
                         "request_status": [
@@ -121,6 +122,7 @@ class RequestedPayment(Document):
                                 "requested_funds",
                                 "requested_fund_accounts_table",
                                 "return_requested_funds",
+                                "requested_fund"
                             ),
                         ],
                         "request_status": [

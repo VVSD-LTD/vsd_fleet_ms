@@ -296,7 +296,7 @@ def create_fund_jl(doc, row):
     accounts.append(credit_row)
 
     company = doc.company
-    user_remark = "Vehicle Trip No: {0}".format(doc.name)
+    user_remark = "ref Document: {0}".format(doc.name)
     if row.requested_date:
         date = row.requested_date
     else:

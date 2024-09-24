@@ -12,9 +12,16 @@ import json
 from frappe.utils import nowdate, cstr, cint, flt, comma_or, now
 from frappe import _, msgprint
 from vsd_fleet_ms.utils.dimension import set_dimension
+from vsd_fleet_ms.vsd_fleet_ms.doctype.requested_payment.requested_payment import request_funds
 
 class CargoRegistration(Document):
-	pass
+	def before_save(self):
+            funds_args = {
+                            "reference_doctype": 'Cargo Registration',
+                            "reference_docname": self.name,
+                            'company': self.company
+            }
+            request_funds(**funds_args)
 
 
 @frappe.whitelist()
