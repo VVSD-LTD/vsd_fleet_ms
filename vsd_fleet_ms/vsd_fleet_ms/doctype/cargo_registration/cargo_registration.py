@@ -54,8 +54,8 @@ def create_sales_invoice(doc, rows):
             description += trip_info
         item = frappe._dict({
                 "item_code": row["service_item"],
-                "qty": 1,
-                "uom": frappe.get_value("Item", row["service_item"], "stock_uom"),
+                "qty": row.get("net_weight_tonne"),
+                "uom": row["bill_uom"],
                 "rate": row["rate"],
                 "description": description,
                 "cargo_id": row.get("name"),
