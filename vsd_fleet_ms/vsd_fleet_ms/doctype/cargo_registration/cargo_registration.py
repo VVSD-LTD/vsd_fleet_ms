@@ -15,13 +15,18 @@ from vsd_fleet_ms.utils.dimension import set_dimension
 from vsd_fleet_ms.vsd_fleet_ms.doctype.requested_payment.requested_payment import request_funds
 
 class CargoRegistration(Document):
-	def before_save(self):
-            funds_args = {
-                            "reference_doctype": 'Cargo Registration',
-                            "reference_docname": self.name,
-                            'company': self.company
-            }
-            request_funds(**funds_args)
+    def before_save(self):
+        if self.get('requested_fund'):
+            for row in self.get('requested_fund'):
+                if row.request_status == "Requested":
+                    funds_args = {
+                        "reference_doctype": 'Cargo Registration',
+                        "reference_docname": self.name,
+                        "company": self.company
+                    }
+                    request_funds(**funds_args)
+                    break 
+
 
 
 @frappe.whitelist()
