@@ -31,7 +31,6 @@ class CargoRegistration(Document):
 
 @frappe.whitelist()
 def create_sales_invoice(doc, rows):
-    settings =  frappe.get_doc("Transport Settings")
     doc = frappe.get_doc(json.loads(doc))
     rows = json.loads(rows)
     if not rows:
@@ -53,30 +52,17 @@ def create_sales_invoice(doc, rows):
             description += "<BR>ROUTE: " + row["cargo_route"]
         if trip_info:
             description += trip_info
-        if settings.allow_bill_on_weight == 1:
-            item = frappe._dict({
-                    "item_code": row["service_item"],
-                    "qty": row.get("net_weight_tonne"),
-                    "uom": row["bill_uom"],
-                    "rate": row["rate"],
-                    "description": description,
-                    "cargo_id": row.get("name"),
-                }
-            )
-            item_row_per.append([row, item])
-            items.append(item)
-        else:
-            item = frappe._dict({
+        item = frappe._dict({
                 "item_code": row["service_item"],
-                "qty": 1,
+                "qty": row.get("net_weight_tonne"),
                 "uom": row["bill_uom"],
                 "rate": row["rate"],
                 "description": description,
                 "cargo_id": row.get("name"),
-                }
-            )
-            item_row_per.append([row, item])
-            items.append(item)
+            }
+        )
+        item_row_per.append([row, item])
+        items.append(item)
         
     invoice = frappe.get_doc(
         dict(
