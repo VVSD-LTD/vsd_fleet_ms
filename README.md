@@ -49,20 +49,14 @@ To install the VSD Fleet Management System on ERPNext app on your ERPNext instan
    cd /path/to/frappe-bench```
 2. Get the app from the repository:
   ```
-  bash
-  Copy code
-  bench get-app transport_erp https://github.com/yourusername/transport_erp.git
+  bench get-app https://github.com/VVSD-LTD/vsd_fleet_ms.git
   ```
 3. Install the app on your ERPNext site:
   ```
-  bash
-  Copy code
-  bench --site [your-site-name] install-app transport_erp
+  bench --site [your-site-name] install-app vsd_fleet_ms
   ```
 4. Migrate your site to apply the new app's changes:
   ```
-  bash
-  Copy code
   bench --site [your-site-name] migrate
   ```
 
@@ -81,17 +75,14 @@ To install the VSD Fleet Management System on ERPNext app on your ERPNext instan
 1. Fork the repository.
 2. Create a new branch:
 ```
-bash
 git checkout -b feature-or-bugfix-name
 ```
 3. Make your changes and commit them:
 ```
-bash
 git commit -m "Your detailed description of the changes."
 ```
 4. Push to your branch:
 ```
-bash
 git push origin feature-or-bugfix-name
 ```
 5. Open a pull request on GitHub.
