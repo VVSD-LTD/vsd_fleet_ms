@@ -45,7 +45,6 @@ To install the VSD Fleet Management System on ERPNext app on your ERPNext instan
 
 1. Navigate to your Frappe Bench directory:
    ```
-   bash
    cd /path/to/frappe-bench```
 2. Get the app from the repository:
   ```
