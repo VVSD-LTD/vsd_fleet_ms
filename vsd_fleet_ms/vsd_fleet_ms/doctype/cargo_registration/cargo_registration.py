@@ -52,17 +52,30 @@ def create_sales_invoice(doc, rows):
             description += "<BR>ROUTE: " + row["cargo_route"]
         if trip_info:
             description += trip_info
-        item = frappe._dict({
+        if row["allow_bill_on_weight"] == 1:
+            item = frappe._dict({
+                    "item_code": row["service_item"],
+                    "qty": row.get("net_weight_tonne"),
+                    "uom": row["bill_uom"],
+                    "rate": row["rate"],
+                    "description": description,
+                    "cargo_id": row.get("name"),
+                }
+            )
+            item_row_per.append([row, item])
+            items.append(item)
+        else:
+            item = frappe._dict({
                 "item_code": row["service_item"],
-                "qty": row.get("net_weight_tonne"),
+                "qty": 1,
                 "uom": row["bill_uom"],
                 "rate": row["rate"],
                 "description": description,
                 "cargo_id": row.get("name"),
-            }
-        )
-        item_row_per.append([row, item])
-        items.append(item)
+                }
+            )
+            item_row_per.append([row, item])
+            items.append(item)
         
     invoice = frappe.get_doc(
         dict(

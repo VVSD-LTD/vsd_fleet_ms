@@ -3,4 +3,6 @@
 [post_model_sync]
 vsd_fleet_ms.patches.custom_fields.add_cargo_id_custom_field_on_sales_invoice_item
 vsd_fleet_ms.patches.custom_fields.add_bill_uom_field_in_cargo_detail
+vsd_fleet_ms.patches.custom_fields.add_allow_bill_on_weight
 vsd_fleet_ms.patches.property_setters.create_property_setter_cargo_details
+
