@@ -1,4 +1,4 @@
-# VSD Fleet Management System on ERPNext
+## Fleet Managment System
 
 ## Overview
 
@@ -93,3 +93,5 @@ Support
 For support, please reach out via GitHub Issues.
 
 Happy transporting with VSD Fleet Management System on ERPNext!
+=======
+MIT
